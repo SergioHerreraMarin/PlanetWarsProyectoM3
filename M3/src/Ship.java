@@ -5,13 +5,12 @@ public abstract class Ship implements MilitaryUnit, Variables{
     private int baseDamage;
 
 
-    Ship(){
+    public Ship(){
 
     }
 
     
     public Ship(int armor, int initialArmor, int baseDamage) {
-        super();
         this.armor = armor;
         this.initialArmor = initialArmor;
         this.baseDamage = baseDamage;

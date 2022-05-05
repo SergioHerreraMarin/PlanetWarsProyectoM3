@@ -10,7 +10,6 @@ public class Planet {
 	private int upgradeAttackTechnologyDeuteriumCost = 100;
 	
 	private ArrayList<MilitaryUnit>[] army = new ArrayList[7];
-
 	
 	
 	public Planet() {
@@ -18,13 +17,8 @@ public class Planet {
 		technologyDefense = 1;
 		technologyAtack = 1;
 		
-		army[0] = new ArrayList<LigthHunter>();
-		army[1] = new ArrayList<HeavyHunter>();
-		army[2] = new ArrayList<BattleShip>();
-		army[3] = new ArrayList<ArmoredShip>();
-		army[4] = new ArrayList<MissileLauncher>();
-		army[5] = new ArrayList<IonCannon>();
-		army[6] = new ArrayList<PlasmaCannon>();
+		army[0] = new ArrayList<LightHunter>();
+		
 		
 	}
 	
@@ -115,10 +109,6 @@ public class Planet {
 	public void newLigthHunter(int n) {
 		
 		
-		for(int i = 0; i < n; i++) {
-			
-			army[0].add(new LigthHunter());		
-		}
 				
 	}
 	

@@ -1,16 +1,17 @@
-public class LightHunter extends Ship{
 
-		
-	LightHunter(Planet planeta){
+public class HeavyHunter extends Ship {
+
+	
+	HeavyHunter(Planet planeta){
 		
 		//Establecer el blindaje
 		if(planeta.getTechnologyDefense() == 0) {
 			
-			this.setInitialArmor(this.ARMOR_LIGTHHUNTER);
+			this.setInitialArmor(this.ARMOR_HEAVYHUNTER);
 		
 		}else {
 			
-			this.setInitialArmor(this.ARMOR_LIGTHHUNTER + (planeta.getTechnologyDefense() * this.PLUS_ARMOR_LIGTHHUNTER_BY_TECHNOLOGY) * 10);		
+			this.setInitialArmor(this.ARMOR_HEAVYHUNTER + (planeta.getTechnologyDefense() * this.PLUS_ARMOR_HEAVYHUNTER_BY_TECHNOLOGY) * 10);		
 		}
 		
 		
@@ -20,18 +21,18 @@ public class LightHunter extends Ship{
 		//Establecer al poder de ataque
 		if(planeta.getTechnologyAtack() == 0) {
 			
-			this.setBaseDamage(this.BASE_DAMAGE_LIGTHHUNTER);
+			this.setBaseDamage(this.BASE_DAMAGE_HEAVYHUNTER);
 			
 		}else {
 					
-			this.setBaseDamage(this.BASE_DAMAGE_LIGTHHUNTER + (planeta.getTechnologyAtack() * this.PLUS_ATTACK_LIGTHHUNTER_BY_TECHNOLOGY) * 10);		
+			this.setBaseDamage(this.BASE_DAMAGE_HEAVYHUNTER + (planeta.getTechnologyAtack() * this.PLUS_ATTACK_HEAVYHUNTER_BY_TECHNOLOGY) * 10);		
 		}
 				
     }
 	
 	
 	
-    LightHunter(int armor, int baseDamage) {
+    HeavyHunter(int armor, int baseDamage) {
     	
     	super(armor, armor, baseDamage);      
     }
@@ -66,15 +67,15 @@ public class LightHunter extends Ship{
 	@Override
 	public int getMetalCost() {
 		
-		return this.METAL_COST_LIGTHHUNTER;
+		return this.METAL_COST_HEAVYHUNTER;
 	}
 
 
 
 	@Override
 	public int getDeuteriumCost() {
-		
-		return this.DEUTERIUM_COST_LIGTHHUNTER;
+
+		return this.DEUTERIUM_COST_HEAVYHUNTER;
 	}
 
 
@@ -82,15 +83,15 @@ public class LightHunter extends Ship{
 	@Override
 	public int getChanceGeneratinWaste() {
 
-		return this.CHANCE_GENERATNG_WASTE_LIGTHHUNTER;
+		return this.CHANCE_GENERATNG_WASTE_HEAVYHUNTER;
 	}
 
 
 
 	@Override
 	public int getChanceAttackAgain() {
-		
-		return this.CHANCE_ATTACK_AGAIN_LIGTHHUNTER;
+
+		return this.CHANCE_ATTACK_AGAIN_HEAVYHUNTER;
 	}
 
 
@@ -101,6 +102,6 @@ public class LightHunter extends Ship{
 		this.setArmor(this.getInitialArmor());
 		
 	}
+	
 
 }
-
