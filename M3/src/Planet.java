@@ -3,9 +3,11 @@ import java.util.Iterator;
 
 public class Planet {
 
-	private int technologyDefense, technologyAtack, metal, deuterium;
-	private final int upgradeDefenseTechnologyDeuteriumCost = 10;
-	private final int upgradeAttackTechnologyDeuteriumCost = 10;
+	private int technologyDefense;
+	private int technologyAtack;
+	private int metal, deuterium;
+	private int upgradeDefenseTechnologyDeuteriumCost = 100;
+	private int upgradeAttackTechnologyDeuteriumCost = 100;
 	
 	private ArrayList<MilitaryUnit>[] army = new ArrayList[7];
 
@@ -27,7 +29,6 @@ public class Planet {
 	}
 	
 	
-
 	public int getTechnologyDefense() {
 		return technologyDefense;
 	}
@@ -83,30 +84,42 @@ public class Planet {
 	
 	public void upgradeTechnologyDefense() {
 		
-		//Falta comprobación. 
-		technologyDefense++;
+		final float PORCENTAJE = 0.1f;
 		
+		if(deuterium >= upgradeDefenseTechnologyDeuteriumCost) {
+					
+			technologyDefense++;
+			deuterium -= upgradeDefenseTechnologyDeuteriumCost;	
+		}
+		
+		upgradeDefenseTechnologyDeuteriumCost += upgradeDefenseTechnologyDeuteriumCost * PORCENTAJE;
+
 	}
 	
 	
 	public void upgradeTechnologyAttack() {
 		
-		//Falta comprobación.
-		technologyAtack++;
+		final float PORCENTAJE = 0.1f;
 		
+		if(deuterium >= upgradeAttackTechnologyDeuteriumCost) {
+					
+			technologyDefense++;
+			deuterium -= upgradeAttackTechnologyDeuteriumCost;	
+		}
+		
+		upgradeAttackTechnologyDeuteriumCost += upgradeAttackTechnologyDeuteriumCost * PORCENTAJE;			
 	}
 	
 	
+	
 	public void newLigthHunter(int n) {
-		
 		
 		
 		for(int i = 0; i < n; i++) {
 			
 			army[0].add(new LigthHunter());		
 		}
-		
-		
+				
 	}
 	
 	
