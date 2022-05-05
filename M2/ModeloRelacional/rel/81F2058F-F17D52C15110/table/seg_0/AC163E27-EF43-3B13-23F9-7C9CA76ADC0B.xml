@@ -1,0 +1,115 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="AC163E27-EF43-3B13-23F9-7C9CA76ADC0B" name="PLANETS">
+<createdBy>Jordi</createdBy>
+<createdTime>2022-05-05 09:10:35 UTC</createdTime>
+<ownerDesignName>ModeloRelacional</ownerDesignName>
+<ordsAlias>table_6</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_planet" id="4933031F-06F1-7C7B-DD5A-745D75BE6AA5">
+<createdBy>Jordi</createdBy>
+<createdTime>2022-05-05 09:14:43 UTC</createdTime>
+<ownerDesignName>ModeloRelacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="name" id="160CE0F7-F024-6328-3ECD-537E887E0E82">
+<createdBy>Jordi</createdBy>
+<createdTime>2022-05-05 09:14:43 UTC</createdTime>
+<ownerDesignName>ModeloRelacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="technology_attack" id="3BC87FBC-4505-0270-C632-0F5227BAA7ED">
+<createdBy>Jordi</createdBy>
+<createdTime>2022-05-05 09:14:43 UTC</createdTime>
+<ownerDesignName>ModeloRelacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="technology_defense" id="0482C6B6-5C7D-9266-0828-E41C272F80D9">
+<createdBy>Jordi</createdBy>
+<createdTime>2022-05-05 09:16:27 UTC</createdTime>
+<ownerDesignName>ModeloRelacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="technology_attack_upgrade_cost" id="14557C35-EF41-C3F4-D89C-6AAE436EEAC6">
+<createdBy>Jordi</createdBy>
+<createdTime>2022-05-05 09:16:27 UTC</createdTime>
+<ownerDesignName>ModeloRelacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="technology_defense_upgrade_cost" id="854091C5-EB79-C3DF-0608-B47BEFE27C94">
+<createdBy>Jordi</createdBy>
+<createdTime>2022-05-05 09:16:27 UTC</createdTime>
+<ownerDesignName>ModeloRelacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="deuterium" id="F52C3DB4-8D7D-618A-DC31-8497710D03AB">
+<createdBy>Jordi</createdBy>
+<createdTime>2022-05-05 09:17:10 UTC</createdTime>
+<ownerDesignName>ModeloRelacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="metal" id="03DFFFE4-C8E7-7732-9B77-55442E319340">
+<createdBy>Jordi</createdBy>
+<createdTime>2022-05-05 09:18:26 UTC</createdTime>
+<ownerDesignName>ModeloRelacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="crystal" id="0F7D5B2B-5DCB-91F7-DF91-791A49CD2400">
+<createdBy>Jordi</createdBy>
+<createdTime>2022-05-05 09:18:26 UTC</createdTime>
+<ownerDesignName>ModeloRelacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="7DB22B89-7388-29D5-24F0-BB00DBA0899C" name="PLANETS_PK">
+<createdBy>Jordi</createdBy>
+<createdTime>2022-05-05 09:14:43 UTC</createdTime>
+<ownerDesignName>ModeloRelacional</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4933031F-06F1-7C7B-DD5A-745D75BE6AA5"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
