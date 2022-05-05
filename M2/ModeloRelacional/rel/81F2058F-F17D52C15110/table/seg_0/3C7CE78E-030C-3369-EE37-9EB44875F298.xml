@@ -1,16 +1,16 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="AC163E27-EF43-3B13-23F9-7C9CA76ADC0B" name="PLANETS">
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="3C7CE78E-030C-3369-EE37-9EB44875F298" name="SHIPS">
 <createdBy>Jordi</createdBy>
-<createdTime>2022-05-05 09:10:35 UTC</createdTime>
+<createdTime>2022-05-05 09:25:04 UTC</createdTime>
 <ownerDesignName>ModeloRelacional</ownerDesignName>
-<ordsAlias>table_6</ordsAlias>
+<ordsAlias>table_9</ordsAlias>
 <allowColumnReorder>false</allowColumnReorder>
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>
 <columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
-<Column name="id_planet" id="4933031F-06F1-7C7B-DD5A-745D75BE6AA5">
+<Column name="id_ship" id="7ECFF228-8E92-2E41-7281-060792BCC477">
 <createdBy>Jordi</createdBy>
-<createdTime>2022-05-05 09:14:43 UTC</createdTime>
+<createdTime>2022-05-05 09:28:54 UTC</createdTime>
 <ownerDesignName>ModeloRelacional</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -18,9 +18,9 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="name" id="160CE0F7-F024-6328-3ECD-537E887E0E82">
+<Column name="name" id="296ECC2F-3043-28A1-DAE2-0A409192EE24">
 <createdBy>Jordi</createdBy>
-<createdTime>2022-05-05 09:14:43 UTC</createdTime>
+<createdTime>2022-05-05 09:28:54 UTC</createdTime>
 <ownerDesignName>ModeloRelacional</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -28,9 +28,9 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="technology_attack" id="3BC87FBC-4505-0270-C632-0F5227BAA7ED">
+<Column name="metal_cost" id="25D68DD3-D895-3B4D-7E59-8C55609E6ECA">
 <createdBy>Jordi</createdBy>
-<createdTime>2022-05-05 09:14:43 UTC</createdTime>
+<createdTime>2022-05-05 09:28:54 UTC</createdTime>
 <ownerDesignName>ModeloRelacional</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -38,9 +38,19 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="technology_defense" id="0482C6B6-5C7D-9266-0828-E41C272F80D9">
+<Column name="deuterium_cost" id="FFE85928-E4C1-913F-2FB9-CE324F873418">
 <createdBy>Jordi</createdBy>
-<createdTime>2022-05-05 09:16:27 UTC</createdTime>
+<createdTime>2022-05-05 09:28:54 UTC</createdTime>
+<ownerDesignName>ModeloRelacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="crystal_cost" id="5BE2CD95-DFE6-7E90-BDB3-AAC2055A021F">
+<createdBy>Jordi</createdBy>
+<createdTime>2022-05-05 09:28:54 UTC</createdTime>
 <ownerDesignName>ModeloRelacional</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -48,9 +58,9 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="technology_attack_upgrade_cost" id="14557C35-EF41-C3F4-D89C-6AAE436EEAC6">
+<Column name="initial_armor" id="9884DC95-E58C-4D5B-74E1-9AD45C995E06">
 <createdBy>Jordi</createdBy>
-<createdTime>2022-05-05 09:16:27 UTC</createdTime>
+<createdTime>2022-05-05 09:28:54 UTC</createdTime>
 <ownerDesignName>ModeloRelacional</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -58,9 +68,9 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="technology_defense_upgrade_cost" id="854091C5-EB79-C3DF-0608-B47BEFE27C94">
+<Column name="armor" id="08810003-FCA6-EEB5-1264-CF48F110B47B">
 <createdBy>Jordi</createdBy>
-<createdTime>2022-05-05 09:16:27 UTC</createdTime>
+<createdTime>2022-05-05 09:28:54 UTC</createdTime>
 <ownerDesignName>ModeloRelacional</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -68,9 +78,9 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="deuterium" id="F52C3DB4-8D7D-618A-DC31-8497710D03AB">
+<Column name="base_damage" id="316920CD-A5F3-E350-A53B-0BD60A1AD993">
 <createdBy>Jordi</createdBy>
-<createdTime>2022-05-05 09:17:10 UTC</createdTime>
+<createdTime>2022-05-05 09:28:54 UTC</createdTime>
 <ownerDesignName>ModeloRelacional</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -78,9 +88,9 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="metal" id="03DFFFE4-C8E7-7732-9B77-55442E319340">
+<Column name="speed" id="7F794192-48C6-FDBA-0879-381AF70C2B02">
 <createdBy>Jordi</createdBy>
-<createdTime>2022-05-05 09:18:26 UTC</createdTime>
+<createdTime>2022-05-05 09:29:07 UTC</createdTime>
 <ownerDesignName>ModeloRelacional</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -88,9 +98,9 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="crystal" id="0F7D5B2B-5DCB-91F7-DF91-791A49CD2400">
+<Column name="generate_wastings" id="26120A32-E65D-A580-089F-8D1427DB9C1C">
 <createdBy>Jordi</createdBy>
-<createdTime>2022-05-05 09:18:26 UTC</createdTime>
+<createdTime>2022-05-05 09:29:43 UTC</createdTime>
 <ownerDesignName>ModeloRelacional</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -98,9 +108,9 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="id_user" id="CF305378-DC15-6F3B-F3F8-5DC336E87954">
+<Column name="iid_planet" id="CEC94C02-6EB6-C878-AA24-E2030AF101D7">
 <createdBy>Jordi</createdBy>
-<createdTime>2022-05-05 09:19:16 UTC</createdTime>
+<createdTime>2022-05-05 09:33:21 UTC</createdTime>
 <ownerDesignName>ModeloRelacional</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -109,40 +119,30 @@
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
-<colAssociation fkAssociation="13CA0FE7-7BFA-4ED5-3E91-5B8EB48801D8" referredColumn="3E072F46-BFE0-F712-0007-35EDE7384912"/>
+<colAssociation fkAssociation="AF10D901-BF39-16F3-8CFB-369274916AC9" referredColumn="4933031F-06F1-7C7B-DD5A-745D75BE6AA5"/>
 </associations>
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
-<ind_PK_UK id="7DB22B89-7388-29D5-24F0-BB00DBA0899C" name="PLANETS_PK">
+<ind_PK_UK id="8D5CA93A-DCF8-77BB-747A-E9299AC192B3" name="SHIPS_PK">
 <createdBy>Jordi</createdBy>
-<createdTime>2022-05-05 09:14:43 UTC</createdTime>
+<createdTime>2022-05-05 09:28:54 UTC</createdTime>
 <ownerDesignName>ModeloRelacional</ownerDesignName>
 <pk>true</pk>
 <indexState>Primary Constraint</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="4933031F-06F1-7C7B-DD5A-745D75BE6AA5"/>
+<colUsage columnID="7ECFF228-8E92-2E41-7281-060792BCC477"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="7D5E8E14-7542-AD06-94DA-E7F218C08B93" name="PLANETS_name">
+<ind_PK_UK id="8DE3FCFF-04BB-21D0-660F-8C4459ECD7BB" name="SHIPS_PLANETS_FK">
 <createdBy>Jordi</createdBy>
-<createdTime>2022-05-05 09:47:12 UTC</createdTime>
-<ownerDesignName>ModeloRelacional</ownerDesignName>
-<indexState>Unique Constraint</indexState>
-<isSurrogateKey>false</isSurrogateKey>
-<indexColumnUsage>
-<colUsage columnID="160CE0F7-F024-6328-3ECD-537E887E0E82"/>
-</indexColumnUsage>
-</ind_PK_UK>
-<ind_PK_UK id="C3DBBE47-4521-87EA-636B-99F0BB72E2EC" name="PLANETS_USERS_FK">
-<createdBy>Jordi</createdBy>
-<createdTime>2022-05-05 09:19:16 UTC</createdTime>
+<createdTime>2022-05-05 09:33:21 UTC</createdTime>
 <ownerDesignName>ModeloRelacional</ownerDesignName>
 <indexState>Foreign Key</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="CF305378-DC15-6F3B-F3F8-5DC336E87954"/>
+<colUsage columnID="CEC94C02-6EB6-C878-AA24-E2030AF101D7"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

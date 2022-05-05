@@ -62,5 +62,15 @@
 <colUsage columnID="3E072F46-BFE0-F712-0007-35EDE7384912"/>
 </indexColumnUsage>
 </ind_PK_UK>
+<ind_PK_UK id="48C2EAC0-0C85-7EE6-A071-AE0B570CD3D6" name="USERS_username">
+<createdBy>Jordi</createdBy>
+<createdTime>2022-05-05 09:46:27 UTC</createdTime>
+<ownerDesignName>ModeloRelacional</ownerDesignName>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A65690E7-C8A6-63E7-CDE2-1D5482B8673F"/>
+</indexColumnUsage>
+</ind_PK_UK>
 </indexes>
 </Table>
