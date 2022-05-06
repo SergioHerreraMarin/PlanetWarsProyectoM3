@@ -55,13 +55,11 @@ public class BattleShip extends Ship {
 	}
 
 
-
 	@Override
 	public int getActualArmor() {
 		
 		return this.getArmor();
 	}
-
 
 
 	@Override
@@ -71,13 +69,11 @@ public class BattleShip extends Ship {
 	}
 
 
-
 	@Override
 	public int getDeuteriumCost() {
 
 		return this.DEUTERIUM_COST_BATTLESHIP;
 	}
-
 
 
 	@Override
@@ -86,7 +82,6 @@ public class BattleShip extends Ship {
 		return this.CHANCE_GENERATNG_WASTE_BATTLESHIP;
 	}
 
-
 	
 	@Override
 	public int getChanceAttackAgain() {
@@ -94,8 +89,7 @@ public class BattleShip extends Ship {
 		return this.CHANCE_ATTACK_AGAIN_BATTLESHIP;
 	}
 
-
-
+	
 	@Override
 	public void resetArmor() {
 		
