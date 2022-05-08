@@ -14,18 +14,10 @@ public class Planet {
 	
 	public Planet() {
 		
-		technologyDefense = 1;
-		technologyAtack = 1;
+		technologyDefense = 0;
+		technologyAtack = 0;
 		metal = 10000;
 		deuterium = 10000;
-		
-		army[0] = new ArrayList<MilitaryUnit>();
-		army[1] = new ArrayList<MilitaryUnit>();
-		army[2] = new ArrayList<MilitaryUnit>();
-		army[3] = new ArrayList<MilitaryUnit>();
-		army[4] = new ArrayList<MilitaryUnit>();
-		army[5] = new ArrayList<MilitaryUnit>();
-		army[6] = new ArrayList<MilitaryUnit>();
 	}
 	
 	
@@ -110,6 +102,7 @@ public class Planet {
 		upgradeAttackTechnologyDeuteriumCost += upgradeAttackTechnologyDeuteriumCost * PORCENTAJE;			
 	}
 	
+	
 	//Falta cambiar para que lo haga bien, mirar. 
 	public void newLigthHunter(int n) throws ResourceException {
 		
@@ -132,7 +125,7 @@ public class Planet {
 	}
 	
 	
-	public void newHeavyHunter(int n) {
+	public void newHeavyHunter(int n) throws ResourceException {
 		
 		
 		int finalAddNum = 0;
@@ -148,7 +141,7 @@ public class Planet {
 			
 			}else {
 				
-				//Lanzar excepcion. 
+				throw new ResourceException("ERROR: Materiales insuficientes. Se han creado " + finalAddNum); 
 				
 			}			
 		}	
@@ -158,7 +151,7 @@ public class Planet {
 	}
 	
 	
-	public void newBattleShip(int n) {
+	public void newBattleShip(int n) throws ResourceException {
 		
 		int finalAddNum = 0;
 		
@@ -173,7 +166,7 @@ public class Planet {
 			
 			}else {
 				
-				//Lanzar excepcion. 
+				throw new ResourceException("ERROR: Materiales insuficientes. Se han creado " + finalAddNum);
 				
 			}	
 		}
@@ -181,7 +174,7 @@ public class Planet {
 	}
 	
 	
-	public void newArmoredShip(int n) {
+	public void newArmoredShip(int n) throws ResourceException {
 		
 		int finalAddNum = 0;
 		
@@ -196,7 +189,7 @@ public class Planet {
 			
 			}else {
 				
-				//Lanzar excepcion. 
+				throw new ResourceException("ERROR: Materiales insuficientes. Se han creado " + finalAddNum);
 				
 			}		
 		}	
@@ -205,7 +198,7 @@ public class Planet {
 	}
 	
 	
-	public void newMissileLauncher(int n) {
+	public void newMissileLauncher(int n) throws ResourceException {
 		
 		int finalAddNum = 0;
 		
@@ -220,7 +213,7 @@ public class Planet {
 			
 			}else {
 				
-				//Lanzar excepcion. 
+				throw new ResourceException("ERROR: Materiales insuficientes. Se han creado " + finalAddNum); 
 				
 			}		
 		}	
@@ -228,7 +221,7 @@ public class Planet {
 	}
 	
 	
-	public void newIonCannon(int n) {
+	public void newIonCannon(int n) throws ResourceException {
 		
 		int finalAddNum = 0;
 		
@@ -243,7 +236,7 @@ public class Planet {
 			
 			}else {
 				
-				//Lanzar excepcion. 
+				throw new ResourceException("ERROR: Materiales insuficientes. Se han creado " + finalAddNum); 
 				
 			}			
 		}
@@ -253,7 +246,7 @@ public class Planet {
 	
 	
 	
-	public void newPlasmaCannon(int n) {
+	public void newPlasmaCannon(int n) throws ResourceException {
 		
 		int finalAddNum = 0;
 		
@@ -268,7 +261,7 @@ public class Planet {
 			
 			}else {
 				
-				//Lanzar excepcion. 
+				throw new ResourceException("ERROR: Materiales insuficientes. Se han creado " + finalAddNum);
 				
 			}		
 		}	

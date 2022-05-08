@@ -16,7 +16,12 @@ public class Main {
 		}
 		
 		planet.printStats();
-				
+			
+		
+	
+		
+		
+		
 	}
 	
 }
