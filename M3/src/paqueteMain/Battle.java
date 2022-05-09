@@ -1,5 +1,6 @@
 package paqueteMain;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Battle {
 
@@ -40,8 +41,7 @@ public class Battle {
 		
 		this.planetArmy = planetArmy;
 		this.enemyArmy = enemyArmy;
-		
-		
+				
 		//A�adir flotas a array bidimensional: 
 		for(int i = 0; i < 2; i++) {
 			
@@ -63,13 +63,11 @@ public class Battle {
 				}			
 			}	
 		}	
-		
-		
+				
 		//N�mero de unidades iniciales de cada equipo:
 		initialNumberUnitsPlanet = initialFleetNumber(planetArmy);
 		initialNumberUnitsEnemy = initialFleetNumber(enemyArmy);
-		
-		
+				
 		//Coste de metal y deuterio de cada ejercito: 
 		initialCostFleet[0][0] = fleetResourceCost(planetArmy)[0]; //Total metal
 		initialCostFleet[0][1] = fleetResourceCost(planetArmy)[1]; //Total deuterium
@@ -81,14 +79,26 @@ public class Battle {
 	}	
 		
 		
-		
-	
 	/**M�todo para empezar batalla.  */
 	public void startBattle() {
 		
+		Random random = new Random();
+		int grupoAtacanteIndex; //Indice del array del grupo que ataca. 
 
+		MilitaryUnit unidadAtacante;
+		MilitaryUnit unidadDefensa;
 		
-
+		
+		//Ejercito random: 
+		
+	
+		System.out.println("Ataca ejercito planeta.");
+		//Seleccion grupo:
+		grupoAtacanteIndex = chooseGroup(Variables.CHANCE_ATTACK_PLANET_UNITS);
+		//Seleccionar nave al azar del grupo atacante: 	
+		unidadAtacante = planetArmy[grupoAtacanteIndex].get(random.nextInt(0,actualNumberUnitsPlanet[grupoAtacanteIndex]));
+			
+			
 	}
 	
 	
@@ -107,8 +117,6 @@ public class Battle {
 	
 	
 	private void updateResourcesLooses() {
-		
-		
 		
 		
 	}
@@ -190,44 +198,82 @@ public class Battle {
 	
 	
 	private int remainderPercentageFleet(ArrayList<MilitaryUnit>[] army) {
-		
-		
-		
+			
 		return 0;
 	}
 	
 	
 	
 	private int getGroupDefender(ArrayList<MilitaryUnit>[] army) {
-		
-		
-		
+			
 		return 0;
 	}
 	
 	
 	
 	private int getPlanetGroupAttacker() {
-		
-		
-		
+			
 		return 0;
 	}
 	
 	
 	private int getEnemyGroupAttacker() {
-		
-		
-		
+			
 		return 0;
 	}
 	
 	
 	
 	private void resetArmyArmor() {
-		
-			
+					
 	}
+	
+	
+	
+	/*Devuelve el ejercito que empieza a atacar 0 = ejercito plaeta, 1 = ejercito enemigo*/
+	public int chooseTeam() {
+		
+		if(Math.random() > 0.5) {		
+			return 0;		
+		}else {		
+			return 1;
+		}	
+	}
+	
+	
+	/**Escoger el grupo que ataca del ejercito. Devuelve el índice del array del grupo qur atacará*/
+	public int chooseGroup(int[] porcentajes) {
+	
+		int total = 0,	randomNum = 0, indice = 0;
+		
+		for(int i = 0; i < porcentajes.length; i++) {
+			total += porcentajes[i];
+		}
+		
+		randomNum = (int)(Math.random() * total);
+		
+		for(int i = 0; i < porcentajes.length; i++) {
+			
+			if(i == 0) {
+				
+				if(porcentajes[0] > randomNum) {
+					
+					indice = i;
+				}		
+			}else {
+				
+				if(porcentajes[i] + porcentajes[i - 1] > randomNum) {
+					
+					indice = i;
+				}			
+			}		
+		}
+			
+		return indice;	
+	}
+		
+	
+	
 	
 	
 }

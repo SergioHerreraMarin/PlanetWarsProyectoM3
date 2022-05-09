@@ -42,6 +42,4 @@ public abstract class Ship implements MilitaryUnit, Variables{
         this.baseDamage = baseDamage;
     }
 
-
-
 }

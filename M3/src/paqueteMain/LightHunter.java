@@ -28,6 +28,10 @@ public class LightHunter extends Ship{
 			this.setBaseDamage(this.BASE_DAMAGE_LIGTHHUNTER + (planeta.getTechnologyAtack() * this.PLUS_ATTACK_LIGTHHUNTER_BY_TECHNOLOGY) * 10);		
 		}
 				
+		
+		//Ejecutar conexión a BBDD y sacar la info de la nave, igual para todas. 
+		
+		
     }
 	
 	
