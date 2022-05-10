@@ -1,5 +1,5 @@
 
-public interface MilitaryUnit {
+public interface MilitaryUnit { 
 
 	public abstract int attack();
 	
