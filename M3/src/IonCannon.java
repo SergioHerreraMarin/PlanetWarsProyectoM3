@@ -4,7 +4,7 @@ public class IonCannon extends Defense{
 	//CONSTRUCTOR
 	public IonCannon(int armor, int baseDamage) {
 		super();
-	}
+	} 
 
 	@Override
 	public int attack() {
