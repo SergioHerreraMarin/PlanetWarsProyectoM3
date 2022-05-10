@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Battle {
-
+ 
 	//ATRIBUTOS
 		//almacenar flota enemiga
 	private ArrayList<MilitaryUnit>[] planetArmy;
@@ -35,14 +35,14 @@ public class Battle {
 	private int[][] resourcesLooses;
 	//resourcesLooses[0] = {perdidas metal planeta, perdidas deuterio planeta, perdidas metal planeta + 5*perdidas de deuterio planeta};
 	//resourcesLooses[1] = {perdidas metal enemigo, perdidas deuterio enemigo, perdidas metal enemigo + 5*perdidas de deuterio enemigo};
-	//el ganador tendr· numero menor en la tercera columna
-	//P…RDIDA PONDERADA: ResourcesLooses[0][2]
-	//P…RDIDA PONDERADA: ResourcesLooses[1][2]
+	//el ganador tendr√° numero menor en la tercera columna
+	//P√âRDIDA PONDERADA: ResourcesLooses[0][2]
+	//P√âRDIDA PONDERADA: ResourcesLooses[1][2]
 
 	
 		//array de 2 filas y 7 columnas
 		//para cuantificar cada tipo de unidad de los ejercitos iniciales
-		//nos ayuda a calcular los costes de las flotas iniciales y por tanto las pÈrdidas
+		//nos ayuda a calcular los costes de las flotas iniciales y por tanto las p√©rdidas
 	private int[][] initialArmies;
 	//InitialArmies[0] : unidades iniciales de nuestro planeta
 	//InitialArmies[1] : las unidades iniciales enemigas
@@ -57,8 +57,8 @@ public class Battle {
 	//	actualNumberUnitsPlanet[2] --> Naves de battalla
 	//	actualNumberUnitsPlanet[3] --> Acorazados
 	//	actualNumberUnitsPlanet[4] --> Lanzamisiles
-	//	actualNumberUnitsPlanet[5] --> CaÒones de iones
-	//	actualNumberUnitsPlanet[6] --> CaÒones de Plasma
+	//	actualNumberUnitsPlanet[5] --> Ca√±ones de iones
+	//	actualNumberUnitsPlanet[6] --> Ca√±ones de Plasma
 	
 	
 	//#######################################################################################################
@@ -166,7 +166,7 @@ public class Battle {
 		
 	}
 	
-		//para generar array de pÈrdidas
+		//para generar array de p√©rdidas
 	public void updateResourcesLooses() {
 		
 	}
@@ -176,26 +176,26 @@ public class Battle {
 		
 	}
 	
-		//para calcular el n˙mero de unidades iniciales de cada flota
+		//para calcular el n√∫mero de unidades iniciales de cada flota
 	public void initialFleetNumber(ArrayList<MilitaryUnit>[] army) {
 		
 	}
 	
-		//para calcular los porcentajes de unidades que quedan respecto los ejÈrcitos iniciales
+		//para calcular los porcentajes de unidades que quedan respecto los ej√©rcitos iniciales
 	public int remainderPercentatgeFleet(ArrayList<MilitaryUnit>[] army) {
 		return initialNumberUnitsEnemy;
 		
 	}
 	
-		//para que dado un ejÈrcito nos devuelva el grupo defensor
+		//para que dado un ej√©rcito nos devuelva el grupo defensor
 			//0-3 en el caso de la flota enemiga
-			//0-6 en el caso del ejÈrcito de nuestro planeta
+			//0-6 en el caso del ej√©rcito de nuestro planeta
 	public int getGroupDefender(ArrayList<MilitaryUnit>[] army) {
 		return initialNumberUnitsEnemy;
 		
 	}
 	
-		//nos servir·n para escoger el grupo atacante tanto
+		//nos servir√°n para escoger el grupo atacante tanto
 		//del planeta como de la flota enemiga
 	public int getPlanetGroupAttacker() {
 		return initialNumberUnitsEnemy;
@@ -203,14 +203,14 @@ public class Battle {
 	}
 
 	
-	//servir· para escoger el grupo atacante tanto del planeta como de la
+	//servir√° para escoger el grupo atacante tanto del planeta como de la
 	//flota enemiga
 	public int getEnemyGroupAttacker() {
 		return initialNumberUnitsEnemy;
 	
 	}
 	
-		//restablecer· los blindajes de nuestro ejÈrcito
+		//restablecer√° los blindajes de nuestro ej√©rcito
 	public void resetArmyArmor() {
 		
 	}
