@@ -5,7 +5,7 @@ public class PlasmaCannon extends Defense {
 	public PlasmaCannon(int armor, int baseDamage) {
 		super();
 	}
-
+ 
 	@Override
 	public int attack() {
 		// TODO Auto-generated method stub
