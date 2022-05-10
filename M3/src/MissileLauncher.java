@@ -1,4 +1,4 @@
-
+ 
 public class MissileLauncher extends Defense{
 	
 	//CONSTRUCTOR
@@ -6,7 +6,7 @@ public class MissileLauncher extends Defense{
 		super();
 	}	
 	
-	//IMPLEMENTAR MÉTODOS DEFINIDOS EN INTERFAZ MilitaryUnit
+	//IMPLEMENTAR MÃ‰TODOS DEFINIDOS EN INTERFAZ MilitaryUnit
 	public int attack() {
 		return getBaseDamage();
 	}
