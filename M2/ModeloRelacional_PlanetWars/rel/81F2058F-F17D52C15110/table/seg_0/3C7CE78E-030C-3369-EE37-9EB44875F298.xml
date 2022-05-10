@@ -1,148 +1,134 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="1CFE26B2-F06A-2B03-3D07-E9C41E66D582" name="DEFENSES">
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="3C7CE78E-030C-3369-EE37-9EB44875F298" name="SHIPS">
 <createdBy>Jordi</createdBy>
-<createdTime>2022-05-05 09:30:52 UTC</createdTime>
-<ownerDesignName>ModeloRelacional</ownerDesignName>
+<createdTime>2022-05-05 09:25:04 UTC</createdTime>
+<ownerDesignName>ModeloRelacional_PlanetWars</ownerDesignName>
 <ordsAlias>table_9</ordsAlias>
 <allowColumnReorder>false</allowColumnReorder>
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>
 <columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
-<Column name="id_defense" id="E730E192-EC8E-E1A0-E6A5-F298DA33F72A">
+<Column name="id_ship" id="7ECFF228-8E92-2E41-7281-060792BCC477">
 <createdBy>Jordi</createdBy>
-<createdTime>2022-05-05 09:30:52 UTC</createdTime>
-<ownerDesignName>ModeloRelacional</ownerDesignName>
+<createdTime>2022-05-05 09:28:54 UTC</createdTime>
+<ownerDesignName>ModeloRelacional_PlanetWars</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="name" id="7F22A3AD-14AE-CB5B-B5CB-3BC242197F1D">
+<Column name="name" id="296ECC2F-3043-28A1-DAE2-0A409192EE24">
 <createdBy>Jordi</createdBy>
-<createdTime>2022-05-05 09:30:52 UTC</createdTime>
-<ownerDesignName>ModeloRelacional</ownerDesignName>
+<createdTime>2022-05-05 09:28:54 UTC</createdTime>
+<ownerDesignName>ModeloRelacional_PlanetWars</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="metal_cost" id="FD29AC6C-7288-72C9-4454-DEACAC0ACC0E">
+<Column name="metal_cost" id="25D68DD3-D895-3B4D-7E59-8C55609E6ECA">
 <createdBy>Jordi</createdBy>
-<createdTime>2022-05-05 09:30:52 UTC</createdTime>
-<ownerDesignName>ModeloRelacional</ownerDesignName>
+<createdTime>2022-05-05 09:28:54 UTC</createdTime>
+<ownerDesignName>ModeloRelacional_PlanetWars</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="deuterium_cost" id="E9C796A7-7C6A-8EF9-9C5F-29C04AAD7998">
+<Column name="deuterium_cost" id="FFE85928-E4C1-913F-2FB9-CE324F873418">
 <createdBy>Jordi</createdBy>
-<createdTime>2022-05-05 09:30:52 UTC</createdTime>
-<ownerDesignName>ModeloRelacional</ownerDesignName>
+<createdTime>2022-05-05 09:28:54 UTC</createdTime>
+<ownerDesignName>ModeloRelacional_PlanetWars</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="crystal_cost" id="C936B262-CE7A-2137-AEFA-B1A1B94A8D81">
+<Column name="crystal_cost" id="5BE2CD95-DFE6-7E90-BDB3-AAC2055A021F">
 <createdBy>Jordi</createdBy>
-<createdTime>2022-05-05 09:30:52 UTC</createdTime>
-<ownerDesignName>ModeloRelacional</ownerDesignName>
+<createdTime>2022-05-05 09:28:54 UTC</createdTime>
+<ownerDesignName>ModeloRelacional_PlanetWars</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="initial_armor" id="7CB17B2A-5B0A-FF5E-EB42-8029685F21CF">
+<Column name="initial_armor" id="9884DC95-E58C-4D5B-74E1-9AD45C995E06">
 <createdBy>Jordi</createdBy>
-<createdTime>2022-05-05 09:30:52 UTC</createdTime>
-<ownerDesignName>ModeloRelacional</ownerDesignName>
+<createdTime>2022-05-05 09:28:54 UTC</createdTime>
+<ownerDesignName>ModeloRelacional_PlanetWars</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="armor" id="F151511C-0604-94C1-EA57-69B6B337975D">
+<Column name="armor" id="08810003-FCA6-EEB5-1264-CF48F110B47B">
 <createdBy>Jordi</createdBy>
-<createdTime>2022-05-05 09:30:52 UTC</createdTime>
-<ownerDesignName>ModeloRelacional</ownerDesignName>
+<createdTime>2022-05-05 09:28:54 UTC</createdTime>
+<ownerDesignName>ModeloRelacional_PlanetWars</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="base_damage" id="72AFAC2B-715D-8C27-ACBA-2E084FEA8DA6">
+<Column name="base_damage" id="316920CD-A5F3-E350-A53B-0BD60A1AD993">
 <createdBy>Jordi</createdBy>
-<createdTime>2022-05-05 09:30:52 UTC</createdTime>
-<ownerDesignName>ModeloRelacional</ownerDesignName>
+<createdTime>2022-05-05 09:28:54 UTC</createdTime>
+<ownerDesignName>ModeloRelacional_PlanetWars</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="speed" id="B52994BA-3D85-08FC-5D3B-6A9717608255">
+<Column name="speed" id="7F794192-48C6-FDBA-0879-381AF70C2B02">
 <createdBy>Jordi</createdBy>
-<createdTime>2022-05-05 09:30:52 UTC</createdTime>
-<ownerDesignName>ModeloRelacional</ownerDesignName>
+<createdTime>2022-05-05 09:29:07 UTC</createdTime>
+<ownerDesignName>ModeloRelacional_PlanetWars</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="generate_wastings" id="64CC8043-805C-81DE-92F1-BB9BE2EEACF2">
+<Column name="generate_wastings" id="26120A32-E65D-A580-089F-8D1427DB9C1C">
 <createdBy>Jordi</createdBy>
-<createdTime>2022-05-05 09:30:52 UTC</createdTime>
-<ownerDesignName>ModeloRelacional</ownerDesignName>
+<createdTime>2022-05-05 09:29:43 UTC</createdTime>
+<ownerDesignName>ModeloRelacional_PlanetWars</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="id_planet" id="5817061F-15CB-0AFC-543F-3B6D17853892">
+<Column name="id_planet" id="CEC94C02-6EB6-C878-AA24-E2030AF101D7">
 <createdBy>Jordi</createdBy>
-<createdTime>2022-05-05 09:33:36 UTC</createdTime>
-<ownerDesignName>ModeloRelacional</ownerDesignName>
+<createdTime>2022-05-05 09:33:21 UTC</createdTime>
+<ownerDesignName>ModeloRelacional_PlanetWars</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
-<previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
-<associations>
-<colAssociation fkAssociation="AD880E87-C947-61AB-F50C-E51349CABCD8" referredColumn="4933031F-06F1-7C7B-DD5A-745D75BE6AA5"/>
-</associations>
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
-<ind_PK_UK id="E4F9D964-FA50-E90A-E77B-3A2861CF9F41" name="DEFENSES_PK">
+<ind_PK_UK id="8D5CA93A-DCF8-77BB-747A-E9299AC192B3" name="SHIPS_PK">
 <createdBy>Jordi</createdBy>
-<createdTime>2022-05-05 09:30:52 UTC</createdTime>
-<ownerDesignName>ModeloRelacional</ownerDesignName>
+<createdTime>2022-05-05 09:28:54 UTC</createdTime>
+<ownerDesignName>ModeloRelacional_PlanetWars</ownerDesignName>
 <pk>true</pk>
 <indexState>Primary Constraint</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="E730E192-EC8E-E1A0-E6A5-F298DA33F72A"/>
-</indexColumnUsage>
-</ind_PK_UK>
-<ind_PK_UK id="E123AA7D-762D-CE4D-CFC7-9753EC96AAA8" name="DEFENSES_PLANETS_FK">
-<createdBy>Jordi</createdBy>
-<createdTime>2022-05-05 09:33:36 UTC</createdTime>
-<ownerDesignName>ModeloRelacional</ownerDesignName>
-<indexState>Foreign Key</indexState>
-<isSurrogateKey>false</isSurrogateKey>
-<indexColumnUsage>
-<colUsage columnID="5817061F-15CB-0AFC-543F-3B6D17853892"/>
+<colUsage columnID="7ECFF228-8E92-2E41-7281-060792BCC477"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>
