@@ -1,6 +1,6 @@
 
 public abstract class Defense implements MilitaryUnit, Variables{
-	
+	 
 	//ATRIBUTOS
 	private int armor;
 	private int initialArmor;
