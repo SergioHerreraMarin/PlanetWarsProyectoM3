@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class Battle {
 
-	
+	enum Atacante {PLANET, ENEMY};
 	private ArrayList<MilitaryUnit>[] planetArmy; //Almacena flota de nuestro planeta.
 	private ArrayList<MilitaryUnit>[] enemyArmy; //Almacena la flota enemiga. 	
 	
@@ -42,6 +42,7 @@ public class Battle {
 		
 		this.planetArmy = planetArmy;
 		this.enemyArmy = enemyArmy;
+
 				
 		//A�adir flotas a array bidimensional: 
 		for(int i = 0; i < 2; i++) {
@@ -52,13 +53,13 @@ public class Battle {
 				
 				case 0: //Unidades planeta
 					
-					armies[i][j].add(this.planetArmy[j]);
+					armies[i][j] = this.planetArmy[j];
 					
 					break;
 				
 				case 1: //Unidades enemigo
 					
-					armies[i][j].add(this.enemyArmy[j]);
+					armies[i][j] = this.enemyArmy[j];
 					
 					break;		
 				}			
@@ -85,61 +86,118 @@ public class Battle {
 	/**M�todo para empezar batalla.  */
 	public void startBattle() {
 		
-		enum Atacante {PLANET, ENEMY};
 		Atacante atacante = null;
+		boolean generaResiduos = false;
 		Random random = new Random();
-		int grupoAtacantePlanetaIndex; //Indice del array del "grupo" que ataca. 
-		boolean continueBattle;
+		int grupoAtacanteIndex, grupoDefensaIndex; //Indice del array del "grupo" que ataca. 
+		boolean continueBattle = false, repetirAtaque = false;
+		int tipoInstanciaActual = 0; 
+		int residuosMetal, residuosDeuterium;
+		int eleccionAtacante = 0;
 		
-		MilitaryUnit unidadAtacante;
-		MilitaryUnit unidadDefensa;
+		MilitaryUnit unidadAtacante = null;
+		MilitaryUnit unidadDefensa = null;
 		
-			
-		//Elecci�n ejercito atacante: 
-		switch(random.nextInt(0, 2)) {
 		
-		case 0:
-			atacante = Atacante.PLANET;
-			break;
-			
-		case 1:
-			atacante = Atacante.ENEMY;
-			break;
-			
-		default:
-			System.out.println("No deber�as de ver esto.");
-			break;
-		
-		}
-		
-		//Elecci�n "grupo" del planeta:
-		grupoAtacantePlanetaIndex = chooseGroup(Variables.CHANCE_ATTACK_PLANET_UNITS);
-		//Seleccionar nave al azar del "grupo" del planeta: 	
-		unidadAtacante = planetArmy[grupoAtacantePlanetaIndex].get(random.nextInt(0,actualNumberUnitsPlanet[grupoAtacantePlanetaIndex]));
-		
+		//Al inicio se eleige equipo atacante:
+		eleccionAtacante = random.nextInt(0, 2);
 		
 		do {
 			
-			switch(atacante) {
-			
-			case PLANET:
+			//Si el ataque no se repite se cambia el orden, si se repite no se cambia. 
+			if(repetirAtaque == false) {
 				
-				
-				
-				break;
-			
-			case ENEMY:
-				
-				
-				
-				break;	
+				if(eleccionAtacante == 0) {
+					eleccionAtacante = 1;
+				}else if(eleccionAtacante == 1) {
+					eleccionAtacante = 0;
+				}		
 			}
 			
-					
-			continueBattle = currentNumberUnitsPlanet >= initialNumberUnitsPlanet * 0.2 && currentNumberUnitsEnemy >= initialNumberUnitsEnemy;
+			switch(eleccionAtacante) {
 			
+			case 0:
+				atacante = Atacante.PLANET;
+				
+				//Elección "grupo" del atacante:
+				grupoAtacanteIndex = chooseAttackGroup(Variables.CHANCE_ATTACK_PLANET_UNITS);
+				//Seleccionar nave al azar del "grupo" atacante: 	
+				unidadAtacante = planetArmy[grupoAtacanteIndex].get(random.nextInt(0,actualNumberUnitsPlanet[grupoAtacanteIndex]));
+					
+				//Elección "grupo" del defensa:
+				grupoDefensaIndex = chooseDefenseGroup(actualNumberUnitsEnemy);
+				//Seleccionar nave al azar del "grupo" del defensa: 
+				unidadDefensa = enemyArmy[grupoDefensaIndex].get(random.nextInt(0,actualNumberUnitsEnemy[grupoAtacanteIndex]));
+						
+				break;
+				
+			case 1:
+				atacante = Atacante.ENEMY;
+				
+				//Elección "grupo" del atacante:
+				grupoAtacanteIndex = chooseAttackGroup(Variables.CHANCE_ATTACK_ENEMY_UNITS);
+				//Seleccionar nave al azar del "grupo" atacante: 	
+				unidadAtacante = enemyArmy[grupoAtacanteIndex].get(random.nextInt(0,actualNumberUnitsEnemy[grupoAtacanteIndex]));
+					
+				//Elección "grupo" del defensa:
+				grupoDefensaIndex = chooseDefenseGroup(actualNumberUnitsPlanet);
+				//Seleccionar nave al azar del "grupo" del defensa: 
+				unidadDefensa = planetArmy[grupoDefensaIndex].get(random.nextInt(0,actualNumberUnitsPlanet[grupoAtacanteIndex]));	
+				break;
+				
+			default:
+				System.out.println("No deber�as de ver esto.");
+				break;
+			}
+			
+			
+			//Ataque
+			((Ship) unidadDefensa).setArmor(unidadDefensa.getActualArmor() - ((Ship) unidadAtacante).getBaseDamage());
+			
+			if(unidadDefensa.getActualArmor() <= 0) {
+				
+				//Comprobar si genera residuos: 
+				tipoInstanciaActual = typeInstance(unidadDefensa);
+				switch(tipoInstanciaActual) {
+				
+				case 0:
+					generaResiduos = generaResidus(Variables.CHANCE_GENERATNG_WASTE_LIGTHHUNTER);
+					break;
+				case 1:
+					generaResiduos = generaResidus(Variables.CHANCE_GENERATNG_WASTE_HEAVYHUNTER);
+					break;
+				case 2:
+					generaResiduos = generaResidus(Variables.CHANCE_GENERATNG_WASTE_BATTLESHIP);
+					break;
+				case 3:
+					generaResiduos = generaResidus(Variables.CHANCE_GENERATNG_WASTE_ARMOREDSHIP);
+					break;
+				case 4:
+					generaResiduos = generaResidus(Variables.CHANCE_GENERATNG_WASTE_MISSILELAUNCHER);
+					break;
+				case 5:
+					generaResiduos = generaResidus(Variables.CHANCE_GENERATNG_WASTE_IONCANNON);
+					break;
+				case 6:
+					generaResiduos = generaResidus(Variables.CHANCE_GENERATNG_WASTE_PLASMACANNON);
+					break;		
+				}
+				
+				
+				if(generaResiduos) { //Si genera residuos
+					
+					generarResiduos(tipoInstanciaActual, atacante);				
+				}
+			
+				//Delete unidad 
+			}
+			
+			
+			repetirAtaque = isRepeatAttack(tipoInstanciaActual);
+			
+			continueBattle = currentNumberUnitsPlanet >= initialNumberUnitsPlanet * 0.2 && currentNumberUnitsEnemy >= initialNumberUnitsEnemy;
+	
 		}while(continueBattle); 
-		
 		
 	}
 	
@@ -220,7 +278,6 @@ public class Battle {
 	}
 	
 	
-	
 	/** Almacenar n�mero de unidades iniciales de cada equipo:*/
 	private int initialFleetNumber(ArrayList<MilitaryUnit>[] army) {
 		
@@ -271,9 +328,8 @@ public class Battle {
 	}
 	
 	
-	
 	/**Devuelve el ejercito que empieza a atacar 0 = ejercito plaeta, 1 = ejercito enemigo*/
-	public int chooseTeam() {
+	private int chooseTeam() {
 		
 		if(Math.random() > 0.5) {		
 			return 0;		
@@ -284,7 +340,7 @@ public class Battle {
 	
 	
 	/**Escoger el grupo que ataca del ejercito. Devuelve el índice del array del grupo qur atacará*/
-	public int chooseGroup(int[] porcentajes) {
+	private int chooseAttackGroup(int[] porcentajes) {
 	
 		int total = 0,	randomNum = 0, indice = 0;
 		
@@ -299,10 +355,240 @@ public class Battle {
 				indice = i;
 				break;
 			}
-		}
-	
+		}	
 		return indice;	
 	}
+		
+	
+	/**Escoger el grupo que defiende del ejercito. Devuelve el índice del array del grupo que atacará*/
+	private int chooseDefenseGroup(int[] numberUnits) {
+		
+		int[] probabilidades = new int[numberUnits.length]; //Array probabilidades según número de unidades
+		int totalUnidades = 0;
+		
+		//total unidades
+		for(int i = 0; i < numberUnits.length; i++) {
+			totalUnidades += numberUnits[i];
+		}
+					
+		for(int i = 0; i < numberUnits.length; i++) {
+			
+			probabilidades[i] = 100 * numberUnits[i] / totalUnidades;		
+		}
+		
+		//A partir de aquí la formula es igual a la de este método. 
+		return chooseAttackGroup(probabilidades);		
+	}
+	
+	
+	/**Devuelve el índice del array equivalente a la instancia del objeto*/
+	private int typeInstance(MilitaryUnit o) {
+		
+		if(o instanceof LightHunter) {
+			
+			return 0;	
+		}else if(o instanceof HeavyHunter) {
+			
+			return 1;	
+		}else if(o instanceof BattleShip) {
+			
+			return 2;
+		}else if(o instanceof ArmoredShip) {
+			
+			return 3;
+		}else if(o instanceof MissileLauncher) {
+			
+			return 4;
+		}else if(o instanceof IonCannon) {
+			
+			return 5;
+		}else if(o instanceof PlasmaCannon) {
+			
+			return 6;
+			
+		}else {
+			return -1;
+		}		
+	}
+	
+	//**Devuelve true o false según si se cumple la probabilidad o no*/
+	public boolean generaResidus(int probabilidad) {
+		
+		Random random = new Random();
+		int randomNum;
+		
+		randomNum = random.nextInt(0, 100);
+		
+		if(randomNum <= probabilidad) {
+			
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
+	/**Pasamos el tipo de instancia y genera los residuos de esa instancia. */
+	public void generarResiduos(int tipoInstanciaActual, Atacante atacante) {
+		
+		//Si ataca el enemigo los residuos son del planeta, si ataca el planeta los residuos son del enemigo
+		if(atacante == Atacante.PLANET) {
+			
+			switch(tipoInstanciaActual) {
+			
+			case 0:
+				resourcesLooses[1][0] += Variables.METAL_COST_LIGTHHUNTER * (Variables.PERCENTATGE_WASTE / 100);
+				resourcesLooses[1][1] += Variables.DEUTERIUM_COST_LIGTHHUNTER * (Variables.PERCENTATGE_WASTE / 100);
+				resourcesLooses[1][2] += Variables.METAL_COST_LIGTHHUNTER * (Variables.PERCENTATGE_WASTE / 100) + 5 
+										* Variables.DEUTERIUM_COST_LIGTHHUNTER * (Variables.PERCENTATGE_WASTE / 100);
+				break;
+			case 1:
+				resourcesLooses[1][0] += Variables.METAL_COST_HEAVYHUNTER * (Variables.PERCENTATGE_WASTE / 100);
+				resourcesLooses[1][1] += Variables.DEUTERIUM_COST_HEAVYHUNTER * (Variables.PERCENTATGE_WASTE / 100);
+				resourcesLooses[1][2] += Variables.METAL_COST_LIGTHHUNTER * (Variables.PERCENTATGE_WASTE / 100) + 5 
+										* Variables.DEUTERIUM_COST_LIGTHHUNTER * (Variables.PERCENTATGE_WASTE / 100);
+				break;
+			case 2:
+				resourcesLooses[1][0] += Variables.METAL_COST_BATTLESHIP * (Variables.PERCENTATGE_WASTE / 100);
+				resourcesLooses[1][1] += Variables.DEUTERIUM_COST_BATTLESHIP * (Variables.PERCENTATGE_WASTE / 100);
+				resourcesLooses[1][2] += Variables.METAL_COST_LIGTHHUNTER * (Variables.PERCENTATGE_WASTE / 100) + 5 
+										* Variables.DEUTERIUM_COST_LIGTHHUNTER * (Variables.PERCENTATGE_WASTE / 100);
+				break;
+			case 3:
+				resourcesLooses[1][0] += Variables.METAL_COST_ARMOREDSHIP * (Variables.PERCENTATGE_WASTE / 100);
+				resourcesLooses[1][1] += Variables.DEUTERIUM_COST_ARMOREDSHIP * (Variables.PERCENTATGE_WASTE / 100);
+				resourcesLooses[1][2] += Variables.METAL_COST_LIGTHHUNTER * (Variables.PERCENTATGE_WASTE / 100) + 5 
+										* Variables.DEUTERIUM_COST_LIGTHHUNTER * (Variables.PERCENTATGE_WASTE / 100);
+				break;
+			case 4:
+				resourcesLooses[1][0] += Variables.METAL_COST_MISSILELAUNCHER * (Variables.PERCENTATGE_WASTE / 100);
+				resourcesLooses[1][1] += Variables.DEUTERIUM_COST_MISSILELAUNCHER * (Variables.PERCENTATGE_WASTE / 100);
+				resourcesLooses[1][2] += Variables.METAL_COST_LIGTHHUNTER * (Variables.PERCENTATGE_WASTE / 100) + 5 
+										* Variables.DEUTERIUM_COST_LIGTHHUNTER * (Variables.PERCENTATGE_WASTE / 100);
+				break;
+			case 5:
+				resourcesLooses[1][0] += Variables.METAL_COST_IONCANNON * (Variables.PERCENTATGE_WASTE / 100);
+				resourcesLooses[1][1] += Variables.DEUTERIUM_COST_IONCANNON * (Variables.PERCENTATGE_WASTE / 100);
+				resourcesLooses[1][2] += Variables.METAL_COST_LIGTHHUNTER * (Variables.PERCENTATGE_WASTE / 100) + 5 
+										* Variables.DEUTERIUM_COST_LIGTHHUNTER * (Variables.PERCENTATGE_WASTE / 100);
+				break;
+			case 6:
+				resourcesLooses[1][0] += Variables.METAL_COST_PLASMACANNON * (Variables.PERCENTATGE_WASTE / 100);
+				resourcesLooses[1][1] += Variables.DEUTERIUM_COST_PLASMACANNON * (Variables.PERCENTATGE_WASTE / 100);
+				resourcesLooses[1][2] += Variables.METAL_COST_LIGTHHUNTER * (Variables.PERCENTATGE_WASTE / 100) + 5 
+										* Variables.DEUTERIUM_COST_LIGTHHUNTER * (Variables.PERCENTATGE_WASTE / 100);
+				break;		
+			}
+					
+		}else if(atacante == Atacante.ENEMY) {
+			
+			switch(tipoInstanciaActual) {
+			
+			case 0:
+				resourcesLooses[0][0] += Variables.METAL_COST_LIGTHHUNTER * (Variables.PERCENTATGE_WASTE / 100);
+				resourcesLooses[0][1] += Variables.DEUTERIUM_COST_LIGTHHUNTER * (Variables.PERCENTATGE_WASTE / 100);
+				resourcesLooses[0][2] += Variables.METAL_COST_LIGTHHUNTER * (Variables.PERCENTATGE_WASTE / 100) + 5 
+										* Variables.DEUTERIUM_COST_LIGTHHUNTER * (Variables.PERCENTATGE_WASTE / 100);
+				break;
+			case 1:
+				resourcesLooses[0][0] += Variables.METAL_COST_HEAVYHUNTER * (Variables.PERCENTATGE_WASTE / 100);
+				resourcesLooses[0][1] += Variables.DEUTERIUM_COST_HEAVYHUNTER * (Variables.PERCENTATGE_WASTE / 100);
+				resourcesLooses[0][2] += Variables.METAL_COST_LIGTHHUNTER * (Variables.PERCENTATGE_WASTE / 100) + 5 
+										* Variables.DEUTERIUM_COST_LIGTHHUNTER * (Variables.PERCENTATGE_WASTE / 100);
+				break;
+			case 2:
+				resourcesLooses[0][0] += Variables.METAL_COST_BATTLESHIP * (Variables.PERCENTATGE_WASTE / 100);
+				resourcesLooses[0][1] += Variables.DEUTERIUM_COST_BATTLESHIP * (Variables.PERCENTATGE_WASTE / 100);
+				resourcesLooses[0][2] += Variables.METAL_COST_LIGTHHUNTER * (Variables.PERCENTATGE_WASTE / 100) + 5 
+										* Variables.DEUTERIUM_COST_LIGTHHUNTER * (Variables.PERCENTATGE_WASTE / 100);
+				break;
+			case 3:
+				resourcesLooses[0][0] += Variables.METAL_COST_ARMOREDSHIP * (Variables.PERCENTATGE_WASTE / 100);
+				resourcesLooses[0][1] += Variables.DEUTERIUM_COST_ARMOREDSHIP * (Variables.PERCENTATGE_WASTE / 100);
+				resourcesLooses[0][2] += Variables.METAL_COST_LIGTHHUNTER * (Variables.PERCENTATGE_WASTE / 100) + 5 
+										* Variables.DEUTERIUM_COST_LIGTHHUNTER * (Variables.PERCENTATGE_WASTE / 100);
+				break;
+			case 4:
+				resourcesLooses[0][0] += Variables.METAL_COST_MISSILELAUNCHER * (Variables.PERCENTATGE_WASTE / 100);
+				resourcesLooses[0][1] += Variables.DEUTERIUM_COST_MISSILELAUNCHER * (Variables.PERCENTATGE_WASTE / 100);
+				resourcesLooses[0][2] += Variables.METAL_COST_LIGTHHUNTER * (Variables.PERCENTATGE_WASTE / 100) + 5 
+										* Variables.DEUTERIUM_COST_LIGTHHUNTER * (Variables.PERCENTATGE_WASTE / 100);
+				break;
+			case 5:
+				resourcesLooses[0][0] += Variables.METAL_COST_IONCANNON * (Variables.PERCENTATGE_WASTE / 100);
+				resourcesLooses[0][1] += Variables.DEUTERIUM_COST_IONCANNON * (Variables.PERCENTATGE_WASTE / 100);
+				resourcesLooses[0][2] += Variables.METAL_COST_LIGTHHUNTER * (Variables.PERCENTATGE_WASTE / 100) + 5 
+										* Variables.DEUTERIUM_COST_LIGTHHUNTER * (Variables.PERCENTATGE_WASTE / 100);
+				break;
+			case 6:
+				resourcesLooses[0][0] += Variables.METAL_COST_PLASMACANNON * (Variables.PERCENTATGE_WASTE / 100);
+				resourcesLooses[0][1] += Variables.DEUTERIUM_COST_PLASMACANNON * (Variables.PERCENTATGE_WASTE / 100);
+				resourcesLooses[0][2] += Variables.METAL_COST_LIGTHHUNTER * (Variables.PERCENTATGE_WASTE / 100) + 5 
+										* Variables.DEUTERIUM_COST_LIGTHHUNTER * (Variables.PERCENTATGE_WASTE / 100);
+				break;		
+			}				
+		}
+	}
+		
+		
+	public boolean isRepeatAttack(int tipoInstanciaActual) {
+			
+		Random random = new Random();
+		int numRandom;
+		
+		numRandom = random.nextInt(0, 100);
+		
+		switch(tipoInstanciaActual) {
+		
+		case 0:
+			
+			if(Variables.CHANCE_ATTACK_AGAIN_LIGTHHUNTER <= numRandom) {
+				return true;
+			}else {
+				return false;
+			}
+			
+		case 1:
+			if(Variables.CHANCE_ATTACK_AGAIN_HEAVYHUNTER <= numRandom) {
+				return true;
+			}else {
+				return false;
+			}
+		case 2:
+			if(Variables.CHANCE_ATTACK_AGAIN_BATTLESHIP <= numRandom) {
+				return true;
+			}else {
+				return false;
+			}
+		case 3:
+			if(Variables.CHANCE_ATTACK_AGAIN_ARMOREDSHIP <= numRandom) {
+				return true;
+			}else {
+				return false;
+			}
+		case 4:
+			if(Variables.CHANCE_ATTACK_AGAIN_MISSILELAUNCHER <= numRandom) {
+				return true;
+			}else {
+				return false;
+			}
+		case 5:
+			if(Variables.CHANCE_ATTACK_AGAIN_IONCANNON <= numRandom) {
+				return true;
+			}else {
+				return false;
+			}
+		case 6:
+			if(Variables.CHANCE_ATTACK_AGAIN_PLASMACANNON <= numRandom) {
+				return true;
+			}else {
+				return false;
+			}	
+		default:
+			System.out.println("ERROR: No deberías de ver esto.");
+			return false;
+		}	
+	}
+		
 		
 	
 	

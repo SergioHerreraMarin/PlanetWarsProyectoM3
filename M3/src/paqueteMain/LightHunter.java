@@ -50,14 +50,12 @@ public class LightHunter extends Ship{
 	}
 
 
-
 	@Override
 	public void tekeDamage(int receivedDamage) {
 		
 		this.setArmor(this.getArmor() - receivedDamage);
 		
 	}
-
 
 
 	@Override
@@ -67,13 +65,11 @@ public class LightHunter extends Ship{
 	}
 
 
-
 	@Override
 	public int getMetalCost() {
 		
 		return this.METAL_COST_LIGTHHUNTER;
 	}
-
 
 
 	@Override
@@ -82,8 +78,7 @@ public class LightHunter extends Ship{
 		return this.DEUTERIUM_COST_LIGTHHUNTER;
 	}
 
-
-
+	
 	@Override
 	public int getChanceGeneratinWaste() {
 
@@ -91,15 +86,12 @@ public class LightHunter extends Ship{
 	}
 
 
-
 	@Override
 	public int getChanceAttackAgain() {
 		
 		return this.CHANCE_ATTACK_AGAIN_LIGTHHUNTER;
 	}
-
-
-
+	
 	@Override
 	public void resetArmor() {
 		
