@@ -32,7 +32,6 @@ public class ArmoredShip extends Ship {
     }
 	
 	
-	
     ArmoredShip(int armor, int baseDamage) {
     	
     	super(armor, armor, baseDamage);      
@@ -41,53 +40,36 @@ public class ArmoredShip extends Ship {
 
 
 	@Override
-	public int attack() {
-	
+	public int attack() {	
 		return this.getBaseDamage();
 	}
 
 
-
 	@Override
-	public void tekeDamage(int receivedDamage) {
-		
-		this.setArmor(this.getArmor() - receivedDamage);
-		
+	public void tekeDamage(int receivedDamage) {	
+		this.setArmor(this.getArmor() - receivedDamage);	
 	}
 
 
-
 	@Override
-	public int getActualArmor() {
-		
+	public int getActualArmor(){
 		return this.getArmor();
 	}
 
-
-
 	@Override
 	public int getMetalCost() {
-
 		return this.METAL_COST_ARMOREDSHIP;
 	}
 
-
-
 	@Override
 	public int getDeuteriumCost() {
-
 		return this.DEUTERIUM_COST_ARMOREDSHIP;
 	}
 
-
-
 	@Override
 	public int getChanceGeneratinWaste() {
-
 		return this.CHANCE_GENERATNG_WASTE_ARMOREDSHIP;
 	}
-
-
 
 	@Override
 	public int getChanceAttackAgain() {
@@ -95,14 +77,8 @@ public class ArmoredShip extends Ship {
 		return this.CHANCE_ATTACK_AGAIN_ARMOREDSHIP;
 	}
 
-
-
 	@Override
-	public void resetArmor() {
-		
-		this.setArmor(this.getInitialArmor());
-		
+	public void resetArmor() {		
+		this.setArmor(this.getInitialArmor());	
 	}
-
-	
 }

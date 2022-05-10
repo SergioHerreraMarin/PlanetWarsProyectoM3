@@ -52,39 +52,40 @@ public class IonCannon extends Defense{
 
 	@Override
 	public int getActualArmor() {
-
 		return this.getArmor();
 	}
 
+	public void setArmor(int armor) {     
+		this.setArmor(armor);	
+    }
+	
+	public int getBaseDamage() {
+        return this.getBaseDamage();
+    }
+	
 	@Override
 	public int getMetalCost() {
-
 		return this.METAL_COST_IONCANNON;
 	}
 
 	@Override
 	public int getDeuteriumCost() {
-
 		return this.DEUTERIUM_COST_IONCANNON;
 	}
 
 	@Override
 	public int getChanceGeneratinWaste() {
-
 		return this.CHANCE_GENERATNG_WASTE_IONCANNON;
 	}
 
 	@Override
 	public int getChanceAttackAgain() {
-
 		return this.CHANCE_ATTACK_AGAIN_IONCANNON;
 	}
 
 	@Override
-	public void resetArmor() {
-		
-		this.setArmor(this.getInitialArmor());
-		
+	public void resetArmor() {		
+		this.setArmor(this.getInitialArmor());		
 	}	
 	
 }

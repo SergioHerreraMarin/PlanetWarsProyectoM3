@@ -31,21 +31,17 @@ public class HeavyHunter extends Ship {
 				
     }
 	
-	
-	
-    HeavyHunter(int armor, int baseDamage) {
-    	
+		
+    HeavyHunter(int armor, int baseDamage) {  	
     	super(armor, armor, baseDamage);      
     }
 
 
 
 	@Override
-	public int attack() {
-	
+	public int attack() {	
 		return this.getBaseDamage();
 	}
-
 
 
 	@Override
@@ -55,54 +51,41 @@ public class HeavyHunter extends Ship {
 		
 	}
 
-
-
 	@Override
-	public int getActualArmor() {
-		
+	public int getActualArmor() {	
 		return this.getArmor();
 	}
 
-
+	public void setArmor(int armor) {      
+		this.setArmor(armor);	
+    }
+	
+	public int getBaseDamage() {
+        return this.getBaseDamage();
+    }
 
 	@Override
-	public int getMetalCost() {
-		
+	public int getMetalCost() {	
 		return this.METAL_COST_HEAVYHUNTER;
 	}
 
-
-
 	@Override
 	public int getDeuteriumCost() {
-
 		return this.DEUTERIUM_COST_HEAVYHUNTER;
 	}
 
-
-
 	@Override
 	public int getChanceGeneratinWaste() {
-
 		return this.CHANCE_GENERATNG_WASTE_HEAVYHUNTER;
 	}
 
-
-
 	@Override
 	public int getChanceAttackAgain() {
-
 		return this.CHANCE_ATTACK_AGAIN_HEAVYHUNTER;
 	}
 
-
-
 	@Override
-	public void resetArmor() {
-		
-		this.setArmor(this.getInitialArmor());
-		
+	public void resetArmor() {		
+		this.setArmor(this.getInitialArmor());		
 	}
-	
-
 }

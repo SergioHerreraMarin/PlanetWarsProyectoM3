@@ -41,43 +41,44 @@ public class PlasmaCannon extends Defense {
 	
 	@Override
 	public int attack() {
-
 		return this.getBaseDamage();
 	}
 
 	@Override
 	public void tekeDamage(int receivedDamage) {
-
 		this.setArmor(this.getArmor() - receivedDamage);
 	}
 
 	@Override
 	public int getActualArmor() {
-
 		return this.getArmor();
 	}
+	
+	public void setArmor(int armor) {    
+		this.setArmor(armor);	
+    }
+	
+	public int getBaseDamage() {
+        return this.getBaseDamage();
+    }
 
 	@Override
 	public int getMetalCost() {
-
 		return this.METAL_COST_PLASMACANNON;
 	}
 
 	@Override
 	public int getDeuteriumCost() {
-
 		return this.DEUTERIUM_COST_PLASMACANNON;
 	}
 
 	@Override
 	public int getChanceGeneratinWaste() {
-
 		return this.CHANCE_GENERATNG_WASTE_PLASMACANNON;
 	}
 
 	@Override
 	public int getChanceAttackAgain() {
-
 		return this.CHANCE_ATTACK_AGAIN_PLASMACANNON;
 	}
 

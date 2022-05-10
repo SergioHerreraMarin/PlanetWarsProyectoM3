@@ -30,12 +30,10 @@ public class LightHunter extends Ship{
 				
 		
 		//Ejecutar conexión a BBDD y sacar la info de la nave, igual para todas. 
-		
-		
+				
     }
 	
-	
-	
+		
     LightHunter(int armor, int baseDamage) {
     	
     	super(armor, armor, baseDamage);      
@@ -44,59 +42,54 @@ public class LightHunter extends Ship{
 
 
 	@Override
-	public int attack() {
-	
+	public int attack() {	
 		return this.getBaseDamage();
 	}
 
 
 	@Override
-	public void tekeDamage(int receivedDamage) {
-		
-		this.setArmor(this.getArmor() - receivedDamage);
-		
+	public void tekeDamage(int receivedDamage) {		
+		this.setArmor(this.getArmor() - receivedDamage);	
 	}
 
 
 	@Override
-	public int getActualArmor() {
-		
+	public int getActualArmor() {		
 		return this.getArmor();
 	}
 
 
+	public void setArmor(int armor) {     
+		this.setArmor(armor);	
+    }
+	
+	public int getBaseDamage() {
+        return this.getBaseDamage();
+    }
+	
 	@Override
-	public int getMetalCost() {
-		
+	public int getMetalCost() {	
 		return this.METAL_COST_LIGTHHUNTER;
 	}
 
-
 	@Override
-	public int getDeuteriumCost() {
-		
+	public int getDeuteriumCost() {	
 		return this.DEUTERIUM_COST_LIGTHHUNTER;
 	}
 
-	
 	@Override
 	public int getChanceGeneratinWaste() {
-
 		return this.CHANCE_GENERATNG_WASTE_LIGTHHUNTER;
 	}
 
-
 	@Override
-	public int getChanceAttackAgain() {
-		
+	public int getChanceAttackAgain() {	
 		return this.CHANCE_ATTACK_AGAIN_LIGTHHUNTER;
 	}
 	
 	@Override
-	public void resetArmor() {
-		
-		this.setArmor(this.getInitialArmor());
-		
+	public void resetArmor() {		
+		this.setArmor(this.getInitialArmor());	
 	}
 
 }

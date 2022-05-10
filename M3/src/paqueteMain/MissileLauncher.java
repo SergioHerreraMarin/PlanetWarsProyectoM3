@@ -37,18 +37,27 @@ public class MissileLauncher extends Defense{
     }
 	
 
-	//IMPLEMENTAR M�TODOS DEFINIDOS EN INTERFAZ MilitaryUnit
 	public int attack() {
 		return this.getBaseDamage();
 	}
 	
-	public void takeDamage(int receivedDamage) {
+	@Override
+	public void tekeDamage(int receivedDamage) {
 		this.setArmor(this.getArmor() - receivedDamage);
 	}
 	
 	public int getActualArmor() {
 		return this.getArmor();
 	}
+	
+	public void setArmor(int armor) {
+        
+		this.setArmor(armor);	
+    }
+	
+	public int getBaseDamage() {
+        return this.getBaseDamage();
+    }
 	
 	public int getMetalCost() {
 		return this.METAL_COST_MISSILELAUNCHER;
@@ -73,9 +82,4 @@ public class MissileLauncher extends Defense{
 		this.setArmor(this.getInitialArmor());	
 	}
 
-	@Override
-	public void tekeDamage(int receivedDamage) {
-		
-		
-	}
 }
