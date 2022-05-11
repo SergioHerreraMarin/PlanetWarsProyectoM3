@@ -57,9 +57,6 @@ public class BattleShip extends Ship {
 		return this.getArmor();
 	}
 	
-	public void setArmor(int armor) {    
-		this.setArmor(armor);	
-    }
 
 	public int getBaseDamage() {
         return this.getBaseDamage();

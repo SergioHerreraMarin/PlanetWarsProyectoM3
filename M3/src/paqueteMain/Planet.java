@@ -7,8 +7,8 @@ public class Planet {
 	private int technologyDefense;
 	private int technologyAtack;
 	private int metal, deuterium;
-	private int upgradeDefenseTechnologyDeuteriumCost = 10;
-	private int upgradeAttackTechnologyDeuteriumCost = 10;
+	private int upgradeDefenseTechnologyDeuteriumCost = Variables.UPGRADE_BASE_DEFENSE_TECHNOLOGY_DEUTERIUM_COST;
+	private int upgradeAttackTechnologyDeuteriumCost = Variables.UPGRADE_BASE_ATTACK_TECHNOLOGY_DEUTERIUM_COST;
 	
 	private ArrayList<MilitaryUnit>[] army = new ArrayList[7];
 	
@@ -19,6 +19,14 @@ public class Planet {
 		technologyAtack = 0;
 		metal = 10000;
 		deuterium = 10000;
+		
+		army[0] = new ArrayList<MilitaryUnit>();
+		army[1] = new ArrayList<MilitaryUnit>();
+		army[2] = new ArrayList<MilitaryUnit>();
+		army[3] = new ArrayList<MilitaryUnit>();
+		army[4] = new ArrayList<MilitaryUnit>();
+		army[5] = new ArrayList<MilitaryUnit>();
+		army[6] = new ArrayList<MilitaryUnit>();		
 	}
 	
 	
@@ -76,31 +84,27 @@ public class Planet {
 	
 	
 	public void upgradeTechnologyDefense() {
-		
-		final float PORCENTAJE = 0.1f;
-		
+				
 		if(deuterium >= upgradeDefenseTechnologyDeuteriumCost) {
 					
 			technologyDefense++;
 			deuterium -= upgradeDefenseTechnologyDeuteriumCost;	
 		}
 		
-		upgradeDefenseTechnologyDeuteriumCost += upgradeDefenseTechnologyDeuteriumCost * PORCENTAJE;
+		upgradeDefenseTechnologyDeuteriumCost += upgradeDefenseTechnologyDeuteriumCost * (Variables.UPGRADE_PLUS_DEFENSE_TECHNOLOGY_DEUTERIUM_COST/100);
 
 	}
 	
 	
 	public void upgradeTechnologyAttack() {
-		
-		final float PORCENTAJE = 0.1f;
-		
+				
 		if(deuterium >= upgradeAttackTechnologyDeuteriumCost) {
 					
 			technologyDefense++;
 			deuterium -= upgradeAttackTechnologyDeuteriumCost;	
 		}
 		
-		upgradeAttackTechnologyDeuteriumCost += upgradeAttackTechnologyDeuteriumCost * PORCENTAJE;			
+		upgradeAttackTechnologyDeuteriumCost += upgradeAttackTechnologyDeuteriumCost * (Variables.UPGRADE_PLUS_ATTACK_TECHNOLOGY_DEUTERIUM_COST/100);			
 	}
 	
 	

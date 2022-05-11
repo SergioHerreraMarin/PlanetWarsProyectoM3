@@ -5,17 +5,17 @@ import java.util.Random;
 public class Battle {
 
 	private enum Atacante {PLANET, ENEMY};
-	private int currentNumBattle = 0; //N�mero de batalla actual. 
-	private ArrayList<MilitaryUnit>[] planetArmy; //Almacena flota de nuestro planeta.
-	private ArrayList<MilitaryUnit>[] enemyArmy; //Almacena la flota enemiga. 	
+	private int currentNumBattle = 0; //N�mero de batalla actual. 
+	private ArrayList<MilitaryUnit>[] planetArmy = new ArrayList[7]; //Almacena flota de nuestro planeta.
+	private ArrayList<MilitaryUnit>[] enemyArmy = new ArrayList[4]; //Almacena la flota enemiga. 	
 	
 	//Fila[0] unidades planeta, fila[1] unidades enemigas
 	private ArrayList<MilitaryUnit>[][] armies = new ArrayList[2][7]; //Array de 2row 7column. Almacena nuestro ej�rcito y ej�rcito enemigo. 
 	
-	private String[] battleDevelopment = new String[5]; //Contiene el desarrollo de la batalla paso a paso. N�mero de batallas que se pueden guardar. 
+	private String[] battleDevelopment = new String[5]; //Contiene el desarrollo de la batalla paso a paso. N�mero de batallas que se pueden guardar. 
 	
 	//Fila[0] coste unidades planeta [0][0] metal, [0][1] deuterio..
-	private int[][] initialCostFleet; //Almacena el coste inicial de metal y deuterio de las flotas. Para saber las p�rdidas en materiales de cada flota. 
+	private int[][] initialCostFleet = new int[2][2]; //Almacena el coste inicial de metal y deuterio de las flotas. Para saber las p�rdidas en materiales de cada flota. 
 	
 	
 	private int initialNumberUnitsPlanet, initialNumberUnitsEnemy; //N�mero de unidades iniciales de cada equipo. 
@@ -43,27 +43,33 @@ public class Battle {
 		this.planetArmy = planetArmy;
 		this.enemyArmy = enemyArmy;
 
-				
-		//A�adir flotas a array bidimensional: 
-		for(int i = 0; i < 2; i++) {
+		//Inicializar array con bucle: 	
+		for(int i = 0; i < armies.length; i++) {
 			
-			for(int j = 0; j < 7; j++) {
+			for(int j = 0; j < armies[i].length; j++) {
 				
-				switch(i) {
-				
-				case 0: //Unidades planeta
-					
-					armies[i][j] = this.planetArmy[j];
-					
-					break;
-				
-				case 1: //Unidades enemigo
-					
-					armies[i][j] = this.enemyArmy[j];
-					
-					break;		
-				}			
+				armies[i][j] = new ArrayList<MilitaryUnit>();
 			}	
+		}
+		
+	
+		//A�adir flotas a array bidimensional: 
+		for(int i = 0; i < armies.length; i++) {
+			
+			switch(i) {
+			case 0:		
+				for(int j = 0; j < 7; j++) {
+					armies[i][j] = planetArmy[j];
+				}	
+				break;
+			
+			case 1:
+				for(int j = 0; j < 4; j++) {
+					armies[i][j] = enemyArmy[j];
+				}
+				break;	
+			}
+				
 		}	
 				
 		//N�mero de unidades iniciales de cada equipo:
@@ -76,12 +82,10 @@ public class Battle {
 		initialCostFleet[1][0] = fleetResourceCost(enemyArmy)[0]; //Total metal
 		initialCostFleet[1][1] = fleetResourceCost(enemyArmy)[1]; //Total deuterium
 		
-		
 		initialArmies(); //Inicializa el array InitialArmies, para saber el n�mero de cada tipo de flota al inicio del planeta y enemigo. 
 	}	
 		
 		
-	
 	
 	/**Metodo para empezar batalla. */
 	public void startBattle(Planet planet) { //Objeto planet para llevarse el metal y deuterio en caso de ganar. 
@@ -100,9 +104,13 @@ public class Battle {
 		
 		
 		//Al inicio se eleige equipo atacante 0 = planeta, 1 = enemigo:
-		currentNumBattle++;
+		if(currentNumBattle <= 5) {
+			currentNumBattle++;
+		}
+		
+		battleDevelopment[currentNumBattle - 1] +="\n\nBATTLE NUMBER: " + currentNumBattle + "\nSTART THE BATTLE";
 		eleccionAtacante = random.nextInt(0, 2);
-
+		
 			
 		do {
 			
@@ -114,7 +122,7 @@ public class Battle {
 				}else if(eleccionAtacante == 1) {
 					eleccionAtacante = 0;
 				}		
-				
+				battleDevelopment[currentNumBattle - 1] += "\n********************CHANGE ATTACKER********************";
 			}
 			
 			switch(eleccionAtacante) {
@@ -131,7 +139,8 @@ public class Battle {
 				grupoDefensaIndex = chooseDefenseGroup(actualNumberUnitsEnemy);
 				//Seleccionar nave al azar del "grupo" del defensa: 
 				unidadDefensa = enemyArmy[grupoDefensaIndex].get(random.nextInt(0,actualNumberUnitsEnemy[grupoAtacanteIndex]));
-						
+				//Reporte
+				battleDevelopment[currentNumBattle - 1] += "\nAttacks Planet:" + typeInstanceName(unidadAtacante) + " attacks " + typeInstanceName(unidadDefensa);				
 				break;
 				
 			case 1:
@@ -146,6 +155,8 @@ public class Battle {
 				grupoDefensaIndex = chooseDefenseGroup(actualNumberUnitsPlanet);
 				//Seleccionar nave al azar del "grupo" del defensa: 
 				unidadDefensa = planetArmy[grupoDefensaIndex].get(random.nextInt(0,actualNumberUnitsPlanet[grupoAtacanteIndex]));	
+				//Reporte
+				battleDevelopment[currentNumBattle - 1] += "\nAttacks fleet Enemy:" + typeInstanceName(unidadAtacante) + " attacks " + typeInstanceName(unidadDefensa);	
 				break;
 				
 			default:
@@ -156,13 +167,15 @@ public class Battle {
 			
 			//Ataque 
 			unidadDefensa.tekeDamage(unidadAtacante.attack());
-			
+			//Reporte
+			battleDevelopment[currentNumBattle - 1] += "\n" + typeInstanceName(unidadAtacante) + " generates the damage = " + unidadAtacante.attack();
+			battleDevelopment[currentNumBattle - 1] += "\n" + typeInstanceName(unidadDefensa) + " stays with armor = " + unidadDefensa.getActualArmor();
 			
 			//Comprobar armadura. 
 			if(unidadDefensa.getActualArmor() <= 0) {
 				
 				//Comprobar si genera residuos: 
-				tipoInstanciaActual = typeInstance(unidadDefensa);
+				tipoInstanciaActual = typeInstanceIndex(unidadDefensa);
 				switch(tipoInstanciaActual) {
 				
 				case 0:
@@ -197,6 +210,15 @@ public class Battle {
 				//Delete unidad 
 				deleteUnit(atacante, unidadDefensa, grupoDefensaIndex);
 				updateUnits(); //Actualiza 
+				//Reporte
+				if(atacante == Atacante.PLANET) {
+					
+					battleDevelopment[currentNumBattle - 1] += "\nWe eliminate " + typeInstanceName(unidadDefensa); 
+				}else if(atacante == Atacante.ENEMY) {
+					
+					battleDevelopment[currentNumBattle - 1] += "\nEnemy eliminate " + typeInstanceName(unidadDefensa);
+				}
+				
 			}
 			
 			
@@ -226,15 +248,36 @@ public class Battle {
 	/**Inicializa el array InitialArmies, para saber el n�mero de cada tipo de flota al inicio del planeta y enemigo*/
 	private void initialArmies() {
 			
-		for(int i = 0; i < initialArmies.length; i++) {
+		for(int i = 0; i < armies.length; i++) {
 			
-			for(int j = 0; j < initialArmies[i].length; j++) {
+			for(int j = 0; j < armies[i].length; j++) {
 				
-				initialArmies[i][j] = armies[i][j].size();		
-			}		
-		}		
+				initialArmies[i][j] = armies[i][j].size();			
+				}		
+			}			
+		
+		
+		
+		
+//		for(int i = 0; i < initialArmies.length; i++) {
+//			
+//			switch(i) {
+//			case 0:		
+//				for(int j = 0; j < 7; j++) { //En el caso de la flota del planeta llega hasta 7.
+//					
+//					initialArmies[i][j] = armies[i][j].size();		
+//				}		
+//				break;
+//				
+//			case 1:
+//				for(int j = 0; j < 4; j++) { //En el caso de la flota del planeta llega hasta 4.
+//					
+//					initialArmies[i][j] = armies[i][j].size();		
+//				}	
+//				break;			
+//			}	
+//		}		
 	}
-	
 	
 	
 	/**Devuelve un array con el coste total de metal y deuterium de la flota que pasemos por par�metro. [0] = metal, [1] = deuterium*/
@@ -285,7 +328,7 @@ public class Battle {
 					costeMetalDeuterio[0] += Variables.METAL_COST_PLASMACANNON;
 					costeMetalDeuterio[1] += Variables.DEUTERIUM_COST_PLASMACANNON;
 					break;
-					
+			
 				}	
 			}		
 		}		
@@ -325,16 +368,22 @@ public class Battle {
 	/**Escoger el grupo que ataca del ejercito. Devuelve el índice del array del grupo qur atacará*/
 	private int chooseAttackGroup(int[] porcentajes) {
 	
+		Random random = new Random();
 		int total = 0,	randomNum = 0, indice = 0;
 		
-		total = porcentajes.length;	
-		randomNum = (int)(Math.random() * total);
+		//Calcular total porcentaje: 
+		for(int i = 0; i < porcentajes.length; i++) {		
+			total += porcentajes[i];		
+		}
 		
+		//Genera num Random 
+		randomNum = random.nextInt(0, total);
+			
 		for(int i = 0, suma = 0; i < porcentajes.length; i++) {
 			
 			suma += porcentajes[i];
 			
-			if(suma > randomNum) {
+			if(randomNum <= suma) {
 				indice = i;
 				break;
 			}
@@ -365,7 +414,7 @@ public class Battle {
 	
 	
 	/**Devuelve el índice del array equivalente a la instancia del objeto*/
-	private int typeInstance(MilitaryUnit o) {
+	private int typeInstanceIndex(MilitaryUnit o) {
 		
 		if(o instanceof LightHunter) {
 			
@@ -394,6 +443,36 @@ public class Battle {
 		}		
 	}
 	
+	/**Devuelv el nombre del tipo de instancia. Se puede usar para los reportes*/
+	private String typeInstanceName(MilitaryUnit o) {
+		
+		if(o instanceof LightHunter) {
+			
+			return "Ligth Hunter";	
+		}else if(o instanceof HeavyHunter) {
+			
+			return "Heavy Hunter";	
+		}else if(o instanceof BattleShip) {
+			
+			return "Battle Ship";
+		}else if(o instanceof ArmoredShip) {
+			
+			return "Armored Ship";
+		}else if(o instanceof MissileLauncher) {
+			
+			return "Missile Launcher";
+		}else if(o instanceof IonCannon) {
+			
+			return "Ion Cannon";
+		}else if(o instanceof PlasmaCannon) {
+			
+			return "Plasma Cannon";
+			
+		}else {
+			return "ERROR: Instancia no válida";
+		}		
+	}
+		
 	/**Devuelve true o false según si se cumple la probabilidad o no*/
 	public boolean generaResidus(int probabilidad) {
 		
@@ -512,8 +591,7 @@ public class Battle {
 		}
 		
 		wasteMetalDeuterium[0] = resourcesLooses[0][0] + resourcesLooses[1][0]; //Perdidas totales metal planeta + enemigo
-		wasteMetalDeuterium[1] = resourcesLooses[0][1] + resourcesLooses[1][1];	//Perdidas totales deuterium planeta + enemigo
-		
+		wasteMetalDeuterium[1] = resourcesLooses[0][1] + resourcesLooses[1][1];	//Perdidas totales deuterium planeta + enemigo		
 	}
 		
 		
@@ -606,19 +684,26 @@ public class Battle {
 
 			actualNumberUnitsEnemy[i] += enemyArmy[i].size();	
 			currentNumberUnitsEnemy += enemyArmy[i].size();	
-		}
-		
+		}	
 	}
-	
 	
 	
 	String getBattleReport(int battles) {
 		
+		String reports = "";
 		
-		return "";
+		if(battles <= 5) {
+			
+			for(int i = 0; i < battles; i++) {
+				
+				reports += battleDevelopment[i];		
+			}		
+		}else {
+			
+			System.out.println("ERROR: Como máximo se pueden ven 5 batallas");		
+		}
+						
+		return reports;
 	}
-	
-	
-	
 	
 }
