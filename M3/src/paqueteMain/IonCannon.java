@@ -2,7 +2,7 @@ package paqueteMain;
 
 public class IonCannon extends Defense{
 	
-	//CONSTRUCTOR
+
 	IonCannon(Planet planeta){
 		
 		//Establecer el blindaje
@@ -14,11 +14,7 @@ public class IonCannon extends Defense{
 			
 			this.setInitialArmor(this.ARMOR_IONCANNON + (planeta.getTechnologyDefense() * this.PLUS_ARMOR_IONCANNON_BY_TECHNOLOGY) * 10);		
 		}
-		
-		
-		this.setArmor(this.getInitialArmor());
-		
-		
+						
 		//Establecer al poder de ataque
 		if(planeta.getTechnologyAtack() == 0) {
 			
@@ -33,7 +29,7 @@ public class IonCannon extends Defense{
 		
 	IonCannon(int armor, int baseDamage) {
     	
-    	super(armor, armor, baseDamage);      
+    	super(armor, baseDamage);      
     }
 
 	
@@ -55,10 +51,6 @@ public class IonCannon extends Defense{
 		return this.getArmor();
 	}
 
-	
-	public int getBaseDamage() {
-        return this.getBaseDamage();
-    }
 	
 	@Override
 	public int getMetalCost() {

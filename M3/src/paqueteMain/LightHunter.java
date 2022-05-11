@@ -14,10 +14,7 @@ public class LightHunter extends Ship{
 			this.setInitialArmor(this.ARMOR_LIGTHHUNTER + (planeta.getTechnologyDefense() * this.PLUS_ARMOR_LIGTHHUNTER_BY_TECHNOLOGY) * 10);		
 		}
 		
-		
-		this.setArmor(this.getInitialArmor());
-		
-		
+			
 		//Establecer al poder de ataque
 		if(planeta.getTechnologyAtack() == 0) {
 			
@@ -26,17 +23,12 @@ public class LightHunter extends Ship{
 		}else {
 					
 			this.setBaseDamage(this.BASE_DAMAGE_LIGTHHUNTER + (planeta.getTechnologyAtack() * this.PLUS_ATTACK_LIGTHHUNTER_BY_TECHNOLOGY) * 10);		
-		}
-				
-		
-		//Ejecutar conexión a BBDD y sacar la info de la nave, igual para todas. 
-				
+		}		
     }
 	
-		
     LightHunter(int armor, int baseDamage) {
     	
-    	super(armor, armor, baseDamage);      
+    	super(armor,baseDamage);      
     }
 
 
@@ -58,11 +50,6 @@ public class LightHunter extends Ship{
 		return this.getArmor();
 	}
 
-
-	public int getBaseDamage() {
-        return this.getBaseDamage();
-    }
-	
 	@Override
 	public int getMetalCost() {	
 		return this.METAL_COST_LIGTHHUNTER;

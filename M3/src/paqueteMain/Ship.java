@@ -10,10 +10,8 @@ public abstract class Ship implements MilitaryUnit, Variables{
 
     }
 
-    
-    public Ship(int armor, int initialArmor, int baseDamage) {
-        this.armor = armor;
-        this.initialArmor = initialArmor;
+    public Ship(int initialArmor, int baseDamage) {
+        this.setInitialArmor(initialArmor);
         this.baseDamage = baseDamage;
     }
 
@@ -32,6 +30,7 @@ public abstract class Ship implements MilitaryUnit, Variables{
 
     public void setInitialArmor(int initialArmor) {
         this.initialArmor = initialArmor;
+        this.armor = initialArmor;
     }
 
     public int getBaseDamage() {
@@ -42,4 +41,10 @@ public abstract class Ship implements MilitaryUnit, Variables{
         this.baseDamage = baseDamage;
     }
 
+
+	@Override
+	public String toString() {
+		return "Ship [armor=" + armor + ", initialArmor=" + initialArmor + ", baseDamage=" + baseDamage + "]";
+	}
+  
 }

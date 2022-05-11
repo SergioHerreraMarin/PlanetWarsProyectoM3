@@ -23,9 +23,11 @@ public class Main {
 		
 		try {
 			
-			planet.newLigthHunter(6);
-			planet.newArmoredShip(5);
-						
+			planet.newLigthHunter(17);
+			planet.newHeavyHunter(8);
+			planet.newBattleShip(1);
+			planet.newArmoredShip(1);
+			
 		} catch (ResourceException e) {
 
 			e.printStackTrace();
@@ -33,10 +35,13 @@ public class Main {
 		
 		
 		//Timer timer = new Timer();
-		//ViewThread();
+		viewThread();
 		
 		Battle battle = new Battle(planet.getArmy(), enemyArmy);
 		
+		battle.startBattle(planet);
+		System.out.println(battle.getBattleReportStepByStep());
+		System.out.println(battle.getBattleReportGeneral());
 		
 		System.out.println("Fin");
 		//ConnectionBBDD connection = new ConnectionBBDD("alumnoAMS20", "alumnoAMS20");
@@ -66,6 +71,8 @@ public class Main {
 		
 
 	//METODOS
+	
+	/**GENERA UNA FLOTA ENEMIGA*/
 	public static void createEnemyArmy(ArrayList<MilitaryUnit>[] enemyArmy) {
 			
 		Random random = new Random();
@@ -80,56 +87,56 @@ public class Main {
 		while(enemyMetal >= Variables.METAL_COST_LIGTHHUNTER && enemyDeuterium >= Variables.DEUTERIUM_COST_LIGTHHUNTER) {
 			
 			numRandom = random.nextInt(0, total + 1); //Num random 
-			System.out.println("Random: " + numRandom + ", Metal: " + enemyMetal + ", Deuterium: " + enemyDeuterium);
+			//System.out.println("Random: " + numRandom + ", Metal: " + enemyMetal + ", Deuterium: " + enemyDeuterium);
 			
 			if(numRandom <= 35) {
 				
-				System.out.println("LightHunter, Metal: " + Variables.METAL_COST_LIGTHHUNTER + " Deuteriuim: " + Variables.DEUTERIUM_COST_LIGTHHUNTER );
+				//System.out.println("LightHunter, Metal: " + Variables.METAL_COST_LIGTHHUNTER + " Deuteriuim: " + Variables.DEUTERIUM_COST_LIGTHHUNTER );
 				if(enemyMetal >= Variables.METAL_COST_LIGTHHUNTER && enemyDeuterium >= Variables.DEUTERIUM_COST_LIGTHHUNTER) {				
 					enemyArmy[0].add(new LightHunter(Variables.ARMOR_LIGTHHUNTER,Variables.BASE_DAMAGE_LIGTHHUNTER));
 					enemyMetal -= Variables.METAL_COST_LIGTHHUNTER;
 					enemyDeuterium -= Variables.DEUTERIUM_COST_LIGTHHUNTER;	
-					System.out.println("LightHunter");
+					//System.out.println("LightHunter");
 				}
 			
 			}else if(numRandom <= 60) {
-				System.out.println("HeavyHunter, Metal: " + Variables.METAL_COST_HEAVYHUNTER + " Deuteriuim: " + Variables.DEUTERIUM_COST_HEAVYHUNTER );
+				//System.out.println("HeavyHunter, Metal: " + Variables.METAL_COST_HEAVYHUNTER + " Deuteriuim: " + Variables.DEUTERIUM_COST_HEAVYHUNTER );
 				if(enemyMetal >= Variables.METAL_COST_HEAVYHUNTER && enemyDeuterium >= Variables.DEUTERIUM_COST_HEAVYHUNTER) {
 					
 					enemyArmy[1].add(new HeavyHunter(Variables.ARMOR_HEAVYHUNTER,Variables.BASE_DAMAGE_HEAVYHUNTER));
 					enemyMetal -= Variables.METAL_COST_HEAVYHUNTER;
 					enemyDeuterium -= Variables.DEUTERIUM_COST_HEAVYHUNTER;	
-					System.out.println("HeavyHunter");
+					//System.out.println("HeavyHunter");
 					
 				}
 		
 			}else if(numRandom <= 80) {
-				System.out.println("Battleship, Metal: " + Variables.METAL_COST_BATTLESHIP + " Deuteriuim: " + Variables.DEUTERIUM_COST_BATTLESHIP );
+				//System.out.println("Battleship, Metal: " + Variables.METAL_COST_BATTLESHIP + " Deuteriuim: " + Variables.DEUTERIUM_COST_BATTLESHIP );
 				if(enemyMetal >= Variables.METAL_COST_BATTLESHIP && enemyDeuterium >= Variables.DEUTERIUM_COST_BATTLESHIP) {
 					
 					enemyArmy[2].add(new BattleShip(Variables.ARMOR_BATTLESHIP,Variables.BASE_DAMAGE_BATTLESHIP));	
 					enemyMetal -= Variables.METAL_COST_BATTLESHIP;
 					enemyDeuterium -= Variables.DEUTERIUM_COST_BATTLESHIP;
-					System.out.println("BattleShip");
+					//System.out.println("BattleShip");
 				}
 					
 			}else if(numRandom <= 100) {
 				
-				System.out.println("ArmoredShip, Metal: " + Variables.METAL_COST_ARMOREDSHIP + " Deuteriuim: " + Variables.METAL_COST_ARMOREDSHIP );
+				//System.out.println("ArmoredShip, Metal: " + Variables.METAL_COST_ARMOREDSHIP + " Deuteriuim: " + Variables.METAL_COST_ARMOREDSHIP );
 				if(enemyMetal >= Variables.METAL_COST_ARMOREDSHIP && enemyDeuterium >= Variables.DEUTERIUM_COST_ARMOREDSHIP) {
 					
 					enemyArmy[3].add(new ArmoredShip(Variables.ARMOR_ARMOREDSHIP,Variables.BASE_DAMAGE_ARMOREDSHIP));
 					enemyMetal -= Variables.METAL_COST_ARMOREDSHIP;
 					enemyDeuterium -= Variables.DEUTERIUM_COST_ARMOREDSHIP;	
-					System.out.println("ArmoredShip");
+					//System.out.println("ArmoredShip");
 				}		
 			}			
 		}					
 	}
 		
 		
-	//MUESTRA QU� TIPO DE EJ�RCITO NOS VIENE A ATACAR
-	public static void ViewThread() {
+	/**MUESTRA QUE TIPO DE EJERCITO NOS VIENE A ATACAR*/
+	public static void viewThread() {
 		
 		int numLigthHunter = 0, numHeavyHunter = 0, numBattleShip = 0, numArmoredShip = 0;
 		

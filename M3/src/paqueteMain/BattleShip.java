@@ -16,9 +16,6 @@ public class BattleShip extends Ship {
 		}
 		
 		
-		this.setArmor(this.getInitialArmor());
-		
-		
 		//Establecer al poder de ataque
 		if(planeta.getTechnologyAtack() == 0) {
 			
@@ -27,15 +24,12 @@ public class BattleShip extends Ship {
 		}else {
 					
 			this.setBaseDamage(this.BASE_DAMAGE_BATTLESHIP + (planeta.getTechnologyAtack() * this.PLUS_ATTACK_BATTLESHIP_BY_TECHNOLOGY) * 10);		
-		}
-				
+		}			
     }
-	
-	
 	
     BattleShip(int armor, int baseDamage) {
     	
-    	super(armor, armor, baseDamage);      
+    	super(armor, baseDamage);      
     }
 
 
@@ -45,22 +39,15 @@ public class BattleShip extends Ship {
 		return this.getBaseDamage();
 	}
 
-
 	@Override
 	public void tekeDamage(int receivedDamage) {		
 		this.setArmor(this.getArmor() - receivedDamage);	
 	}
 
-
 	@Override
 	public int getActualArmor() {		
 		return this.getArmor();
 	}
-	
-
-	public int getBaseDamage() {
-        return this.getBaseDamage();
-    }
 	
 	@Override
 	public int getMetalCost() {

@@ -16,9 +16,6 @@ public class HeavyHunter extends Ship {
 		}
 		
 		
-		this.setArmor(this.getInitialArmor());
-		
-		
 		//Establecer al poder de ataque
 		if(planeta.getTechnologyAtack() == 0) {
 			
@@ -27,13 +24,12 @@ public class HeavyHunter extends Ship {
 		}else {
 					
 			this.setBaseDamage(this.BASE_DAMAGE_HEAVYHUNTER + (planeta.getTechnologyAtack() * this.PLUS_ATTACK_HEAVYHUNTER_BY_TECHNOLOGY) * 10);		
-		}
-				
+		}			
     }
 	
 		
     HeavyHunter(int armor, int baseDamage) {  	
-    	super(armor, armor, baseDamage);      
+    	super(armor,baseDamage);      
     }
 
 
@@ -43,23 +39,16 @@ public class HeavyHunter extends Ship {
 		return this.getBaseDamage();
 	}
 
-
 	@Override
 	public void tekeDamage(int receivedDamage) {
-		
-		this.setArmor(this.getArmor() - receivedDamage);
-		
+		this.setArmor(this.getArmor() - receivedDamage);		
 	}
 
 	@Override
 	public int getActualArmor() {	
 		return this.getArmor();
 	}
-
 	
-	public int getBaseDamage() {
-        return this.getBaseDamage();
-    }
 
 	@Override
 	public int getMetalCost() {	

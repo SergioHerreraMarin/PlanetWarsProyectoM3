@@ -15,10 +15,7 @@ public class PlasmaCannon extends Defense {
 			this.setInitialArmor(this.ARMOR_PLASMACANNON + (planeta.getTechnologyDefense() * this.PLUS_ARMOR_PLASMACANNON_BY_TECHNOLOGY) * 10);		
 		}
 		
-		
-		this.setArmor(this.getInitialArmor());
-		
-		
+			
 		//Establecer al poder de ataque
 		if(planeta.getTechnologyAtack() == 0) {
 			
@@ -31,12 +28,11 @@ public class PlasmaCannon extends Defense {
     }
 	
 		
-	PlasmaCannon(int armor, int baseDamage) {
-    	
-    	super(armor, armor, baseDamage);      
+	PlasmaCannon(int armor, int baseDamage) {  
+		
+    	super(armor, baseDamage);      
     }
 
-	
 	
 	
 	@Override
@@ -54,11 +50,6 @@ public class PlasmaCannon extends Defense {
 		return this.getArmor();
 	}
 	
-	
-	public int getBaseDamage() {
-        return this.getBaseDamage();
-    }
-
 	@Override
 	public int getMetalCost() {
 		return this.METAL_COST_PLASMACANNON;
@@ -81,8 +72,6 @@ public class PlasmaCannon extends Defense {
 
 	@Override
 	public void resetArmor() {
-		
-		this.setArmor(this.getInitialArmor());
-		
+		this.setArmor(this.getInitialArmor());		
 	}	
 }

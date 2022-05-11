@@ -14,11 +14,7 @@ public class ArmoredShip extends Ship {
 			
 			this.setInitialArmor(this.ARMOR_ARMOREDSHIP + (planeta.getTechnologyDefense() * this.PLUS_ARMOR_ARMOREDSHIP_BY_TECHNOLOGY) * 10);		
 		}
-		
-		
-		this.setArmor(this.getInitialArmor());
-		
-		
+			
 		//Establecer al poder de ataque
 		if(planeta.getTechnologyAtack() == 0) {
 			
@@ -27,14 +23,12 @@ public class ArmoredShip extends Ship {
 		}else {
 					
 			this.setBaseDamage(this.BASE_DAMAGE_ARMOREDSHIP + (planeta.getTechnologyAtack() * this.PLUS_ATTACK_ARMOREDSHIP_BY_TECHNOLOGY) * 10);		
-		}
-				
+		}			
     }
-	
 	
     ArmoredShip(int armor, int baseDamage) {
     	
-    	super(armor, armor, baseDamage);      
+    	super(armor, baseDamage);      
     }
 
 
@@ -44,12 +38,10 @@ public class ArmoredShip extends Ship {
 		return this.getBaseDamage();
 	}
 
-
 	@Override
 	public void tekeDamage(int receivedDamage) {	
 		this.setArmor(this.getArmor() - receivedDamage);	
 	}
-
 
 	@Override
 	public int getActualArmor(){

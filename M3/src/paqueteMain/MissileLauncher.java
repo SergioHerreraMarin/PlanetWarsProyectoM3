@@ -2,7 +2,7 @@ package paqueteMain;
 
 public class MissileLauncher extends Defense{
 	
-	//CONSTRUCTOR
+
 	MissileLauncher(Planet planeta){
 		
 		//Establecer el blindaje
@@ -14,11 +14,7 @@ public class MissileLauncher extends Defense{
 			
 			this.setInitialArmor(this.ARMOR_MISSILELAUNCHER + (planeta.getTechnologyDefense() * this.PLUS_ARMOR_MISSILELAUNCHER_BY_TECHNOLOGY) * 10);		
 		}
-		
-		
-		this.setArmor(this.getInitialArmor());
-		
-		
+			
 		//Establecer al poder de ataque
 		if(planeta.getTechnologyAtack() == 0) {
 			
@@ -33,7 +29,7 @@ public class MissileLauncher extends Defense{
 		
 	MissileLauncher(int armor, int baseDamage) {
     	
-    	super(armor, armor, baseDamage);      
+    	super(armor, baseDamage);      
     }
 	
 
@@ -51,10 +47,6 @@ public class MissileLauncher extends Defense{
 	}
 	
 	
-	public int getBaseDamage() {
-        return this.getBaseDamage();
-    }
-	
 	public int getMetalCost() {
 		return this.METAL_COST_MISSILELAUNCHER;
 	}
@@ -71,10 +63,8 @@ public class MissileLauncher extends Defense{
 		return this.CHANCE_ATTACK_AGAIN_MISSILELAUNCHER;
 	}
 
-	
 	@Override
-	public void resetArmor() {
-		
+	public void resetArmor() {		
 		this.setArmor(this.getInitialArmor());	
 	}
 
