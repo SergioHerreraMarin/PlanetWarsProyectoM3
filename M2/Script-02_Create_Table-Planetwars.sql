@@ -42,6 +42,22 @@ execute immediate 'CREATE TABLE defenses (
 )';
 execute immediate 'ALTER TABLE defenses ADD CONSTRAINT defenses_pk PRIMARY KEY ( id_defense )';
 
+/*TAULA PLANET_DEFENSES -------------------------------------------------------------*/
+execute immediate 'CREATE TABLE planet_defenses (
+    id_planet_defense NUMBER NOT NULL,
+    defense_name      VARCHAR2(50) NOT NULL,
+    metal_cost        NUMBER NOT NULL,
+    deuterium_cost    NUMBER NOT NULL,
+    crystal_cost      NUMBER NOT NULL,
+    initial_armor     NUMBER NOT NULL,
+    armor             NUMBER NOT NULL,
+    base_damage       NUMBER NOT NULL,
+    speed             NUMBER NOT NULL,
+    generate_wastings NUMBER NOT NULL,
+    id_planet         NUMBER NOT NULL
+)';
+execute immediate 'ALTER TABLE planet_defenses ADD CONSTRAINT planet_defenses_pk PRIMARY KEY ( id_planet_defense )';
+
 /*TAULA PLANETS --------------------------------------------------------------*/
 execute immediate 'CREATE TABLE planets (
     id_planet                       NUMBER NOT NULL,
@@ -74,6 +90,23 @@ execute immediate 'CREATE TABLE ships (
 )';
 execute immediate 'ALTER TABLE ships ADD CONSTRAINT ships_pk PRIMARY KEY ( id_ship )';
 
+/*TAULA SHIPS ----------------------------------------------------------------*/
+
+execute immediate 'CREATE TABLE planet_ships (
+    id_planet_ship    NUMBER NOT NULL,
+    ship_name         VARCHAR2(50) NOT NULL,
+    metal_cost        NUMBER NOT NULL,
+    deuterium_cost    NUMBER NOT NULL,
+    crystal_cost      NUMBER NOT NULL,
+    initial_armor     NUMBER NOT NULL,
+    armor             NUMBER NOT NULL,
+    base_damage       NUMBER NOT NULL,
+    speed             NUMBER NOT NULL,
+    generate_wastings NUMBER NOT NULL,
+    id_planet         NUMBER NOT NULL
+)';
+execute immediate 'ALTER TABLE planet_ships ADD CONSTRAINT planet_ships_pk PRIMARY KEY ( id_planet_ship )';
+
 /*TAULA USERS ----------------------------------------------------------------*/
 
 execute immediate 'CREATE TABLE users (
@@ -94,5 +127,11 @@ REFERENCES users ( id_user )';
 
 execute immediate 'ALTER TABLE planets ADD CONSTRAINT planets_users_fk FOREIGN KEY ( id_user )
 REFERENCES users ( id_user )';
+
+execute immediate 'ALTER TABLE planet_ships ADD CONSTRAINT planet_ships_planets_fk FOREIGN KEY ( id_planet )
+REFERENCES planets ( id_planet )';
+
+execute immediate 'ALTER TABLE planet_defenses ADD CONSTRAINT planet_defenses_planets_fk FOREIGN KEY ( id_planet )
+REFERENCES planets ( id_planet )';
 
 end;

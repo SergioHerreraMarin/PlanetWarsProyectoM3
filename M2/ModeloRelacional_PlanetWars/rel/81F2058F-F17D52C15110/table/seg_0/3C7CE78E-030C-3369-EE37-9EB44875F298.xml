@@ -108,16 +108,6 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="id_planet" id="CEC94C02-6EB6-C878-AA24-E2030AF101D7">
-<createdBy>Jordi</createdBy>
-<createdTime>2022-05-05 09:33:21 UTC</createdTime>
-<ownerDesignName>ModeloRelacional_PlanetWars</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-<autoIncrementCycle>false</autoIncrementCycle>
-</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="8D5CA93A-DCF8-77BB-747A-E9299AC192B3" name="SHIPS_PK">

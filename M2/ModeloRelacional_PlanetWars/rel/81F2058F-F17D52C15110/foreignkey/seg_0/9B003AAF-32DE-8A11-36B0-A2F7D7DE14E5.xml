@@ -1,8 +1,8 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="AA9C3EA3-032F-BB56-E7D2-150A21AF131E" containerWithKeyObject="073EB61E-355E-1274-5E17-5BA35926EABA" localFKIndex="4DE9A6A6-671A-5B21-825D-25D61E67427A" name="BATTLES_USERS_FK">
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="9B003AAF-32DE-8A11-36B0-A2F7D7DE14E5" containerWithKeyObject="AC163E27-EF43-3B13-23F9-7C9CA76ADC0B" localFKIndex="7F083091-DC11-1D7A-C655-F69538D27B17" name="PLANETS_USERS_FK">
 <createdBy>Jordi</createdBy>
-<createdTime>2022-05-05 09:43:10 UTC</createdTime>
-<ownerDesignName>ModeloRelacional</ownerDesignName>
+<createdTime>2022-05-11 08:41:18 UTC</createdTime>
+<ownerDesignName>ModeloRelacional_PlanetWars</ownerDesignName>
 <referredTableLongName>USERS</referredTableLongName>
 <deleteRule>NO ACTION</deleteRule>
 <referredTableID>BAE1FC3A-420C-F910-A851-B9A637D74198</referredTableID>

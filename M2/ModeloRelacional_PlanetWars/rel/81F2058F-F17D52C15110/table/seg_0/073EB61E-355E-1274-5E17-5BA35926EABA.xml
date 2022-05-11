@@ -58,9 +58,9 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="id_user" id="3BCC56EF-9551-03C1-8775-BC62330DF473">
+<Column name="id_planet" id="1490632B-A47C-72C4-3054-DA29625997D5">
 <createdBy>Jordi</createdBy>
-<createdTime>2022-05-05 09:43:10 UTC</createdTime>
+<createdTime>2022-05-11 08:42:00 UTC</createdTime>
 <ownerDesignName>ModeloRelacional_PlanetWars</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -69,7 +69,7 @@
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
-<colAssociation fkAssociation="AA9C3EA3-032F-BB56-E7D2-150A21AF131E" referredColumn="3E072F46-BFE0-F712-0007-35EDE7384912"/>
+<colAssociation fkAssociation="FB1D4CC0-D0A8-2B1B-7188-2CE954A8AF37" referredColumn="4933031F-06F1-7C7B-DD5A-745D75BE6AA5"/>
 </associations>
 </Column>
 </columns>
@@ -85,14 +85,14 @@
 <colUsage columnID="1A7CF81D-33FA-A3EB-C132-4AD67115662D"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="4DE9A6A6-671A-5B21-825D-25D61E67427A" name="BATTLES_USERS_FK">
+<ind_PK_UK id="B467675A-13E3-6CC3-408B-CD1A511A9DB6" name="BATTLES_PLANETS_FK">
 <createdBy>Jordi</createdBy>
-<createdTime>2022-05-05 09:43:10 UTC</createdTime>
+<createdTime>2022-05-11 08:42:00 UTC</createdTime>
 <ownerDesignName>ModeloRelacional_PlanetWars</ownerDesignName>
 <indexState>Foreign Key</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="3BCC56EF-9551-03C1-8775-BC62330DF473"/>
+<colUsage columnID="1490632B-A47C-72C4-3054-DA29625997D5"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>
