@@ -27,6 +27,15 @@ execute immediate 'CREATE TABLE battles (
 )';
 execute immediate 'ALTER TABLE battles ADD CONSTRAINT battles_pk PRIMARY KEY ( id_battle )';
 
+/*TAULA BATTLE_EVENTS --------------------------------------------------------*/
+execute immediate 'CREATE TABLE battle_events (
+    id_event         NUMBER NOT NULL,
+    position         NUMBER NOT NULL,
+    description   VARCHAR(50) NOT NULL,
+    id_battle         NUMBER NOT NULL
+)';
+execute immediate 'ALTER TABLE battle_events ADD CONSTRAINT battle_events_pk PRIMARY KEY ( id_event )';
+
 /*TAULA DEFENSES -------------------------------------------------------------*/
 execute immediate 'CREATE TABLE defenses (
     id_defense        NUMBER NOT NULL,
@@ -124,6 +133,9 @@ execute immediate 'ALTER TABLE users ADD CONSTRAINT users_user_name UNIQUE ( use
 
 execute immediate 'ALTER TABLE battles ADD CONSTRAINT battles_users_fk FOREIGN KEY ( id_user ) 
 REFERENCES users ( id_user )';
+
+execute immediate 'ALTER TABLE battle_events ADD CONSTRAINT battle_events_battle_fk FOREIGN KEY ( id_battle ) 
+REFERENCES battles ( id_battle )';
 
 execute immediate 'ALTER TABLE planets ADD CONSTRAINT planets_users_fk FOREIGN KEY ( id_user )
 REFERENCES users ( id_user )';
