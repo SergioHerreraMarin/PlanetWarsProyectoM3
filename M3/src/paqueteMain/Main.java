@@ -18,34 +18,34 @@ public class Main {
 		enemyArmy[2] = new ArrayList<MilitaryUnit>();
 		enemyArmy[3] = new ArrayList<MilitaryUnit>();
 		
-		Planet planet = new Planet();
-		createEnemyArmy(enemyArmy);
+		//Planet planet = new Planet();
+		//createEnemyArmy(enemyArmy);
 		
-		try {
-			
-			planet.newLigthHunter(17);
-			planet.newHeavyHunter(8);
-			planet.newBattleShip(1);
-			planet.newArmoredShip(1);
-			
-		} catch (ResourceException e) {
-
-			e.printStackTrace();
-		}
+//		try {
+//			
+//			planet.newLigthHunter(17);
+//			planet.newHeavyHunter(8);
+//			planet.newBattleShip(1);
+//			planet.newArmoredShip(1);
+//			
+//		} catch (ResourceException e) {
+//
+//			e.printStackTrace();
+//		}
 		
 		
 		//Timer timer = new Timer();
-		viewThread();
+		//viewThread();
 		
-		Battle battle = new Battle(planet.getArmy(), enemyArmy);
+		//Battle battle = new Battle(planet.getArmy(), enemyArmy);
 		
-		battle.startBattle(planet);
-		System.out.println(battle.getBattleReportStepByStep());
-		System.out.println(battle.getBattleReportGeneral());
+		//battle.startBattle(planet);
+		//System.out.println(battle.getBattleReportStepByStep());
+		//System.out.println(battle.getBattleReportGeneral());
 		
-		System.out.println("Fin");
-		//ConnectionBBDD connection = new ConnectionBBDD("alumnoAMS20", "alumnoAMS20");
 		
+		ConnectionBBDD connection = new ConnectionBBDD("alumnoAMS20", "alumnoAMS20");
+
 		//TIMERTASK
 		/*
 	    TimerTask task = new TimerTask() {

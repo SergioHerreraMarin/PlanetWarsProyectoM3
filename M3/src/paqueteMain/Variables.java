@@ -27,8 +27,7 @@ public interface Variables {
     public final int DEUTERIUM_COST_BATTLESHIP = 7000;
     public final int DEUTERIUM_COST_ARMOREDSHIP = 15000;
     
-    // COST DEFENSES
-    
+    // COST DEFENSES    
     public final int DEUTERIUM_COST_MISSILELAUNCHER = 0;
     public final int DEUTERIUM_COST_IONCANNON = 500;
     public final int DEUTERIUM_COST_PLASMACANNON = 5000;

@@ -102,7 +102,7 @@ public class Planet {
 		int finalAddNum = 0;
 		
 		for(int i = 0; i < n; i++) {
-			
+
 			if(this.getMetal() >= Variables.METAL_COST_LIGTHHUNTER && this.getDeuterium() >= Variables.DEUTERIUM_COST_LIGTHHUNTER) {
 				
 				army[0].add(new LightHunter(this));
