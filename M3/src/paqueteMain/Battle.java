@@ -107,7 +107,7 @@ public class Battle {
 				}else if(eleccionAtacante == 1) {
 					eleccionAtacante = 0;
 				}		
-				battleDevelopment += "\n********************CHANGE ATTACKER********************";
+				battleDevelopment += "\n\n********************CHANGE ATTACKER********************";
 			}
 			
 			updateUnitsGroup(); //ACTUALIZA LA CANTIDAD TOTAL DE UNIDADES DE CADA GRUPO DE LA FLOTA PLANETA Y ENEMIGA 
@@ -200,7 +200,7 @@ public class Battle {
 			continueBattle = currentNumberUnitsTotalPlanet >= (int)(initialNumberUnitsPlanet * 0.2) && currentNumberUnitsTotalEnemy >= (int)(initialNumberUnitsEnemy * 0.2);
 			
 			inicio = false;
-			System.out.println("Current units planet: " + currentNumberUnitsTotalPlanet + " > 20% inicial: " + (int)(initialNumberUnitsPlanet * 0.2) + "\nCurrent units enemy: " + currentNumberUnitsTotalEnemy + " > 20% inicial: " + (int)(initialNumberUnitsEnemy * 0.2));
+			//System.out.println("Current units planet: " + currentNumberUnitsTotalPlanet + " > 20% inicial: " + (int)(initialNumberUnitsPlanet * 0.2) + "\nCurrent units enemy: " + currentNumberUnitsTotalEnemy + " > 20% inicial: " + (int)(initialNumberUnitsEnemy * 0.2));
 			
 			
 		}while(continueBattle); 
@@ -277,15 +277,16 @@ public class Battle {
 		int total = 0,	randomNum = 0, indice = 0;
 		
 		do {
-			
+			total = 0;
 			//Calcular total porcentaje: 
 			for(int i = 0; i < porcentajes.length; i++) {		
 				total += porcentajes[i];		
 			}
 			
 			//Genera num Random 
+			//System.out.println("POR SI PETA, TOTAL: " + total);
 			randomNum = random.nextInt(0, total); //Peta porque el total no puede ser 0..
-				
+			//System.out.println("POR SI PETA, RANDOM NUM: " + randomNum);
 			for(int i = 0, suma = 0; i < porcentajes.length; i++) {
 				
 				suma += porcentajes[i];
@@ -374,7 +375,7 @@ public class Battle {
 	/**SE GENERAN LOS RESIDUOS DE LA UNIDAD DE DEFENSA CORRESPONDIENTE*/
 	private void generarResiduos(Atacante atacante) {
 		
-		System.out.println("GENERA RESIDUOS");
+		//System.out.println("GENERA RESIDUOS");
 		//SI ATACA EL PLANETA LOS RESIDUOS LOS GENERA EL ENEMIGO[1], SI ATACA EL ENEMIGO LOS GENERA EL PLANETA[0]
 		if(atacante == Atacante.PLANET) {
 			
@@ -414,12 +415,12 @@ public class Battle {
 	public void deleteUnit(Atacante atacante, MilitaryUnit o, int grupoDefensaIndex) {
 		
 		if(atacante == Atacante.PLANET) {
-			System.out.println("WOLOLO 1");
+			//System.out.println("WOLOLO 1");
 			enemyArmy[grupoDefensaIndex].remove(o);
 			enemyDrops[grupoDefensaIndex] += 1; //Sumamos una perdida en el array drops. 
 			
 		}else if(atacante == Atacante.ENEMY) {
-			System.out.println("WOLOLO 2");
+			//System.out.println("WOLOLO 2");
 			planetArmy[grupoDefensaIndex].remove(o);
 			planetDrops[grupoDefensaIndex] += 1; //Sumamos una perdida en el array drops. 			
 		}			
@@ -433,13 +434,13 @@ public class Battle {
 		for(int i = 0; i < planetArmy.length; i++) {
 
 			actualNumberUnitsPlanet[i] = planetArmy[i].size(); //ARRAY CON EL TOTAL DE UNIDADES DE CADA GRUPO DEL PLANETA
-			System.out.println("Unidades planeta pos " + i + ": " + actualNumberUnitsPlanet[i]);
+			//System.out.println("Unidades planeta pos " + i + ": " + actualNumberUnitsPlanet[i]);
 		}
 		
 		for(int i = 0; i < enemyArmy.length; i++) {
 
 			actualNumberUnitsEnemy[i] = enemyArmy[i].size(); //ARRAY CON EL TOTAL DE UNIDADES DE CADA GRUPO DEL ENEMIGO
-			System.out.println("Unidades enemigo pos " + i + ": " + actualNumberUnitsEnemy[i]);
+			//System.out.println("Unidades enemigo pos " + i + ": " + actualNumberUnitsEnemy[i]);
 		}	
 	}
 	
@@ -457,7 +458,7 @@ public class Battle {
 		String megaReporte = "";
 		megaReporte += "\nBATTLE STATISTICS";		
 		
-		megaReporte += "\nARMY PLANET              UNITS     DROPS";	
+		megaReporte += "\n\nARMY PLANET              UNITS     DROPS";	
 		megaReporte += "\nLigth Hunter" + "                " + initialArmies[0][0] + "         " + planetDrops[0] + 
 					   "\nHeavy Hunter" + "                " + initialArmies[0][1] + "         " + planetDrops[1] + 
 					   "\nBattle Ship" + "                " + initialArmies[0][2] + "         " + planetDrops[2] + 
@@ -466,7 +467,7 @@ public class Battle {
 					   "\nIon Cannon" + "                " + initialArmies[0][5] + "         " + planetDrops[5] + 
 					   "\nPlasma Cannon" + "                " + initialArmies[0][6] + "         " + planetDrops[6];
 		
-		megaReporte += "\nINITIAL ARMY ENEMY       UNITS     DROPS";
+		megaReporte += "\n\nINITIAL ARMY ENEMY       UNITS     DROPS";
 		megaReporte += "\nLigth Hunter" + "                " + initialArmies[1][0] + "        " + enemyDrops[0] + 
 					   "\nHeavy Hunter" + "                " + initialArmies[1][1] + "        " + enemyDrops[1] + 
 					   "\nBattle Ship" + "                " + initialArmies[1][2] + "        " + enemyDrops[2] + 
