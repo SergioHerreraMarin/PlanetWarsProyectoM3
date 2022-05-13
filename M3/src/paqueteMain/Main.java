@@ -11,12 +11,16 @@ public class Main {
 	
 	static int enemyMetal = Variables.METAL_BASE_ENEMY_ARMY, enemyDeuterium = Variables.DEUTERIUM_BASE_ENEMY_ARMY;
 	
+	
 	public static void main(String[] args) {
 		
 		enemyArmy[0] = new ArrayList<MilitaryUnit>();
 		enemyArmy[1] = new ArrayList<MilitaryUnit>();
 		enemyArmy[2] = new ArrayList<MilitaryUnit>();
 		enemyArmy[3] = new ArrayList<MilitaryUnit>();
+		
+		
+		//Llamar ventana principal 
 		
 		//Planet planet = new Planet();
 		//createEnemyArmy(enemyArmy);
@@ -70,8 +74,8 @@ public class Main {
 	}//main
 		
 
-	//METODOS
 	
+		
 	/**GENERA UNA FLOTA ENEMIGA*/
 	public static void createEnemyArmy(ArrayList<MilitaryUnit>[] enemyArmy) {
 			
