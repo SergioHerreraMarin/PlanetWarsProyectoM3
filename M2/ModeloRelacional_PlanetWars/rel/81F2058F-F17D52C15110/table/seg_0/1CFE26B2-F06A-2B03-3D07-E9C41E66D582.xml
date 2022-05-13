@@ -1,0 +1,125 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="1CFE26B2-F06A-2B03-3D07-E9C41E66D582" name="DEFENSES">
+<createdBy>Jordi</createdBy>
+<createdTime>2022-05-05 09:30:52 UTC</createdTime>
+<ownerDesignName>ModeloRelacional_PlanetWars</ownerDesignName>
+<ordsAlias>table_9</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_defense" id="E730E192-EC8E-E1A0-E6A5-F298DA33F72A">
+<createdBy>Jordi</createdBy>
+<createdTime>2022-05-05 09:30:52 UTC</createdTime>
+<ownerDesignName>ModeloRelacional_PlanetWars</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="name" id="7F22A3AD-14AE-CB5B-B5CB-3BC242197F1D">
+<createdBy>Jordi</createdBy>
+<createdTime>2022-05-05 09:30:52 UTC</createdTime>
+<ownerDesignName>ModeloRelacional_PlanetWars</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="metal_cost" id="FD29AC6C-7288-72C9-4454-DEACAC0ACC0E">
+<createdBy>Jordi</createdBy>
+<createdTime>2022-05-05 09:30:52 UTC</createdTime>
+<ownerDesignName>ModeloRelacional_PlanetWars</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="deuterium_cost" id="E9C796A7-7C6A-8EF9-9C5F-29C04AAD7998">
+<createdBy>Jordi</createdBy>
+<createdTime>2022-05-05 09:30:52 UTC</createdTime>
+<ownerDesignName>ModeloRelacional_PlanetWars</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="crystal_cost" id="C936B262-CE7A-2137-AEFA-B1A1B94A8D81">
+<createdBy>Jordi</createdBy>
+<createdTime>2022-05-05 09:30:52 UTC</createdTime>
+<ownerDesignName>ModeloRelacional_PlanetWars</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="initial_armor" id="7CB17B2A-5B0A-FF5E-EB42-8029685F21CF">
+<createdBy>Jordi</createdBy>
+<createdTime>2022-05-05 09:30:52 UTC</createdTime>
+<ownerDesignName>ModeloRelacional_PlanetWars</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="armor" id="F151511C-0604-94C1-EA57-69B6B337975D">
+<createdBy>Jordi</createdBy>
+<createdTime>2022-05-05 09:30:52 UTC</createdTime>
+<ownerDesignName>ModeloRelacional_PlanetWars</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="base_damage" id="72AFAC2B-715D-8C27-ACBA-2E084FEA8DA6">
+<createdBy>Jordi</createdBy>
+<createdTime>2022-05-05 09:30:52 UTC</createdTime>
+<ownerDesignName>ModeloRelacional_PlanetWars</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="speed" id="B52994BA-3D85-08FC-5D3B-6A9717608255">
+<createdBy>Jordi</createdBy>
+<createdTime>2022-05-05 09:30:52 UTC</createdTime>
+<ownerDesignName>ModeloRelacional_PlanetWars</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="generate_wastings" id="64CC8043-805C-81DE-92F1-BB9BE2EEACF2">
+<createdBy>Jordi</createdBy>
+<createdTime>2022-05-05 09:30:52 UTC</createdTime>
+<ownerDesignName>ModeloRelacional_PlanetWars</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="E4F9D964-FA50-E90A-E77B-3A2861CF9F41" name="DEFENSES_PK">
+<createdBy>Jordi</createdBy>
+<createdTime>2022-05-05 09:30:52 UTC</createdTime>
+<ownerDesignName>ModeloRelacional_PlanetWars</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E730E192-EC8E-E1A0-E6A5-F298DA33F72A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
