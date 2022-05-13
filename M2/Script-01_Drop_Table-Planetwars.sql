@@ -11,6 +11,12 @@ if existe != 0 then
 execute immediate 'drop table battles cascade constraints';
 existe := 0;
 end if;
+/*ELIMINACIO BATTLE_EVENTS #################################################*/
+select count(*) into existe from user_tables where table_name = 'BATTLE_EVENTS';
+if existe != 0 then
+execute immediate 'drop table battle_events cascade constraints';
+existe := 0;
+end if;
 /*ELIMINACIO PLANET_DEFENSES ######################################################*/
 select count(*) into existe from user_tables where table_name = 'PLANET_DEFENSES';
 if existe = 1 then
