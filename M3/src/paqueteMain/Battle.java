@@ -34,7 +34,7 @@ public class Battle {
 	MilitaryUnit unidadDefensa = null;
 	
 	
-	public Battle(ArrayList<MilitaryUnit>[] planetArmy, ArrayList<MilitaryUnit>[] enemyArmy) {
+	public Battle(ArrayList<MilitaryUnit>[] planetArmy, ArrayList<MilitaryUnit>[] enemyArmy, Planet planet) {
 		
 		this.planetArmy = planetArmy;
 		this.enemyArmy = enemyArmy;
@@ -77,13 +77,15 @@ public class Battle {
 		initialCostFleet[1][1] = fleetResourceCost(enemyArmy)[1];  //TOTAL DEUTERIUM ENEMIGO
 		
 		initialArmies(); //ACTUALIZA EL ARRAY DE INITIAL_ARMIES, PARA SABER LA CANTIDAD DE CADA TIPO DE UNIDAD DE LA FLOTA DEL PLANETA Y DEL ENEMIGO 
+	
+		startBattle(planet);
+	
 	}	
 		
-		
-	
+			
 	
 	/**EMPEZAR UNA BATALLA*/
-	public void startBattle(Planet planet) { //OBJETO PLANETA PARA RECOGER LOS RESTOS DE METAL Y DEUTERIO EN CASO DE GANAR  
+	private void startBattle(Planet planet) { //OBJETO PLANETA PARA RECOGER LOS RESTOS DE METAL Y DEUTERIO EN CASO DE GANAR  
 		
 		Atacante atacante = null; //PARA SABER QUIEN ATACA Y QUIEN DEFIENDE
 		boolean generaResiduos = false; //PARA SABER SI SE GENERAN RESIDUOS

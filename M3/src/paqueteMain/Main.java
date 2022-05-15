@@ -7,17 +7,21 @@ import java.util.TimerTask;
 public class Main {
 	
 	static ArrayList<MilitaryUnit>[] enemyArmy = new ArrayList[4];
-	
-	
-	static int enemyMetal = Variables.METAL_BASE_ENEMY_ARMY, enemyDeuterium = Variables.DEUTERIUM_BASE_ENEMY_ARMY;
-	
+	static ArrayList<Battle> battles = new ArrayList<Battle>();
+	static int enemyMetal = Variables.METAL_BASE_ENEMY_ARMY, enemyDeuterium = Variables.DEUTERIUM_BASE_ENEMY_ARMY;	
+	static boolean startGame = false;
 	
 	public static void main(String[] args) {
+	
+		ConnectionBBDD connection = new ConnectionBBDD("alumnoAMS20", "alumnoAMS20");
 		
 		enemyArmy[0] = new ArrayList<MilitaryUnit>();
 		enemyArmy[1] = new ArrayList<MilitaryUnit>();
 		enemyArmy[2] = new ArrayList<MilitaryUnit>();
 		enemyArmy[3] = new ArrayList<MilitaryUnit>();
+		
+		
+		Planet planet = new Planet();
 		
 		
 		//Llamar ventana principal 
@@ -38,7 +42,7 @@ public class Main {
 //		}
 		
 		
-		//Timer timer = new Timer();
+
 		//viewThread();
 		
 		//Battle battle = new Battle(planet.getArmy(), enemyArmy);
@@ -48,28 +52,25 @@ public class Main {
 		//System.out.println(battle.getBattleReportGeneral());
 		
 		
-		ConnectionBBDD connection = new ConnectionBBDD("alumnoAMS20", "alumnoAMS20");
-
-		//TIMERTASK
-		/*
+		
+		Timer timer = new Timer();
 	    TimerTask task = new TimerTask() {
 
 			@Override
 			public void run() {
 				
-				//crear flota enemiga
+				if(startGame) {
 				
-				
-				//crear batalla
-				
-			}
-	    	
+					createEnemyArmy(enemyArmy);
+					Battle battle = new Battle(planet.getArmy(), enemyArmy, planet);
+					battles.add(battle);
+					
+				}		
+			}    	
 	    };
 		
-	    //3 minutos son 180000 milisegundos
 	    timer.schedule(task, 180000);
-	    
-	    */
+
 		
 	}//main
 		
@@ -161,7 +162,7 @@ public class Main {
 	}
 		
 	
-
+	
 	
 	
 	

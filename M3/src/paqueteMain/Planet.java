@@ -72,31 +72,34 @@ public class Planet {
 	
 	
 	
-	public void upgradeTechnologyDefense() {
+	public void upgradeTechnologyDefense() throws ResourceException {
 				
 		if(deuterium >= upgradeDefenseTechnologyDeuteriumCost) {
 					
 			technologyDefense++;
 			deuterium -= upgradeDefenseTechnologyDeuteriumCost;	
-		}
-		
-		upgradeDefenseTechnologyDeuteriumCost += upgradeDefenseTechnologyDeuteriumCost * (Variables.UPGRADE_PLUS_DEFENSE_TECHNOLOGY_DEUTERIUM_COST/100);
+			upgradeDefenseTechnologyDeuteriumCost += upgradeDefenseTechnologyDeuteriumCost * (Variables.UPGRADE_PLUS_DEFENSE_TECHNOLOGY_DEUTERIUM_COST/100);
+		}else {
+			
+			throw new ResourceException("ERROR: Materiales insuficientes para subir el nivel de tecologia de defensa.");
+		}	
 	}
 	
 	
-	public void upgradeTechnologyAttack() {
+	public void upgradeTechnologyAttack() throws ResourceException {
 				
 		if(deuterium >= upgradeAttackTechnologyDeuteriumCost) {
 					
 			technologyDefense++;
 			deuterium -= upgradeAttackTechnologyDeuteriumCost;	
-		}
-		
-		upgradeAttackTechnologyDeuteriumCost += upgradeAttackTechnologyDeuteriumCost * (Variables.UPGRADE_PLUS_ATTACK_TECHNOLOGY_DEUTERIUM_COST/100);			
+			upgradeAttackTechnologyDeuteriumCost += upgradeAttackTechnologyDeuteriumCost * (Variables.UPGRADE_PLUS_ATTACK_TECHNOLOGY_DEUTERIUM_COST/100);	
+		}else {
+			
+			throw new ResourceException("ERROR: Materiales insuficientes para subir el nivel de tecologia de ataque.");
+		}			
 	}
 	
 	
-	//Falta cambiar para que lo haga bien, mirar. 
 	public void newLigthHunter(int n) throws ResourceException {
 		
 		int finalAddNum = 0;
@@ -113,7 +116,7 @@ public class Planet {
 			
 			}else {
 				
-				throw new ResourceException("ERROR: Materiales insuficientes. Se han creado " + finalAddNum);
+				throw new ResourceException("ERROR: Materiales insuficientes. Se han creado " + finalAddNum + " Lighth Hunter");
 			}		
 		}
 	}
@@ -135,7 +138,7 @@ public class Planet {
 				//System.out.println("Creado 1 HeavyHunter, Metal actual: " + this.getMetal() + ", Deuterium actual: " + this.getDeuterium());
 			}else {
 				
-				throw new ResourceException("ERROR: Materiales insuficientes. Se han creado " + finalAddNum); 
+				throw new ResourceException("ERROR: Materiales insuficientes. Se han creado " + finalAddNum + " Heavy Hunter"); 
 				
 			}			
 		}		
@@ -158,7 +161,7 @@ public class Planet {
 				
 			}else {
 				
-				throw new ResourceException("ERROR: Materiales insuficientes. Se han creado " + finalAddNum);
+				throw new ResourceException("ERROR: Materiales insuficientes. Se han creado " + finalAddNum + " Battle Ship");
 				
 			}	
 		}
@@ -182,7 +185,7 @@ public class Planet {
 			
 			}else {
 				
-				throw new ResourceException("ERROR: Materiales insuficientes. Se han creado " + finalAddNum);
+				throw new ResourceException("ERROR: Materiales insuficientes. Se han creado " + finalAddNum + " Armored Ship");
 				
 			}		
 		}	
@@ -205,7 +208,7 @@ public class Planet {
 			
 			}else {
 				
-				throw new ResourceException("ERROR: Materiales insuficientes. Se han creado " + finalAddNum); 
+				throw new ResourceException("ERROR: Materiales insuficientes. Se han creado " + finalAddNum + " Missile Launcher"); 
 				
 			}		
 		}	
@@ -228,7 +231,7 @@ public class Planet {
 			
 			}else {
 				
-				throw new ResourceException("ERROR: Materiales insuficientes. Se han creado " + finalAddNum); 
+				throw new ResourceException("ERROR: Materiales insuficientes. Se han creado " + finalAddNum + " Ion Cannon"); 
 				
 			}			
 		}
@@ -252,7 +255,7 @@ public class Planet {
 			
 			}else {
 				
-				throw new ResourceException("ERROR: Materiales insuficientes. Se han creado " + finalAddNum);
+				throw new ResourceException("ERROR: Materiales insuficientes. Se han creado " + finalAddNum + " Plasma Cannon");
 				
 			}		
 		}	
