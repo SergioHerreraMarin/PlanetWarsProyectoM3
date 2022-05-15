@@ -8,10 +8,9 @@ import javax.swing.border.LineBorder;
 
 public class Planet_status extends JPanel {
 	
-	public Planet_status (Main_window window){
-		System.out.println(window);
+	public Planet_status (Main_window window, int planetId){
 		this.setLayout(new FlowLayout(FlowLayout.LEFT));
-		this.setBackground(new Color((float)0.53, (float)0.0, (float)0.0, (float)0.0));
+		this.setOpaque(false);
 		this.setSize(window.getWidth(),window.getHeight());
 		this.setPreferredSize(this.getSize());
 		this.setBorder(new EmptyBorder(10,10,10,10));
@@ -22,14 +21,14 @@ public class Planet_status extends JPanel {
 		left.setPreferredSize(left.getSize());
 		left.setLayout(new FlowLayout(FlowLayout.LEFT));
 		left.setBorder(new EmptyBorder(10,10,10,10));
-		left.setBackground(new Color((float)0.0, (float)0.0, (float)0.0, (float)0.0));
+		left.setOpaque(false);
 		this.add(left);
 		
 		JPanel right = new JPanel();
 		right.setSize((this.getWidth()/2)-23,this.getHeight());
 		right.setPreferredSize(right.getSize());
 		right.setLayout(new FlowLayout(FlowLayout.LEFT));
-		right.setBackground(new Color((float)0.0, (float)0.0, (float)0.0, (float)0.0));
+		right.setOpaque(false);
 		this.add(right);
 		
 		JLabel planetName = new JLabel("PLANET NAME");
@@ -38,13 +37,44 @@ public class Planet_status extends JPanel {
 		planetName.setBorder(new LineBorder(Color.white));
 		planetName.setFont(new Font("Arial", 1, 60));
 		planetName.setForeground(Color.white);
+		planetName.setBackground(new Color(51, 102, 0));
+		planetName.setOpaque(true);
+		
+		JButton viewBattleReports = new JButton(" VIEW BATTLE REPORTS ");
+		viewBattleReports.setSize(right.getWidth()-15,20);
+		viewBattleReports.setPreferredSize(viewBattleReports.getSize());
+		viewBattleReports.setBackground(new Color(51, 102, 0));
+		viewBattleReports.setForeground(Color.white);
+		
+		JButton back = new JButton(" BACK ");
+		back.setSize(right.getWidth()-15,20);
+		back.setPreferredSize(back.getSize());
+		back.setBackground(new Color(51, 102, 0));
+		back.setForeground(Color.white);
+		
 		left.add(planetName);
+		
+		left.add(new Spacer());
 		
 		left.add(new ResourcesTable(left));
 		
 		right.add(new ShipTable(right));
+		
+		right.add(new Spacer());
+		
 		right.add(new DefenseTable(right));
+		
+		right.add(new Spacer());
+		
 		right.add(new TechLevelsTable(right));
+		
+		right.add(new Spacer());
+		
+		right.add(viewBattleReports);
+		
+		right.add(new Spacer());
+		
+		right.add(back);
 		
 		this.setVisible(true);
 	}
@@ -58,40 +88,40 @@ class ResourcesTable extends JPanel{
 		this.setSize(container.getWidth()-20, 200);
 		this.setPreferredSize(this.getSize());
 		this.setBorder(BorderFactory.createLineBorder(Color.white, 2, true));
-		this.setBackground(new Color((float)0.0, (float)0.0, (float)0.0, (float)0.0));
+		this.setBackground(Color.black);
 		container.add(this);
 		
-		JLabel resourcesTitle = new JLabel(" Resources");
-		resourcesTitle.setSize(this.getWidth()-25,20);
+		JLabel resourcesTitle = new JLabel(" RESOURCES ");
+		resourcesTitle.setSize(this.getWidth(),20);
 		resourcesTitle.setPreferredSize(resourcesTitle.getSize());
+		resourcesTitle.setBorder(BorderFactory.createLineBorder(Color.white));
 		resourcesTitle.setForeground(Color.white);
+		resourcesTitle.setBackground(new Color(51, 102, 0));
+		resourcesTitle.setOpaque(true);
 		this.add(resourcesTitle);
 		
 		//###
 		JPanel resourcesContents = new JPanel();
 		resourcesContents.setBackground(Color.black);
-		resourcesContents.setSize(this.getWidth()-25,35*3+25);
+		resourcesContents.setSize(this.getWidth()-25,35*3);
 		resourcesContents.setPreferredSize(resourcesContents.getSize());
 		
 		resourcesContents.add(new ResourceRow(resourcesContents,"Deuterium"));
-		
 		resourcesContents.add(new ResourceRow(resourcesContents,"Metal"));
-		
 		resourcesContents.add(new ResourceRow(resourcesContents,"Crystal"));
 		
 		this.add(resourcesContents);
 		//###
-		
-		this.setSize(container.getWidth()-20, resourcesContents.getHeight()+resourcesTitle.getHeight());
+		this.setSize(container.getWidth()-20, resourcesContents.getHeight()+resourcesTitle.getHeight()+15);
 		this.setPreferredSize(this.getSize());
 	}
 }//ResourceTable
 
 class ResourceRow extends JPanel{
-	public ResourceRow(JPanel resourcesTable, String resource_name) {
-		this.setSize(resourcesTable.getWidth(), 25);
+	public ResourceRow(JPanel container, String resource_name) {
+		this.setSize(container.getWidth(), 25);
 		this.setPreferredSize(this.getSize());
-		this.setBackground(new Color((float)0.0, (float)0.0, (float)0.0, (float)0.0));
+		this.setBackground(Color.black);
 		
 		JLabel resourceName = new JLabel(resource_name);
 		resourceName.setSize(this.getWidth()-60, 20);
@@ -124,19 +154,23 @@ class ShipTable extends JPanel{
 		title.setSize(this.getWidth(),20);
 		title.setPreferredSize(title.getSize());
 		title.setForeground(Color.white);
-		title.setAlignmentX(CENTER_ALIGNMENT);
+		title.setBackground(new Color(51, 102, 0));
+		title.setOpaque(true);
 		title.setBorder(BorderFactory.createLineBorder(Color.white));
 		this.add(title);
 		
 		JPanel rowTitles = new JPanel();
 		rowTitles.setSize(this.getWidth(), 30);
 		rowTitles.setPreferredSize(rowTitles.getSize());
+		rowTitles.setOpaque(false);
 		rowTitles.setAlignmentX(LEFT_ALIGNMENT);
 		
 		JLabel shipName = new JLabel("Type",SwingConstants.CENTER);
 		shipName.setSize(rowTitles.getWidth()/10*6-25,20);
 		shipName.setPreferredSize(shipName.getSize());
 		shipName.setForeground(Color.white);
+		shipName.setBackground(new Color(51, 102, 0));
+		shipName.setOpaque(true);
 		shipName.setBorder(new LineBorder(Color.white));
 		rowTitles.add(shipName);
 		
@@ -144,6 +178,8 @@ class ShipTable extends JPanel{
 		shipQuantity.setSize(rowTitles.getWidth()/10*4-25,20);
 		shipQuantity.setPreferredSize(shipQuantity.getSize());
 		shipQuantity.setForeground(Color.white);
+		shipQuantity.setBackground(new Color(51, 102, 0));
+		shipQuantity.setOpaque(true);
 		shipQuantity.setBorder(new LineBorder(Color.white));
 		rowTitles.add(shipQuantity);
 		
@@ -151,6 +187,8 @@ class ShipTable extends JPanel{
 		shipAdd.setSize(rowTitles.getWidth()/10*1-25,20);
 		shipAdd.setPreferredSize(shipAdd.getSize());
 		shipAdd.setForeground(Color.white);
+		shipAdd.setBackground(new Color(51, 102, 0));
+		shipAdd.setOpaque(true);
 		shipAdd.setBorder(new LineBorder(Color.white));
 		rowTitles.add(shipAdd);
 		
@@ -161,7 +199,7 @@ class ShipTable extends JPanel{
 		this.add(new ShipRow(this));
 		this.add(new ShipRow(this));
 		
-		this.setSize(container.getWidth()-20,35 + title.getHeight() + rowTitles.getHeight()+30*4);
+		this.setSize(container.getWidth()-15,35 + title.getHeight() + rowTitles.getHeight()+30*4);
 		this.setPreferredSize(this.getSize());
 	}
 }//class shipTable
@@ -169,8 +207,8 @@ class ShipRow extends JPanel{
 	public ShipRow(JPanel container) {
 		this.setSize(container.getWidth(),30);
 		this.setPreferredSize(this.getSize());
+		this.setOpaque(false);
 		this.setBorder(new LineBorder(Color.white));
-		this.setBackground(Color.cyan);
 		
 		JLabel shipName = new JLabel("Type",SwingConstants.CENTER);
 		shipName.setSize(this.getWidth()/10*6-25,20);
@@ -190,6 +228,7 @@ class ShipRow extends JPanel{
 		shipAdd.setSize(this.getWidth()/10*1-25,20);
 		shipAdd.setPreferredSize(shipAdd.getSize());
 		shipAdd.setForeground(Color.white);
+		shipAdd.setBackground(new Color(51, 102, 0));
 		shipAdd.setBorder(new LineBorder(Color.white));
 		this.add(shipAdd);
 	}
@@ -208,19 +247,23 @@ class DefenseTable extends JPanel{
 		title.setSize(this.getWidth(),20);
 		title.setPreferredSize(title.getSize());
 		title.setForeground(Color.white);
-		title.setAlignmentX(CENTER_ALIGNMENT);
+		title.setBackground(new Color(51, 102, 0));
+		title.setOpaque(true);
 		title.setBorder(BorderFactory.createLineBorder(Color.white));
 		this.add(title);
 		
 		JPanel rowTitles = new JPanel();
 		rowTitles.setSize(this.getWidth(), 30);
 		rowTitles.setPreferredSize(rowTitles.getSize());
+		rowTitles.setOpaque(false);
 		rowTitles.setAlignmentX(LEFT_ALIGNMENT);
 		
 		JLabel shipName = new JLabel("Type",SwingConstants.CENTER);
 		shipName.setSize(rowTitles.getWidth()/10*6-25,20);
 		shipName.setPreferredSize(shipName.getSize());
 		shipName.setForeground(Color.white);
+		shipName.setBackground(new Color(51, 102, 0));
+		shipName.setOpaque(true);
 		shipName.setBorder(new LineBorder(Color.white));
 		rowTitles.add(shipName);
 		
@@ -228,6 +271,8 @@ class DefenseTable extends JPanel{
 		shipQuantity.setSize(rowTitles.getWidth()/10*4-25,20);
 		shipQuantity.setPreferredSize(shipQuantity.getSize());
 		shipQuantity.setForeground(Color.white);
+		shipQuantity.setBackground(new Color(51, 102, 0));
+		shipQuantity.setOpaque(true);
 		shipQuantity.setBorder(new LineBorder(Color.white));
 		rowTitles.add(shipQuantity);
 		
@@ -235,6 +280,8 @@ class DefenseTable extends JPanel{
 		shipAdd.setSize(rowTitles.getWidth()/10*1-25,20);
 		shipAdd.setPreferredSize(shipAdd.getSize());
 		shipAdd.setForeground(Color.white);
+		shipAdd.setBackground(new Color(51, 102, 0));
+		shipAdd.setOpaque(true);
 		shipAdd.setBorder(new LineBorder(Color.white));
 		rowTitles.add(shipAdd);
 		
@@ -245,7 +292,7 @@ class DefenseTable extends JPanel{
 		this.add(new DefenseRow(this));
 		this.add(new DefenseRow(this));
 		
-		this.setSize(container.getWidth()-20,35 + title.getHeight() + rowTitles.getHeight()+30*4);
+		this.setSize(container.getWidth()-15,35 + title.getHeight() + rowTitles.getHeight()+30*4);
 		this.setPreferredSize(this.getSize());
 	}
 }//class defenseTable
@@ -254,7 +301,7 @@ class DefenseRow extends JPanel{
 		this.setSize(container.getWidth(),30);
 		this.setPreferredSize(this.getSize());
 		this.setBorder(new LineBorder(Color.white));
-		this.setBackground(Color.cyan);
+		this.setOpaque(false);
 		
 		JLabel shipName = new JLabel("Type",SwingConstants.CENTER);
 		shipName.setSize(this.getWidth()/10*6-25,20);
@@ -274,6 +321,7 @@ class DefenseRow extends JPanel{
 		shipAdd.setSize(this.getWidth()/10*1-25,20);
 		shipAdd.setPreferredSize(shipAdd.getSize());
 		shipAdd.setForeground(Color.white);
+		shipAdd.setBackground(new Color(51, 102, 0));
 		shipAdd.setBorder(new LineBorder(Color.white));
 		this.add(shipAdd);
 	}
@@ -285,59 +333,110 @@ class TechLevelsTable extends JPanel{
 	public TechLevelsTable(JPanel container) {
 		this.setSize(container.getWidth()-20, 200);
 		this.setPreferredSize(this.getSize());
-		this.setBorder(BorderFactory.createLineBorder(Color.green, 2, true));
-		this.setBackground(Color.blue);
+		this.setBorder(BorderFactory.createLineBorder(Color.white, 2, true));
+		this.setBackground(Color.black);
 		container.add(this);
 		
-		JLabel resourcesTitle = new JLabel(" TECHNOLOGIES ",SwingConstants.CENTER);
-		resourcesTitle.setSize(this.getWidth(),20);
-		resourcesTitle.setPreferredSize(resourcesTitle.getSize());
-		resourcesTitle.setForeground(Color.white);
-		resourcesTitle.setBackground(Color.orange);
-		resourcesTitle.setOpaque(true);
-		this.add(resourcesTitle);
+		JLabel title = new JLabel(" RESOURCES ",SwingConstants.CENTER);
+		title.setSize(this.getWidth(),20);
+		title.setPreferredSize(title.getSize());
+		title.setBorder(BorderFactory.createLineBorder(Color.white));
+		title.setForeground(Color.white);
+		title.setBackground(new Color(51, 102, 0));
+		title.setOpaque(true);
+		this.add(title);
+		
+		JPanel rowTitles = new JPanel();
+		rowTitles.setSize(this.getWidth()-25, 25);
+		rowTitles.setPreferredSize(this.getSize());
+		rowTitles.setBackground(Color.black);
+		
+		JLabel techName = new JLabel("TECHNOLOGY");
+		techName.setSize(rowTitles.getWidth()/10*6-5, 20);
+		techName.setPreferredSize(techName.getSize());
+		techName.setForeground(Color.white);
+		techName.setBackground(new Color(51, 102, 0));
+		techName.setOpaque(true);
+		techName.setBorder(BorderFactory.createLineBorder(Color.white));
+		this.add(techName);
+		
+		JLabel techLevel = new JLabel("LEVEL");
+		techLevel.setSize(rowTitles.getWidth()/10*2-5, 20);
+		techLevel.setPreferredSize(techLevel.getSize());
+		techLevel.setForeground(Color.white);
+		techLevel.setBackground(new Color(51, 102, 0));
+		techLevel.setOpaque(true);
+		techLevel.setBorder(BorderFactory.createLineBorder(Color.white));
+		this.add(techLevel);
+		
+		JLabel techUpgrade = new JLabel("UPGRADE");
+		techUpgrade.setSize(rowTitles.getWidth()/10*2-5, 20);
+		techUpgrade.setPreferredSize(techLevel.getSize());
+		techUpgrade.setForeground(Color.white);
+		techUpgrade.setBackground(new Color(51, 102, 0));
+		techUpgrade.setOpaque(true);
+		techUpgrade.setBorder(BorderFactory.createLineBorder(Color.white));
+		this.add(techUpgrade);
 		
 		//###
-		JPanel resourcesContents = new JPanel();
-		resourcesContents.setBackground(Color.black);
-		resourcesContents.setSize(this.getWidth(),35*3);
-		resourcesContents.setPreferredSize(resourcesContents.getSize());
+		JPanel contents = new JPanel();
+		contents.setBackground(Color.black);
+		contents.setSize(this.getWidth()-25,35*3);
+		contents.setPreferredSize(contents.getSize());
 		
-		resourcesContents.add(new TechLevelRow(resourcesContents,"Attack"));
+		contents.add(new TechLevelRow(contents,"Deuterium"));
+		contents.add(new TechLevelRow(contents,"Metal"));
+		contents.add(new TechLevelRow(contents,"Crystal"));
 		
-		resourcesContents.add(new TechLevelRow(resourcesContents,"Defense"));
-		
-		this.add(resourcesContents);
-		
-		this.setSize(container.getWidth()-20, resourcesContents.getHeight()+resourcesTitle.getHeight());
+		this.add(contents);
+		//###
+		this.setSize(container.getWidth()-15, contents.getHeight()+title.getHeight()+40);
 		this.setPreferredSize(this.getSize());
 	}
 }//ResourceTable
+
 class TechLevelRow extends JPanel{
-	public TechLevelRow(JPanel resourcesTable, String resource_name) {
-		this.setSize(resourcesTable.getWidth(), 25);
+	public TechLevelRow(JPanel container, String resource_name) {
+		this.setSize(container.getWidth(), 30);
 		this.setPreferredSize(this.getSize());
-		this.setBackground(Color.magenta);
+		this.setBorder(BorderFactory.createLineBorder(Color.white));
+		this.setBackground(Color.black);
 		
-		JLabel techName = new JLabel(resource_name,SwingConstants.CENTER);
-		techName.setSize(this.getWidth()/10*4-25, 25);
+		JLabel techName = new JLabel(resource_name);
+		techName.setSize(this.getWidth()/10*6-5, 20);
 		techName.setPreferredSize(techName.getSize());
 		techName.setForeground(Color.white);
 		techName.setBorder(BorderFactory.createLineBorder(Color.white));
 		this.add(techName);
 		
-		JLabel techQuantity = new JLabel("0000",SwingConstants.CENTER);
-		techQuantity.setSize(this.getWidth()/10*3-25, 25);
-		techQuantity.setPreferredSize(techQuantity.getSize());
-		techQuantity.setForeground(Color.white);
-		techQuantity.setBorder(BorderFactory.createLineBorder(Color.white));
-		this.add(techQuantity);
+		JLabel techLevel = new JLabel("0000");
+		techLevel.setSize(this.getWidth()/10*2-5, 20);
+		techLevel.setPreferredSize(techLevel.getSize());
+		techLevel.setForeground(Color.white);
+		techLevel.setBorder(BorderFactory.createLineBorder(Color.white));
+		this.add(techLevel);
 		
-		JButton techUpgrade = new JButton(" Upgrade ");
-		techUpgrade.setSize(this.getWidth()/10*3-25, 25);
-		techUpgrade.setPreferredSize(techQuantity.getSize());
+		JButton techUpgrade = new JButton(" UPGRADE ");
+		techUpgrade.setSize(this.getWidth()/10*2-5, 20);
+		techUpgrade.setPreferredSize(techLevel.getSize());
+		techUpgrade.setForeground(Color.white);
+		techUpgrade.setBackground(new Color(51, 102, 0));
+		techUpgrade.setBorder(BorderFactory.createLineBorder(Color.white));
 		this.add(techUpgrade);
+		
 
 		this.setVisible(true);
 	}
 }//ResourceRow
+
+
+
+class Spacer extends JLabel{
+	public Spacer() {
+		this.setSize(10,10);
+		this.setPreferredSize(this.getSize());
+		this.setBackground(Color.darkGray);
+		this.setOpaque(true);
+		this.setVisible(true);
+	}
+}
