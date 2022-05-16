@@ -1,3 +1,14 @@
 /Main_window.class
 /Planet_status.class
 /ResourceRow.class
+/ResourcesTable.class
+/ShipTable.class
+/ShipRow.class
+/DefenseRow.class
+/DefenseTable.class
+/TechLevelRow.class
+/TechLevelsTable.class
+/TechLebelsTable.class
+/Spacer.class
+/ButtonPanel$Spacer.class
+/ButtonPanel.class
