@@ -12,13 +12,16 @@ public class Main {
 	static boolean startGame = false;
 	
 	public static void main(String[] args) {
-	
+		
+		//LO PRIMERO
 		ConnectionBBDD connection = new ConnectionBBDD("alumnoAMS20", "alumnoAMS20");
 		
 		enemyArmy[0] = new ArrayList<MilitaryUnit>();
 		enemyArmy[1] = new ArrayList<MilitaryUnit>();
 		enemyArmy[2] = new ArrayList<MilitaryUnit>();
 		enemyArmy[3] = new ArrayList<MilitaryUnit>();
+		
+		
 		
 		
 		Planet planet = new Planet();
@@ -29,17 +32,17 @@ public class Main {
 		//Planet planet = new Planet();
 		//createEnemyArmy(enemyArmy);
 		
-//		try {
-//			
-//			planet.newLigthHunter(17);
-//			planet.newHeavyHunter(8);
-//			planet.newBattleShip(1);
-//			planet.newArmoredShip(1);
-//			
-//		} catch (ResourceException e) {
-//
-//			e.printStackTrace();
-//		}
+		try {
+			
+			planet.newLigthHunter(17);
+			planet.newHeavyHunter(8);
+			planet.newBattleShip(1);
+			planet.newArmoredShip(1);
+			
+		} catch (ResourceException e) {
+
+			e.printStackTrace();
+		}
 		
 		
 
@@ -53,29 +56,28 @@ public class Main {
 		
 		
 		
-		Timer timer = new Timer();
-	    TimerTask task = new TimerTask() {
-
-			@Override
-			public void run() {
-				
-				if(startGame) {
-				
-					createEnemyArmy(enemyArmy);
-					Battle battle = new Battle(planet.getArmy(), enemyArmy, planet);
-					battles.add(battle);
-					
-				}		
-			}    	
-	    };
-		
-	    timer.schedule(task, 180000);
+//		Timer timer = new Timer();
+//	    TimerTask task = new TimerTask() {
+//
+//			@Override
+//			public void run() {
+//				
+//				if(startGame) {
+//				
+//					createEnemyArmy(enemyArmy);
+//					Battle battle = new Battle(planet.getArmy(), enemyArmy, planet);
+//					battles.add(battle);
+//					
+//				}		
+//			}    	
+//	    };
+//		
+//	    timer.schedule(task, 180000);
 
 		
 	}//main
 		
 
-	
 		
 	/**GENERA UNA FLOTA ENEMIGA*/
 	public static void createEnemyArmy(ArrayList<MilitaryUnit>[] enemyArmy) {
@@ -161,12 +163,7 @@ public class Main {
 				"\nArmored Ship: " + numArmoredShip);		
 	}
 		
-	
-	
-	
-	
-	
-	
+
 }
 		
 

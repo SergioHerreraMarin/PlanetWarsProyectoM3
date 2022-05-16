@@ -8,22 +8,22 @@ public class PlasmaCannon extends Defense {
 		//Establecer el blindaje
 		if(planeta.getTechnologyDefense() == 0) {
 			
-			this.setInitialArmor(this.ARMOR_PLASMACANNON);
+			this.setInitialArmor(ConnectionBBDD.ARMOR_PLASMACANNON);
 		
 		}else {
 			
-			this.setInitialArmor(this.ARMOR_PLASMACANNON + (planeta.getTechnologyDefense() * this.PLUS_ARMOR_PLASMACANNON_BY_TECHNOLOGY) * 10);		
+			this.setInitialArmor(ConnectionBBDD.ARMOR_PLASMACANNON + (planeta.getTechnologyDefense() * this.PLUS_ARMOR_PLASMACANNON_BY_TECHNOLOGY) * 10);		
 		}
 		
 			
 		//Establecer al poder de ataque
 		if(planeta.getTechnologyAtack() == 0) {
 			
-			this.setBaseDamage(this.BASE_DAMAGE_PLASMACANNON);
+			this.setBaseDamage(ConnectionBBDD.BASE_DAMAGE_PLASMACANNON);
 			
 		}else {
 					
-			this.setBaseDamage(this.BASE_DAMAGE_PLASMACANNON + (planeta.getTechnologyAtack() * this.PLUS_ATTACK_PLASMACANNON_BY_TECHNOLOGY) * 10);		
+			this.setBaseDamage(ConnectionBBDD.BASE_DAMAGE_PLASMACANNON + (planeta.getTechnologyAtack() * this.PLUS_ATTACK_PLASMACANNON_BY_TECHNOLOGY) * 10);		
 		}			
     }
 	
@@ -52,12 +52,12 @@ public class PlasmaCannon extends Defense {
 	
 	@Override
 	public int getMetalCost() {
-		return this.METAL_COST_PLASMACANNON;
+		return ConnectionBBDD.METAL_COST_PLASMACANNON;
 	}
 
 	@Override
 	public int getDeuteriumCost() {
-		return this.DEUTERIUM_COST_PLASMACANNON;
+		return ConnectionBBDD.DEUTERIUM_COST_PLASMACANNON;
 	}
 
 	@Override

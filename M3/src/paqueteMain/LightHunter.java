@@ -1,4 +1,5 @@
 package paqueteMain;
+
 public class LightHunter extends Ship{
 
 		
@@ -7,22 +8,22 @@ public class LightHunter extends Ship{
 		//Establecer el blindaje
 		if(planeta.getTechnologyDefense() == 0) {
 			
-			this.setInitialArmor(this.ARMOR_LIGTHHUNTER);
+			this.setInitialArmor(ConnectionBBDD.ARMOR_LIGTHHUNTER);
 		
 		}else {
 			
-			this.setInitialArmor(this.ARMOR_LIGTHHUNTER + (planeta.getTechnologyDefense() * this.PLUS_ARMOR_LIGTHHUNTER_BY_TECHNOLOGY) * 10);		
+			this.setInitialArmor(ConnectionBBDD.ARMOR_LIGTHHUNTER + (planeta.getTechnologyDefense() * this.PLUS_ARMOR_LIGTHHUNTER_BY_TECHNOLOGY) * 10);		
 		}
 		
 			
 		//Establecer al poder de ataque
 		if(planeta.getTechnologyAtack() == 0) {
 			
-			this.setBaseDamage(this.BASE_DAMAGE_LIGTHHUNTER);
+			this.setBaseDamage(ConnectionBBDD.BASE_DAMAGE_LIGTHHUNTER);
 			
 		}else {
 					
-			this.setBaseDamage(this.BASE_DAMAGE_LIGTHHUNTER + (planeta.getTechnologyAtack() * this.PLUS_ATTACK_LIGTHHUNTER_BY_TECHNOLOGY) * 10);		
+			this.setBaseDamage(ConnectionBBDD.BASE_DAMAGE_LIGTHHUNTER + (planeta.getTechnologyAtack() * this.PLUS_ATTACK_LIGTHHUNTER_BY_TECHNOLOGY) * 10);		
 		}		
     }
 	
@@ -52,12 +53,12 @@ public class LightHunter extends Ship{
 
 	@Override
 	public int getMetalCost() {	
-		return this.METAL_COST_LIGTHHUNTER;
+		return ConnectionBBDD.METAL_COST_LIGTHHUNTER;
 	}
 
 	@Override
 	public int getDeuteriumCost() {	
-		return this.DEUTERIUM_COST_LIGTHHUNTER;
+		return ConnectionBBDD.DEUTERIUM_COST_LIGTHHUNTER;
 	}
 
 	@Override

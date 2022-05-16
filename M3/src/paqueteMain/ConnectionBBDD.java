@@ -5,13 +5,14 @@ import java.io.InputStreamReader;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 public class ConnectionBBDD {
 
-	private Connection con;
+	private static Connection con;
 	
 	// COST SHIPS
     public static int METAL_COST_LIGTHHUNTER;
@@ -30,27 +31,33 @@ public class ConnectionBBDD {
     public static int DEUTERIUM_COST_IONCANNON;
     public static int DEUTERIUM_COST_PLASMACANNON;  
     // ARMOR SHIPS
-    public static int ARMOR_LIGTHHUNTER = 400;
-    public static int ARMOR_HEAVYHUNTER = 1000;
-    public static int ARMOR_BATTLESHIP = 6000;
-    public static int ARMOR_ARMOREDSHIP = 8000;
+    public static int ARMOR_LIGTHHUNTER;
+    public static int ARMOR_HEAVYHUNTER;
+    public static int ARMOR_BATTLESHIP;
+    public static int ARMOR_ARMOREDSHIP;
     
     // ARMOR DEFENSES
-    public static int ARMOR_MISSILELAUNCHER = 200;
-    public static int ARMOR_IONCANNON = 1200;
-    public static int ARMOR_PLASMACANNON = 7000;
+    public static int ARMOR_MISSILELAUNCHER;
+    public static int ARMOR_IONCANNON;
+    public static int ARMOR_PLASMACANNON;
     
     // BASE DAMAGE SHIPS
-    public static int BASE_DAMAGE_LIGTHHUNTER = 80;
-    public static int BASE_DAMAGE_HEAVYHUNTER = 150;
-    public static int BASE_DAMAGE_BATTLESHIP = 1000;
-    public static int BASE_DAMAGE_ARMOREDSHIP = 700;    
+    public static int BASE_DAMAGE_LIGTHHUNTER;
+    public static int BASE_DAMAGE_HEAVYHUNTER;
+    public static int BASE_DAMAGE_BATTLESHIP;
+    public static int BASE_DAMAGE_ARMOREDSHIP;    
     // BASE DAMAGE DEFENSES   
-    public static int BASE_DAMAGE_MISSILELAUNCHER = 80;
-    public static int BASE_DAMAGE_IONCANNON = 250;
-    public static int BASE_DAMAGE_PLASMACANNON = 2000;
-    
+    public static int BASE_DAMAGE_MISSILELAUNCHER;
+    public static int BASE_DAMAGE_IONCANNON;
+    public static int BASE_DAMAGE_PLASMACANNON;
+    // PLANET TECHNOLOGY COST
+    public static int UPGRADE_BASE_DEFENSE_TECHNOLOGY_DEUTERIUM_COST;
+    public static int UPGRADE_BASE_ATTACK_TECHNOLOGY_DEUTERIUM_COST;
+    public static int UPGRADE_PLUS_DEFENSE_TECHNOLOGY_DEUTERIUM_COST;
+    public static int UPGRADE_PLUS_ATTACK_TECHNOLOGY_DEUTERIUM_COST;
 	
+    
+    
 	public ConnectionBBDD(String user, String password) {
 		
 		BufferedReader entrada = new BufferedReader(new InputStreamReader(System.in));
@@ -71,8 +78,6 @@ public class ConnectionBBDD {
 	public Connection getCon() {
 		return this.con;
 	}	
-	
-	
 	
 	private void updateData(Connection con) {
 		
@@ -113,9 +118,8 @@ public class ConnectionBBDD {
 				}		
 			}
 				
-			result = statement.executeQuery("select * from defenses");
 			
-			
+			result = statement.executeQuery("select * from defenses");		
 			while(result.next()) {
 				
 				switch(result.getInt(1)) {
@@ -142,16 +146,76 @@ public class ConnectionBBDD {
 			}
 									
 			
+			result = statement.executeQuery("select * from defenses");	
+			
+			
 		} catch (SQLException e1) {
 
 			e1.printStackTrace();
 		}		
+			
 		
+	}
+	
+	public static ResultSet SelectQuery(Connection con, String query) {
 		
+		Statement stmnt = null;
+		ResultSet rs = null;
 		
+		try {
+			stmnt=con.createStatement();//conectar statement con la base de datos
+			rs=stmnt.executeQuery(query);//ejecutar query
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
+		return rs;
+	}
+	
+	public static void insertPlanetTechnologyDefense(int planetId, int lvl) {
 		
+		try {
+			
+			Statement statement = con.createStatement();
+			statement.executeUpdate("insert into planets(id_planet, tech_defense) values(" + planetId + "," + lvl + ")");
+					
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}	
+	}
+	
+	public static void insertPlanetTechnologyAttack(int planetId, int lvl) {
+		
+		try {
+			
+			Statement statement = con.createStatement();
+			statement.executeUpdate("insert into planets(id_planet, tech_attack) values(" + planetId + "," + lvl + ")");
+					
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}	
+	}
+		
+	public static void insertarNuevoUsuario(int idUser, String userName, String password, String date) {
+		
+		try {
+			
+			Statement statement = con.createStatement();
+			PreparedStatement preStatement = con.prepareStatement("insert into users(ID_USER, USER_NAME, USER_PASSWORD, BIRTH_DATE) values(?,?,?,?)");
+			preStatement.setInt(1, idUser);
+			preStatement.setString(2, userName);
+			preStatement.setString(3, password);
+			preStatement.setString(4, date);
+			preStatement.executeUpdate();
+					
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}	
 		
 		
 	}
+
+	
+	
 }
