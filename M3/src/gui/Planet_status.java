@@ -1,18 +1,23 @@
 package gui;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 public class Planet_status extends JPanel {
+	private Image fondo;
 	
 	public Planet_status (Main_window window, int planetId){
-		this.setLayout(new FlowLayout(FlowLayout.LEFT));
-		this.setOpaque(false);
 		this.setSize(window.getWidth(),window.getHeight());
 		this.setPreferredSize(this.getSize());
+		this.setLayout(new FlowLayout(FlowLayout.LEFT));
+		this.setOpaque(false);
 		this.setBorder(new EmptyBorder(10,10,10,10));
 		this.setVisible(true);
 		
@@ -75,6 +80,21 @@ public class Planet_status extends JPanel {
 		right.add(new Spacer());
 		
 		right.add(back);
+		
+		/*
+		BufferedImage myPicture = null;
+		try {
+			myPicture = ImageIO.read(new File("assets/images/planets/dirt_planet.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		JLabel picLabel = new JLabel(new ImageIcon(myPicture.getScaledInstance(500, 500, 1)));
+		picLabel.setSize(500,500);
+		picLabel.setPreferredSize(picLabel.getSize());
+		
+		left.add(picLabel);
+		*/
 		
 		this.setVisible(true);
 	}
@@ -287,7 +307,6 @@ class DefenseTable extends JPanel{
 		
 		this.add(rowTitles);
 		
-		this.add(new DefenseRow(this));
 		this.add(new DefenseRow(this));
 		this.add(new DefenseRow(this));
 		this.add(new DefenseRow(this));
