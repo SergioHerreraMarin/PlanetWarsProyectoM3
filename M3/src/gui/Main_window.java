@@ -8,7 +8,8 @@ import javax.swing.*;
 public class Main_window extends JFrame {
 Toolkit tk = Toolkit.getDefaultToolkit();
 	public Main_window() {
-		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		//this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		this.setSize(1000,500);
 		this.setResizable(false);
 		this.getContentPane().setBackground(Color.black);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);

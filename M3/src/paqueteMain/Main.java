@@ -5,6 +5,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import gui.IG;
+import gui.Main_window;
 
 public class Main {
 	
@@ -29,7 +30,7 @@ public class Main {
 		
 		IG ig = new IG();
 		ig.startWindow();
-		
+		//Main_window ps = new Main_window();
 		
 		Planet planet = new Planet();
 		
