@@ -12,7 +12,7 @@ public class Main {
 	static int enemyMetal = Variables.METAL_BASE_ENEMY_ARMY, enemyDeuterium = Variables.DEUTERIUM_BASE_ENEMY_ARMY;
 	
 	public static void main(String[] args) {
-		
+		System.out.println("main in");
 		enemyArmy[0] = new ArrayList<MilitaryUnit>();
 		enemyArmy[1] = new ArrayList<MilitaryUnit>();
 		enemyArmy[2] = new ArrayList<MilitaryUnit>();
@@ -45,7 +45,7 @@ public class Main {
 		
 		
 		ConnectionBBDD connection = new ConnectionBBDD("alumnoAMS20", "alumnoAMS20");
-
+		System.out.println("connection generated");
 		//TIMERTASK
 		/*
 	    TimerTask task = new TimerTask() {
@@ -74,7 +74,7 @@ public class Main {
 	
 	/**GENERA UNA FLOTA ENEMIGA*/
 	public static void createEnemyArmy(ArrayList<MilitaryUnit>[] enemyArmy) {
-			
+		System.out.println("enemyArmyGen in");
 		Random random = new Random();
 		int numRandom = 0, suma = 0, total = 0;
 		int[] probabilidades = {35, 25, 20, 20};
@@ -137,7 +137,7 @@ public class Main {
 		
 	/**MUESTRA QUE TIPO DE EJERCITO NOS VIENE A ATACAR*/
 	public static void viewThread() {
-		
+		System.out.println("thread in");
 		int numLigthHunter = 0, numHeavyHunter = 0, numBattleShip = 0, numArmoredShip = 0;
 		
 		for(int i = 0; i < enemyArmy.length; i++) {
