@@ -14,6 +14,7 @@ public class Planet_status extends JPanel {
 	private Image fondo;
 	
 	public Planet_status (Main_window window, int planetId){
+		System.out.println(window.getWidth());
 		this.setSize(window.getWidth(),window.getHeight());
 		this.setPreferredSize(this.getSize());
 		this.setLayout(new FlowLayout(FlowLayout.LEFT));
@@ -34,7 +35,13 @@ public class Planet_status extends JPanel {
 		right.setPreferredSize(right.getSize());
 		right.setLayout(new FlowLayout(FlowLayout.LEFT));
 		right.setOpaque(false);
-		this.add(right);
+		JScrollPane scrollFrame = new JScrollPane(right);
+		right.setAutoscrolls(true);
+		scrollFrame.setPreferredSize(new Dimension((this.getWidth()/2)-23,this.getHeight()));
+		scrollFrame.setOpaque(false);
+		scrollFrame.getViewport().setOpaque(false);
+		this.add(scrollFrame);
+		//this.add(right);
 		
 		JLabel planetName = new JLabel("PLANET NAME");
 		planetName.setSize(left.getWidth()-20,60);

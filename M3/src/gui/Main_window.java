@@ -12,7 +12,6 @@ Toolkit tk = Toolkit.getDefaultToolkit();
 		this.setResizable(false);
 		this.getContentPane().setBackground(Color.black);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		this.pack();
 		this.setVisible(true);
 		this.add(new Planet_status(this,0));
 		this.setVisible(true);

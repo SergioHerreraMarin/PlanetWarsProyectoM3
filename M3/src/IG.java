@@ -584,5 +584,4 @@ class LogoPanel extends JPanel {
 	      setOpaque(false);
 	    }
 	  }
-
 }
