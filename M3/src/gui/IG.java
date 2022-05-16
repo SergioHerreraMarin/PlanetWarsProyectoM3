@@ -35,6 +35,8 @@ import java.awt.Rectangle;
 import java.util.Calendar;
 import com.toedter.calendar.JDateChooser;
 
+import paqueteMain.ConnectionBBDD;
+
 public class IG extends JFrame {
 
 	private JPanel contentPane;
@@ -145,10 +147,10 @@ public class IG extends JFrame {
 		});
 		
 		//-----------------COMPONENTS LABELLOGIN-----------------//
-		passwordField = new JPasswordField();
-		passwordField.setFont(new Font("Lato Medium", Font.BOLD, 15));
-		passwordField.setBounds(276, 433, 166, 34);
-		LabelLogin.add(passwordField);
+		JFormattedTextField formattedTextField_2 = new JFormattedTextField();
+		formattedTextField_2.setFont(new Font("Lato Medium", Font.BOLD, 15));
+		formattedTextField_2.setBounds(276, 433, 166, 34);
+		LabelLogin.add(formattedTextField_2);
 		
 		JLabel lblNewLabel = new JLabel("PLANET WARS");
 		lblNewLabel.setFont(new Font("Lato Medium", Font.BOLD, 40));
@@ -195,22 +197,11 @@ public class IG extends JFrame {
 			}
 		});
 		
-		JRadioButton rdbtnNewRadioButton = new JRadioButton("");
-		rdbtnNewRadioButton.setFont(new Font("Lato Medium", Font.BOLD, 20));
-		rdbtnNewRadioButton.setBounds(440, 433, 26, 34);
-		LabelLogin.add(rdbtnNewRadioButton);
-		rdbtnNewRadioButton.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				if (rdbtnNewRadioButton.isSelected()) {
-					passwordField.setEchoChar((char)0);
-				}else{
-					passwordField.setEchoChar('\u25cf');
-				}
-			}
-		});
+		
+		JFormattedTextField formattedTextField_45 = new JFormattedTextField();
+		formattedTextField_45.setFont(new Font("Lato Medium", Font.BOLD, 15));
+		formattedTextField_45.setBounds(586, 553 - 140, 166, 34);
+		LabelCreateAccount.add(formattedTextField_45);
 		
 		Button button = new Button("LOGIN");
 		button.setForeground(Color.BLACK);
@@ -221,75 +212,82 @@ public class IG extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				LabelLogin.setVisible(false);
-				LabelChoosePlanet.setVisible(true);
+				int numUsers = 0;
+				System.out.println("Usuario: " + formattedTextField.getText() + " Password: " + formattedTextField_2.getText());
+				numUsers = ConnectionBBDD.comprobarLogin(formattedTextField.getText(), formattedTextField_2.getText());
+				
+				if(numUsers == 1) {	
+					new Main_window();
+					cerrar();
+					//LabelLogin.setVisible(false);
+					//LabelChoosePlanet.setVisible(true);
+					
+				}
+				
 			}
 		});
 		
+		
+		
 		//-----------------COMPONENTS LABELCREATEACCOUNT-----------------//
-		passwordField_1 = new JPasswordField();
-		passwordField_1.setFont(new Font("Lato Medium", Font.BOLD, 15));
-		passwordField_1.setBounds(586, 553, 166, 34);
-		LabelCreateAccount.add(passwordField_1);
+	
 		
 		JLabel lblNewLabel_4 = new JLabel("PLANET WARS");
 		lblNewLabel_4.setForeground(Color.WHITE);
 		lblNewLabel_4.setFont(new Font("Lato Medium", Font.BOLD, 40));
-		lblNewLabel_4.setBounds(452, 298, 332, 41);
+		lblNewLabel_4.setBounds(452, 298 - 140, 332, 41);
 		LabelCreateAccount.add(lblNewLabel_4);
 		
 		JLabel lblNewLabel_1_1 = new JLabel("USERNAME");
 		lblNewLabel_1_1.setForeground(Color.WHITE);
 		lblNewLabel_1_1.setFont(new Font("Lato Medium", Font.BOLD, 25));
-		lblNewLabel_1_1.setBounds(398, 455, 146, 34);
+		lblNewLabel_1_1.setBounds(398, 455 - 140, 146, 34);
 		LabelCreateAccount.add(lblNewLabel_1_1);
 		
 		JLabel lblNewLabel_2_1_1 = new JLabel("PASSWORD");
 		lblNewLabel_2_1_1.setForeground(Color.WHITE);
 		lblNewLabel_2_1_1.setFont(new Font("Lato Medium", Font.BOLD, 25));
-		lblNewLabel_2_1_1.setBounds(398, 553, 170, 34);
+		lblNewLabel_2_1_1.setBounds(398, 553 - 140, 170, 34);
 		LabelCreateAccount.add(lblNewLabel_2_1_1);
 		
 		JFormattedTextField formattedTextField_1 = new JFormattedTextField();
 		formattedTextField_1.setFont(new Font("Lato Medium", Font.BOLD, 20));
-		formattedTextField_1.setBounds(586, 455, 166, 34);
+		formattedTextField_1.setBounds(586, 455 - 140, 166, 34);
 		LabelCreateAccount.add(formattedTextField_1);
 		
-		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("");
-		rdbtnNewRadioButton_1.setFont(new Font("Lato Medium", Font.BOLD, 20));
-		rdbtnNewRadioButton_1.setBounds(750, 553, 26, 34);
-		LabelCreateAccount.add(rdbtnNewRadioButton_1);
-		rdbtnNewRadioButton_1.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				if (rdbtnNewRadioButton_1.isSelected()) {
-					passwordField_1.setEchoChar((char)0);
-				}else{
-					passwordField_1.setEchoChar('\u25cf');
-				}
-			}
-		});
+		JDateChooser dateChooser = new JDateChooser();
+		dateChooser.setDateFormatString("dd/MM/yyyy");
+		dateChooser.setBounds(586, 663 - 140, 166, 34);
+		LabelCreateAccount.add(dateChooser);
 		
 		
 		Button button_1 = new Button("LOGIN");
 		button_1.setForeground(Color.BLACK);
 		button_1.setFont(new Font("Lato Medium", Font.BOLD, 25));
-		button_1.setBounds(398, 764, 189, 50);
+		button_1.setBounds(398, 764 - 140, 189, 50);
 		LabelCreateAccount.add(button_1);
+		
+		button_1.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				ConnectionBBDD.insertarNuevoUsuario(formattedTextField_1.getText(), formattedTextField_2.getText());
+				System.out.println("INSERTAR");
+			}
+			
+			
+		});
+		
+		
 		
 		JLabel lblNewLabel_2_1_1_1 = new JLabel("BIRTH DATE");
 		lblNewLabel_2_1_1_1.setForeground(Color.WHITE);
 		lblNewLabel_2_1_1_1.setFont(new Font("Lato Medium", Font.BOLD, 25));
-		lblNewLabel_2_1_1_1.setBounds(398, 663, 170, 34);
+		lblNewLabel_2_1_1_1.setBounds(398, 663 - 140, 170, 34);
 		LabelCreateAccount.add(lblNewLabel_2_1_1_1);
 		
-		JDateChooser dateChooser = new JDateChooser();
-		dateChooser.setDateFormatString("dd/MM/yyyy");
-		dateChooser.setBounds(586, 663, 166, 34);
-		LabelCreateAccount.add(dateChooser);
+		
 
 		//-----------------COMPONENTS LABELCHOOSEPLANET-----------------//
 		JLabel Planet1Name = new JLabel("PLANET_NAME");
@@ -575,7 +573,9 @@ public class IG extends JFrame {
 		});
 	}
 	
-	
+	public void cerrar() {
+		this.dispose();
+	}
 }
 
 class LogoPanel extends JPanel {

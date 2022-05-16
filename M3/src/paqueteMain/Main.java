@@ -14,23 +14,25 @@ public class Main {
 	static int enemyMetal = Variables.METAL_BASE_ENEMY_ARMY, enemyDeuterium = Variables.DEUTERIUM_BASE_ENEMY_ARMY;	
 	static boolean startGame = false;
 	
-	//Ventanas
-	
-	
-	
+
 	public static void main(String[] args) {
 		
 		//LO PRIMERO
 		ConnectionBBDD connection = new ConnectionBBDD("alumnoAMS20", "alumnoAMS20");
+		
+		//Main_window mainWindow = new Main_window();
+		
 		
 		enemyArmy[0] = new ArrayList<MilitaryUnit>();
 		enemyArmy[1] = new ArrayList<MilitaryUnit>();
 		enemyArmy[2] = new ArrayList<MilitaryUnit>();
 		enemyArmy[3] = new ArrayList<MilitaryUnit>();
 		
+		//VENTANA REGISTRAR/LOGIN
 		IG ig = new IG();
 		ig.startWindow();
 		//Main_window ps = new Main_window();
+
 		
 		Planet planet = new Planet();
 		

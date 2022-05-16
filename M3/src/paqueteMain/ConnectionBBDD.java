@@ -10,6 +10,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import javax.swing.JOptionPane;
+
 public class ConnectionBBDD {
 
 	private static Connection con;
@@ -197,25 +199,63 @@ public class ConnectionBBDD {
 		}	
 	}
 		
-	public static void insertarNuevoUsuario(int idUser, String userName, String password, String date) {
+	public static void insertarNuevoUsuario(String userName, String password) {
+		
+		int newId = 0;
 		
 		try {
 			
 			Statement statement = con.createStatement();
-			PreparedStatement preStatement = con.prepareStatement("insert into users(ID_USER, USER_NAME, USER_PASSWORD, BIRTH_DATE) values(?,?,?,?)");
-			preStatement.setInt(1, idUser);
+			ResultSet result = statement.executeQuery("select max(id_user) + 1 from users");
+			result.next();
+			newId = result.getInt(1);
+			
+			PreparedStatement preStatement = con.prepareStatement("insert into users(ID_USER, USER_NAME, USER_PASSWORD) values(?,?,?)");
+			preStatement.setInt(1, newId);
 			preStatement.setString(2, userName);
 			preStatement.setString(3, password);
-			preStatement.setString(4, date);
 			preStatement.executeUpdate();
 					
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}	
 		
-		
 	}
 
 	
+	public static int comprobarLogin(String userName, String password) {
+		
+		int numUsuarios;
+		
+		try {
+			
+			Statement statement = con.createStatement();
+			ResultSet result = statement.executeQuery("select count(ID_USER) from users where USER_NAME = '" + userName + "' and USER_PASSWORD = '" + password + "'");
+			result.next();
+			numUsuarios = result.getInt(1);
+			System.out.println("DEUVLEVE: " + numUsuarios);
+			if(numUsuarios == 0) {
+				
+				JOptionPane.showMessageDialog(null, "No existen usuarios", "INFORME", JOptionPane.INFORMATION_MESSAGE);
+				
+			}
+			
+			
+			return numUsuarios;		
+			
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+			
+		}
+		
+		
+		
+		
+		return 0;
+		
+	}
 	
+	
+
 }
