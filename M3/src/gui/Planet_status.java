@@ -81,7 +81,7 @@ public class Planet_status extends JPanel {
 		
 		right.add(back);
 		
-		
+		/*
 		BufferedImage myPicture = null;
 		try {
 			myPicture = ImageIO.read(new File("assets/images/planets/dirt_planet.png"));
@@ -94,7 +94,7 @@ public class Planet_status extends JPanel {
 		picLabel.setPreferredSize(picLabel.getSize());
 		
 		left.add(picLabel);
-		
+		*/
 		
 		this.setVisible(true);
 	}
