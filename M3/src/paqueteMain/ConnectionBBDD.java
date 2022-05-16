@@ -5,7 +5,9 @@ import java.io.InputStreamReader;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class ConnectionBBDD {
 
@@ -26,8 +28,27 @@ public class ConnectionBBDD {
     public static int METAL_COST_PLASMACANNON;
     public static int DEUTERIUM_COST_MISSILELAUNCHER;
     public static int DEUTERIUM_COST_IONCANNON;
-    public static int DEUTERIUM_COST_PLASMACANNON;
-     
+    public static int DEUTERIUM_COST_PLASMACANNON;  
+    // ARMOR SHIPS
+    public static int ARMOR_LIGTHHUNTER = 400;
+    public static int ARMOR_HEAVYHUNTER = 1000;
+    public static int ARMOR_BATTLESHIP = 6000;
+    public static int ARMOR_ARMOREDSHIP = 8000;
+    
+    // ARMOR DEFENSES
+    public static int ARMOR_MISSILELAUNCHER = 200;
+    public static int ARMOR_IONCANNON = 1200;
+    public static int ARMOR_PLASMACANNON = 7000;
+    
+    // BASE DAMAGE SHIPS
+    public static int BASE_DAMAGE_LIGTHHUNTER = 80;
+    public static int BASE_DAMAGE_HEAVYHUNTER = 150;
+    public static int BASE_DAMAGE_BATTLESHIP = 1000;
+    public static int BASE_DAMAGE_ARMOREDSHIP = 700;    
+    // BASE DAMAGE DEFENSES   
+    public static int BASE_DAMAGE_MISSILELAUNCHER = 80;
+    public static int BASE_DAMAGE_IONCANNON = 250;
+    public static int BASE_DAMAGE_PLASMACANNON = 2000;
     
 	
 	public ConnectionBBDD(String user, String password) {
@@ -55,59 +76,82 @@ public class ConnectionBBDD {
 	
 	private void updateData(Connection con) {
 		
-		try {		
-			// COST SHIPS
-			CallableStatement getCostShips = con.prepareCall("{call get_cost_ships (?,?,?)}");
-			getCostShips.setInt(1, 1);
-			
-			getCostShips.registerOutParameter(2, java.sql.Types.INTEGER);
-			getCostShips.registerOutParameter(3, java.sql.Types.INTEGER);
-			
-			getCostShips.execute();
-			METAL_COST_LIGTHHUNTER = getCostShips.getInt(2);
-			DEUTERIUM_COST_LIGTHHUNTER = getCostShips.getInt(3);
-					
-			getCostShips.setInt(1, 2);
-			getCostShips.execute();
-			METAL_COST_HEAVYHUNTER = getCostShips.getInt(2);
-			DEUTERIUM_COST_HEAVYHUNTER = getCostShips.getInt(3);
 		
-			getCostShips.setInt(1, 3);
-			getCostShips.execute();
-			METAL_COST_BATTLESHIP = getCostShips.getInt(2);
-			DEUTERIUM_COST_BATTLESHIP = getCostShips.getInt(3);
+		try {
 			
-			getCostShips.setInt(1, 4);
-			getCostShips.execute();
-			METAL_COST_ARMOREDSHIP = getCostShips.getInt(2);
-			DEUTERIUM_COST_ARMOREDSHIP = getCostShips.getInt(3);
+			Statement statement = con.createStatement();
+			ResultSet result = statement.executeQuery("select * from ships");
+			
+			while(result.next()) {
+				
+				switch(result.getInt(1)) {
+				
+				case 1:
+					METAL_COST_LIGTHHUNTER = result.getInt(3);
+					DEUTERIUM_COST_LIGTHHUNTER = result.getInt(4);
+					ARMOR_LIGTHHUNTER = result.getInt(6);
+					BASE_DAMAGE_LIGTHHUNTER = result.getInt(8);
+					break;
+				case 2:
+					METAL_COST_HEAVYHUNTER = result.getInt(3);
+					DEUTERIUM_COST_HEAVYHUNTER = result.getInt(4);
+					ARMOR_HEAVYHUNTER = result.getInt(6);
+				    BASE_DAMAGE_HEAVYHUNTER = result.getInt(8);
+					break;
+				case 3:
+					METAL_COST_BATTLESHIP = result.getInt(3);
+					DEUTERIUM_COST_BATTLESHIP = result.getInt(4);
+					ARMOR_BATTLESHIP = result.getInt(6);
+					BASE_DAMAGE_BATTLESHIP = result.getInt(8);
+					break;
+				case 4:
+					METAL_COST_ARMOREDSHIP = result.getInt(3);
+					DEUTERIUM_COST_ARMOREDSHIP = result.getInt(4);
+					ARMOR_ARMOREDSHIP = result.getInt(6);
+					BASE_DAMAGE_ARMOREDSHIP = result.getInt(8);
+					break;			
+				}		
+			}
+				
+			result = statement.executeQuery("select * from defenses");
+			
+			
+			while(result.next()) {
+				
+				switch(result.getInt(1)) {
+				
+				case 1:
+					METAL_COST_MISSILELAUNCHER = result.getInt(3);
+					DEUTERIUM_COST_MISSILELAUNCHER = result.getInt(4);
+					ARMOR_MISSILELAUNCHER = result.getInt(6);
+					BASE_DAMAGE_MISSILELAUNCHER = result.getInt(8);
+					break;
+				case 2:
+					METAL_COST_IONCANNON = result.getInt(3);
+					DEUTERIUM_COST_IONCANNON = result.getInt(4);
+					ARMOR_IONCANNON = result.getInt(6);
+					BASE_DAMAGE_IONCANNON = result.getInt(8);
+					break;
+				case 3:
+					METAL_COST_PLASMACANNON = result.getInt(3);
+					DEUTERIUM_COST_PLASMACANNON = result.getInt(4);		
+					ARMOR_PLASMACANNON = result.getInt(6);
+					BASE_DAMAGE_PLASMACANNON = result.getInt(8);
+					break;	
+				}		
+			}
+									
+			
+		} catch (SQLException e1) {
 
-			// COST DEFENSES 
-			CallableStatement getCostDefenses = con.prepareCall("{call get_cost_defenses (?,?,?)}");
-			getCostDefenses.setInt(1, 1);
-			
-			getCostDefenses.registerOutParameter(2, java.sql.Types.INTEGER);
-			getCostDefenses.registerOutParameter(3, java.sql.Types.INTEGER);
-			
-			getCostDefenses.execute();	
-			METAL_COST_MISSILELAUNCHER = getCostDefenses.getInt(2);
-			DEUTERIUM_COST_MISSILELAUNCHER = getCostDefenses.getInt(3);
-			
-			getCostDefenses.setInt(1, 2);
-			getCostDefenses.execute();	
-			METAL_COST_IONCANNON = getCostDefenses.getInt(2);
-			DEUTERIUM_COST_IONCANNON = getCostDefenses.getInt(3);
+			e1.printStackTrace();
+		}		
 		
-			getCostDefenses.setInt(1, 3);
-			getCostDefenses.execute();	
-			METAL_COST_PLASMACANNON = getCostDefenses.getInt(2);
-			DEUTERIUM_COST_PLASMACANNON = getCostDefenses.getInt(3);
-
-			
-			
-		} catch (SQLException e) {
-
-			e.printStackTrace();
-		}	
+		
+		
+		
+		
+		
+		
 	}
 }
