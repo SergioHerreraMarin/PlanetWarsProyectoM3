@@ -1,3 +1,4 @@
+package gui;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.Image;
@@ -44,18 +45,7 @@ public class IG extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					IG frame = new IG();
-					frame.setVisible(true);
-					
-					
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+		
 	}
 
 	/**
@@ -67,6 +57,7 @@ public class IG extends JFrame {
 		setUndecorated(true);
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 	    setSize(screenSize.width, screenSize.height);
+	    System.out.println(screenSize);
 		contentPane = new JPanel();
 		contentPane.setBounds(0, 0, getWidth(), getHeight());
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -566,6 +557,25 @@ public class IG extends JFrame {
 		
         
 	}
+		
+	
+	public void startWindow() {
+		
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					IG frame = new IG();
+					frame.setVisible(true);
+					
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+	
+	
 }
 
 class LogoPanel extends JPanel {

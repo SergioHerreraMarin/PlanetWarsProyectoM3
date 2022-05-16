@@ -4,12 +4,18 @@ import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import gui.IG;
+
 public class Main {
 	
 	static ArrayList<MilitaryUnit>[] enemyArmy = new ArrayList[4];
 	static ArrayList<Battle> battles = new ArrayList<Battle>();
 	static int enemyMetal = Variables.METAL_BASE_ENEMY_ARMY, enemyDeuterium = Variables.DEUTERIUM_BASE_ENEMY_ARMY;	
 	static boolean startGame = false;
+	
+	//Ventanas
+	
+	
 	
 	public static void main(String[] args) {
 		
@@ -21,7 +27,8 @@ public class Main {
 		enemyArmy[2] = new ArrayList<MilitaryUnit>();
 		enemyArmy[3] = new ArrayList<MilitaryUnit>();
 		
-		
+		IG ig = new IG();
+		ig.startWindow();
 		
 		
 		Planet planet = new Planet();
@@ -32,17 +39,17 @@ public class Main {
 		//Planet planet = new Planet();
 		//createEnemyArmy(enemyArmy);
 		
-		try {
-			
-			planet.newLigthHunter(17);
-			planet.newHeavyHunter(8);
-			planet.newBattleShip(1);
-			planet.newArmoredShip(1);
-			
-		} catch (ResourceException e) {
-
-			e.printStackTrace();
-		}
+//		try {
+//			
+//			planet.newLigthHunter(17);
+//			planet.newHeavyHunter(8);
+//			planet.newBattleShip(1);
+//			planet.newArmoredShip(1);
+//			
+//		} catch (ResourceException e) {
+//
+//			e.printStackTrace();
+//		}
 		
 		
 
