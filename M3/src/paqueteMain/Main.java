@@ -4,6 +4,9 @@ import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import gui.IG;
+import gui.Main_window;
+
 public class Main {
 	
 	static ArrayList<MilitaryUnit>[] enemyArmy = new ArrayList[4];
@@ -11,17 +14,27 @@ public class Main {
 	static int enemyMetal = Variables.METAL_BASE_ENEMY_ARMY, enemyDeuterium = Variables.DEUTERIUM_BASE_ENEMY_ARMY;	
 	static boolean startGame = false;
 	
+
 	public static void main(String[] args) {
-	
+		
+		//LO PRIMERO
 		ConnectionBBDD connection = new ConnectionBBDD("alumnoAMS20", "alumnoAMS20");
+		
+		//Main_window mainWindow = new Main_window();
+		
 		
 		enemyArmy[0] = new ArrayList<MilitaryUnit>();
 		enemyArmy[1] = new ArrayList<MilitaryUnit>();
 		enemyArmy[2] = new ArrayList<MilitaryUnit>();
 		enemyArmy[3] = new ArrayList<MilitaryUnit>();
 		
+		//VENTANA REGISTRAR/LOGIN
+		IG ig = new IG();
+		ig.startWindow();
+		//Main_window ps = new Main_window();
+
 		
-		Planet planet = new Planet("TEST");
+		Planet planet = new Planet();
 		
 		
 		//Llamar ventana principal 
@@ -53,29 +66,28 @@ public class Main {
 		
 		
 		
-		Timer timer = new Timer();
-	    TimerTask task = new TimerTask() {
-
-			@Override
-			public void run() {
-				
-				if(startGame) {
-				
-					createEnemyArmy(enemyArmy);
-					Battle battle = new Battle(planet.getArmy(), enemyArmy, planet);
-					battles.add(battle);
-					
-				}		
-			}    	
-	    };
-		
-	    timer.schedule(task, 180000);
+//		Timer timer = new Timer();
+//	    TimerTask task = new TimerTask() {
+//
+//			@Override
+//			public void run() {
+//				
+//				if(startGame) {
+//				
+//					createEnemyArmy(enemyArmy);
+//					Battle battle = new Battle(planet.getArmy(), enemyArmy, planet);
+//					battles.add(battle);
+//					
+//				}		
+//			}    	
+//	    };
+//		
+//	    timer.schedule(task, 180000);
 
 		
 	}//main
 		
 
-	
 		
 	/**GENERA UNA FLOTA ENEMIGA*/
 	public static void createEnemyArmy(ArrayList<MilitaryUnit>[] enemyArmy) {
@@ -160,4 +172,8 @@ public class Main {
 				"\nHeavy Hunter: " + numHeavyHunter + "\nBattleShip: " + numBattleShip + 
 				"\nArmored Ship: " + numArmoredShip);		
 	}
+		
+
 }
+		
+
