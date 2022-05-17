@@ -9,18 +9,20 @@ public class Planet {
 	private int technologyDefense;
 	private int technologyAtack;
 	private int metal, deuterium;
+	private String name;
 	private int upgradeDefenseTechnologyDeuteriumCost = Variables.UPGRADE_BASE_DEFENSE_TECHNOLOGY_DEUTERIUM_COST;
 	private int upgradeAttackTechnologyDeuteriumCost = Variables.UPGRADE_BASE_ATTACK_TECHNOLOGY_DEUTERIUM_COST;
 	
 	private ArrayList<MilitaryUnit>[] army = new ArrayList[7];
 	
 	
-	public Planet() {
+	public Planet(String name) {
 		
 		technologyDefense = 0;
 		technologyAtack = 0;
 		metal = 0;
 		deuterium = 0;
+		this.name = name;
 		
 		army[0] = new ArrayList<MilitaryUnit>();
 		army[1] = new ArrayList<MilitaryUnit>();
@@ -72,7 +74,13 @@ public class Planet {
 		this.army = army;
 	}
 	
+	public void setName(String name) {
+		this.name = name;
+	}
 	
+	public String getName() {
+		return this.name;
+	}
 	
 	public void upgradeTechnologyDefense() throws ResourceException {
 				

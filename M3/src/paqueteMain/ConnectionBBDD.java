@@ -240,22 +240,43 @@ public class ConnectionBBDD {
 				
 			}
 			
-			
 			return numUsuarios;		
+			
+			
 			
 		} catch (SQLException e) {
 
 			e.printStackTrace();
 			
-		}
-		
-		
-		
-		
-		return 0;
-		
+		}	
+		return 0;		
 	}
 	
+	
+	//METODO CONTAR PLANETAS DEL USUARIO
+		public int getPlanetasCount(String userName) {
+			
+			String query = "SELECT count(planet_name) FROM planets where user_name = " + userName + ";";
+			
+			ResultSet rs = null;
+			int resultado = 0;
+			
+			try {
+				rs = DB_utils.SelectQuery(con, query) ;
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			try {
+				rs.next();
+				resultado = rs.getInt(1);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return resultado;
+		}
 	
 
 }
