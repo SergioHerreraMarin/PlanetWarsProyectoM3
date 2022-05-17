@@ -14,6 +14,7 @@ public class TerminalGame implements Variables{
 	static Statement statement;
 	static ResultSet result;
 	static int id_user;
+	static Planet currentPlanet;
 public static void main(String[] args) throws SQLException {
 	//CONNECTION ################################################################################################################################
 	try {
@@ -123,13 +124,76 @@ public static void main(String[] args) throws SQLException {
 		result = statement.executeQuery("select max(id_planet) from planets where planet_name = '"+planetName+"'");
 		result.next();
 		int id = result.getInt(1);
-		Planet currentPlanet = new Planet(planetName);
+/*!!*/	currentPlanet = new Planet(planetName);
 		statement.executeUpdate(String.valueOf("insert into planets (ID_PLANET,PLANET_NAME,TECH_ATTACK,TECH_DEFENSE,TECH_ATTACK_UPGRADE_COST,TECH_DEFENSE_UPGRADE_COST,DEUTERIUM,METAL,CRYSTAL,ID_USER) values ("+id+",'"+currentPlanet.getName()+"',"+currentPlanet.getTechnologyAtack()+","+currentPlanet.getTechnologyDefense()+","+Variables.UPGRADE_BASE_ATTACK_TECHNOLOGY_DEUTERIUM_COST+","+Variables.UPGRADE_BASE_DEFENSE_TECHNOLOGY_DEUTERIUM_COST+","+currentPlanet.getDeuterium()+","+currentPlanet.getMetal()+","+0+","+id_user+")"));
 		System.out.println("Analisis complete");
 	}
+	//SELECCIONAR PLANETA EXISTENTE #############################################################################################################
 	else if (planetIdList.contains(option)) {//choose planet with id
+		//obtenció id planeta
+		result = statement.executeQuery("select id_planet from planets where planet_name = '"+planetName+"'");
+		result.next();
+		int id_planet = result.getInt(1);
+		//creació objecte planeta amb dades existents
+		currentPlanet = new Planet(planetName);
+		result = statement.executeQuery("select * from planets where planet_name = '"+planetName+"'");
+		result.next();
+		currentPlanet.setDeuterium(result.getInt(7));
+		currentPlanet.setMetal(result.getInt(8));
+		currentPlanet.setTechnologyAtack(result.getInt(3));
+		currentPlanet.setTechnologyDefense(result.getInt(4));
+		// re-formació army
+		String[] shipList = {"Light hunter","Heavy_hunter","Battle ship","Armored ship"};
+		for (int a = 0 ; a == shipList.length-1 ; a++) {
+			result = statement.executeQuery("select * from planet_ships where ship_name = '"+shipList[a]+"' and id_planet = "+id_planet);
+			while (result.next()) {
+				
+			}
+		}
+		//Planet status
 		System.out.println("Landed onto planet "+planetName);
+		System.out.println("");
+		System.out.println("Welcome to "+planetName);
 		//abre planetstatus con planeta id option
+		valid = false;
+		while (valid == false) {
+		System.out.println(" ");
+		System.out.println("PLANET STATUS MENU");
+		System.out.println("1)VIEW PLANET STATS");
+		System.out.println("2)BUILD ARMY");
+		System.out.println("3)UPGRADE TECHNOLOGIES");
+		System.out.println("4)VIEW BATTLE REPORTS");
+		System.out.println("5)EXIT");
+		System.out.println("");
+		System.out.println("Option:");
+		option = input.next();
+		
+		if (option.contains("1")) {//view stats
+			System.out.println("");
+			currentPlanet.printStats();
+		}
+		else if (option.contains("2")) {//build army
+			System.out.println("");
+			
+		}
+		else if (option.contains("3")) {//upgrade techs
+			System.out.println("");
+			
+		}
+		else if (option.contains("4")) {//view reports
+			System.out.println("");
+			
+		}
+		else if (option.contains("5")) {//exit
+			System.out.println("");
+			
+		}
+		else {
+			System.out.println("");
+			System.out.println("ERROR:_INVALID OPTION_");
+			valid = false;
+		}
+		}
 	}
 	else {
 		System.out.println("ERROR:_INVALID OPTION_");
