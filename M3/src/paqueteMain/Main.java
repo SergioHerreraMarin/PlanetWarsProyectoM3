@@ -34,7 +34,7 @@ public class Main {
 		//Main_window ps = new Main_window();
 
 		
-		//Planet planet = new Planet();
+		Planet planet = new Planet("wefwe");
 		
 		
 		//Llamar ventana principal 
@@ -42,20 +42,18 @@ public class Main {
 		//Planet planet = new Planet();
 		//createEnemyArmy(enemyArmy);
 		
-//		try {
-//			
-//			planet.newLigthHunter(17);
-//			planet.newHeavyHunter(8);
-//			planet.newBattleShip(1);
-//			planet.newArmoredShip(1);
-//			
-//		} catch (ResourceException e) {
-//
-//			e.printStackTrace();
-//		}
-		
-		
+		try {
+			
+			planet.newLigthHunter(17);
+			planet.newHeavyHunter(8);
+			planet.newBattleShip(1);
+			planet.newArmoredShip(5);
+			
+		} catch (ResourceException e) {
 
+			e.printStackTrace();
+		}
+		
 		//viewThread();
 		
 		//Battle battle = new Battle(planet.getArmy(), enemyArmy);
