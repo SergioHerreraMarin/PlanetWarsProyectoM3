@@ -36,27 +36,7 @@ public class User {
 
 
 
-	//METODO CONTAR PLANETAS DEL USUARIO
-	public int getPlanetasCount(Connection con) {
-		String query = "SELECT count(planet_name) FROM planets where user_name = " + getUser_name() + ";";
-		ResultSet rs = null;
-		int resultado = 0;
-		try {
-			rs = DB_utils.SelectQuery(con, query) ;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		try {
-			rs.next();
-			resultado = rs.getInt(1);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return resultado;
-	}
+	
 	
 	
 	//METODO IMPRIMIR LISTADO DE PLANETAS
@@ -151,9 +131,9 @@ public class User {
 		resultado = stmnt.executeUpdate();//solo devuelve 0 o 1
 		
 		if (resultado == 0) {
-			System.out.println("no se ha realizado la modificación");
+			System.out.println("no se ha realizado la modificaciï¿½n");
 		} else {
-			System.out.println("se ha realizado la modificación");
+			System.out.println("se ha realizado la modificaciï¿½n");
 		}
 		
 		} catch (SQLException e) {

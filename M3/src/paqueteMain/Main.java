@@ -34,7 +34,7 @@ public class Main {
 		//Main_window ps = new Main_window();
 
 		
-		Planet planet = new Planet();
+		//Planet planet = new Planet();
 		
 		
 		//Llamar ventana principal 
@@ -174,6 +174,15 @@ public class Main {
 	}
 		
 
+	
+	
+
+	
+	
+
+	
 }
 		
+
+
 

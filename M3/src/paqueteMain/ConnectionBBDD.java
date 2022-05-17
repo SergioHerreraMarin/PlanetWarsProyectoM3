@@ -278,5 +278,26 @@ public class ConnectionBBDD {
 			return resultado;
 		}
 	
+		
+		public int getCurrentUserID(String name) {
+			
+			int id;
+			
+			try {
+				
+				Statement statement = con.createStatement();
+				ResultSet result = statement.executeQuery("select id_user from users where name = '" + name + "'");
+				result.next();
+				id = result.getInt(1);
+				
+				return id;
+				
+			} catch (SQLException e) {
+				
+				e.printStackTrace();
+				return -1;
+			}		
+		}
 
+		
 }
