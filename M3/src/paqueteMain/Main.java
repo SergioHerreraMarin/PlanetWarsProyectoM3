@@ -21,7 +21,7 @@ public class Main {
 		enemyArmy[3] = new ArrayList<MilitaryUnit>();
 		
 		
-		Planet planet = new Planet();
+		Planet planet = new Planet("TEST");
 		
 		
 		//Llamar ventana principal 
