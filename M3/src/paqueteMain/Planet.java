@@ -5,7 +5,7 @@ import java.util.Iterator;
 import javax.swing.JOptionPane;
 
 public class Planet {
-
+	private String name;
 	private int technologyDefense;
 	private int technologyAtack;
 	private int metal, deuterium;
@@ -15,8 +15,8 @@ public class Planet {
 	private ArrayList<MilitaryUnit>[] army = new ArrayList[7];
 	
 	
-	public Planet() {
-		
+	public Planet(String name) {
+		this.name = name;
 		technologyDefense = 0;
 		technologyAtack = 0;
 		metal = 0;
@@ -30,7 +30,12 @@ public class Planet {
 		army[5] = new ArrayList<MilitaryUnit>();
 		army[6] = new ArrayList<MilitaryUnit>();		
 	}
-	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	
 	public int getTechnologyDefense() {
 		return technologyDefense;
