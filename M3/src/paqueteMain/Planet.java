@@ -5,11 +5,10 @@ import java.util.Iterator;
 import javax.swing.JOptionPane;
 
 public class Planet {
-
+	private String name;
 	private int technologyDefense;
 	private int technologyAtack;
 	private int metal, deuterium;
-	private String name;
 	private int upgradeDefenseTechnologyDeuteriumCost = Variables.UPGRADE_BASE_DEFENSE_TECHNOLOGY_DEUTERIUM_COST;
 	private int upgradeAttackTechnologyDeuteriumCost = Variables.UPGRADE_BASE_ATTACK_TECHNOLOGY_DEUTERIUM_COST;
 	
@@ -17,12 +16,11 @@ public class Planet {
 	
 	
 	public Planet(String name) {
-		
+		this.name = name;
 		technologyDefense = 0;
 		technologyAtack = 0;
 		metal = 0;
 		deuterium = 0;
-		this.name = name;
 		
 		army[0] = new ArrayList<MilitaryUnit>();
 		army[1] = new ArrayList<MilitaryUnit>();
@@ -32,7 +30,12 @@ public class Planet {
 		army[5] = new ArrayList<MilitaryUnit>();
 		army[6] = new ArrayList<MilitaryUnit>();		
 	}
-	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	
 	public int getTechnologyDefense() {
 		return technologyDefense;
@@ -74,13 +77,7 @@ public class Planet {
 		this.army = army;
 	}
 	
-	public void setName(String name) {
-		this.name = name;
-	}
 	
-	public String getName() {
-		return this.name;
-	}
 	
 	public void upgradeTechnologyDefense() throws ResourceException {
 				

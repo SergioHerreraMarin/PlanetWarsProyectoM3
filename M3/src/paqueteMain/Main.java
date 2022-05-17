@@ -4,7 +4,6 @@ import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import gui.GUI_Crear_Planeta;
 import gui.IG;
 import gui.Main_window;
 
@@ -15,8 +14,7 @@ public class Main {
 	static int enemyMetal = Variables.METAL_BASE_ENEMY_ARMY, enemyDeuterium = Variables.DEUTERIUM_BASE_ENEMY_ARMY;	
 	static boolean startGame = false;
 	
-	
-	
+
 	public static void main(String[] args) {
 		
 		//LO PRIMERO
@@ -33,46 +31,10 @@ public class Main {
 		//VENTANA REGISTRAR/LOGIN
 		IG ig = new IG();
 		ig.startWindow();
+		//Main_window ps = new Main_window();
 
 		
-		
-		
-		//PARA USAR LA INTERFICIE PLANETAS - SUSANA
-
-        //user que viene del login:
-        User user1 = new User(20, "Margie", "ofiaefja", new Date());
-
-        int countPlanetas = user1.getPlanetasCount(connection.getCon());
-        String[] listadoPlanetas = user1.getPlanetasListado(connection.getCon(), countPlanetas);
-        ArrayList<JButton> botones = new ArrayList<JButton>();
-
-        if (countPlanetas == 0) {
-            System.out.println("Hay que crear un nuevo planeta para el usuario porque no tiene ninguno.");
-            user1.crearPlaneta(connection.getCon(), 20);
-
-            //user1.crearPlaneta(connection.getCon(), "" , 2, 8, 40, 80, 40, 10, 10);
-            //GUI_CREAR_PLANETA
-            GUI_Crear_Planeta pantallaCrearPlaneta = new GUI_Crear_Planeta();
-        } else {
-            //System.out.println("El usuario tiene " + countPlanetas + " planetas.");
-            //System.out.println(Arrays.asList());
-            //GUI_MOSTRAR_PLANETAS
-            //GUI_Mostrar_Seleccionar_Planeta pantallaSeleccionPlaneta = new GUI_Mostrar_Seleccionar_Planeta(listadoPlanetas);
-
-
-            //pantallaSeleccionPlaneta.setLayout(new BoxLayout(pantallaSeleccionPlaneta, BoxLayout.Y_AXIS));
-            //
-        }
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		Planet planet = new Planet("");
+		Planet planet = new Planet();
 		
 		
 		//Llamar ventana principal 

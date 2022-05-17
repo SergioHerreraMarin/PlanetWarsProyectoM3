@@ -1,4 +1,5 @@
-package gui;
+package PROYECTO;
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.Image;
@@ -31,15 +32,11 @@ import javax.swing.JRadioButton;
 import javax.swing.JMenuBar;
 import javax.swing.border.LineBorder;
 import java.awt.Rectangle;
-import java.util.ArrayList;
+
 import java.util.Calendar;
 import com.toedter.calendar.JDateChooser;
 
-import paqueteMain.ConnectionBBDD;
-import paqueteMain.Date;
-import paqueteMain.User;
-
-public class IG extends JFrame {
+public class IG2 extends JFrame {
 
 	private JPanel contentPane;
 	private JPasswordField passwordField;
@@ -49,19 +46,29 @@ public class IG extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					IG frame = new IG();
+					frame.setVisible(true);
+					
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 	}
 
 	/**
 	 * Create the frame.
 	 */
-	public IG() {
+	public IG2() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setExtendedState(JFrame.MAXIMIZED_BOTH); 
 		setUndecorated(true);
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 	    setSize(screenSize.width, screenSize.height);
-	    System.out.println(screenSize);
 		contentPane = new JPanel();
 		contentPane.setBounds(0, 0, getWidth(), getHeight());
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -149,10 +156,10 @@ public class IG extends JFrame {
 		});
 		
 		//-----------------COMPONENTS LABELLOGIN-----------------//
-		JFormattedTextField formattedTextField_2 = new JFormattedTextField();
-		formattedTextField_2.setFont(new Font("Lato Medium", Font.BOLD, 15));
-		formattedTextField_2.setBounds(276, 433, 166, 34);
-		LabelLogin.add(formattedTextField_2);
+		passwordField = new JPasswordField();
+		passwordField.setFont(new Font("Lato Medium", Font.BOLD, 15));
+		passwordField.setBounds(276, 433, 166, 34);
+		LabelLogin.add(passwordField);
 		
 		JLabel lblNewLabel = new JLabel("PLANET WARS");
 		lblNewLabel.setFont(new Font("Lato Medium", Font.BOLD, 40));
@@ -199,11 +206,22 @@ public class IG extends JFrame {
 			}
 		});
 		
-		
-		JFormattedTextField formattedTextField_45 = new JFormattedTextField();
-		formattedTextField_45.setFont(new Font("Lato Medium", Font.BOLD, 15));
-		formattedTextField_45.setBounds(586, 553 - 140, 166, 34);
-		LabelCreateAccount.add(formattedTextField_45);
+		JRadioButton rdbtnNewRadioButton = new JRadioButton("");
+		rdbtnNewRadioButton.setFont(new Font("Lato Medium", Font.BOLD, 20));
+		rdbtnNewRadioButton.setBounds(440, 433, 26, 34);
+		LabelLogin.add(rdbtnNewRadioButton);
+		rdbtnNewRadioButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				if (rdbtnNewRadioButton.isSelected()) {
+					passwordField.setEchoChar((char)0);
+				}else{
+					passwordField.setEchoChar('\u25cf');
+				}
+			}
+		});
 		
 		Button button = new Button("LOGIN");
 		button.setForeground(Color.BLACK);
@@ -214,107 +232,75 @@ public class IG extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				int numUsers = 0;
-				System.out.println("Usuario: " + formattedTextField.getText() + " Password: " + formattedTextField_2.getText());
-				numUsers = ConnectionBBDD.comprobarLogin(formattedTextField.getText(), formattedTextField_2.getText());
-				
-				if(numUsers == 1) {	
-					
-					User user1 = new User(20, "Margie", "ofiaefja", new Date());
-
-			        int countPlanetas = user1.getPlanetasCount(connection.getCon());
-			        String[] listadoPlanetas = user1.getPlanetasListado(connection.getCon(), countPlanetas);
-			        ArrayList<JButton> botones = new ArrayList<JButton>();
-									
-					if (countPlanetas == 0) {
-			            System.out.println("Hay que crear un nuevo planeta para el usuario porque no tiene ninguno.");
-			            user1.crearPlaneta(connection.getCon(), 20);
-
-			            //user1.crearPlaneta(connection.getCon(), "" , 2, 8, 40, 80, 40, 10, 10);
-			            //GUI_CREAR_PLANETA
-			            GUI_Crear_Planeta pantallaCrearPlaneta = new GUI_Crear_Planeta();
-			        } else {
-			            //System.out.println("El usuario tiene " + countPlanetas + " planetas.");
-			            //System.out.println(Arrays.asList());
-			            //GUI_MOSTRAR_PLANETAS
-			            //GUI_Mostrar_Seleccionar_Planeta pantallaSeleccionPlaneta = new GUI_Mostrar_Seleccionar_Planeta(listadoPlanetas);
-
-
-			            //pantallaSeleccionPlaneta.setLayout(new BoxLayout(pantallaSeleccionPlaneta, BoxLayout.Y_AXIS));
-			            //
-			        }
-					
-					
-					new Main_window();
-					cerrar();
-					//LabelLogin.setVisible(false);
-					//LabelChoosePlanet.setVisible(true);
-					
-				}				
+				// TODO Auto-generated method stub
+				LabelLogin.setVisible(false);
+				LabelChoosePlanet.setVisible(true);
 			}
 		});
 		
-		
-		
 		//-----------------COMPONENTS LABELCREATEACCOUNT-----------------//
-	
+		passwordField_1 = new JPasswordField();
+		passwordField_1.setFont(new Font("Lato Medium", Font.BOLD, 15));
+		passwordField_1.setBounds(586, 553, 166, 34);
+		LabelCreateAccount.add(passwordField_1);
 		
 		JLabel lblNewLabel_4 = new JLabel("PLANET WARS");
 		lblNewLabel_4.setForeground(Color.WHITE);
 		lblNewLabel_4.setFont(new Font("Lato Medium", Font.BOLD, 40));
-		lblNewLabel_4.setBounds(452, 298 - 140, 332, 41);
+		lblNewLabel_4.setBounds(452, 298, 332, 41);
 		LabelCreateAccount.add(lblNewLabel_4);
 		
 		JLabel lblNewLabel_1_1 = new JLabel("USERNAME");
 		lblNewLabel_1_1.setForeground(Color.WHITE);
 		lblNewLabel_1_1.setFont(new Font("Lato Medium", Font.BOLD, 25));
-		lblNewLabel_1_1.setBounds(398, 455 - 140, 146, 34);
+		lblNewLabel_1_1.setBounds(398, 455, 146, 34);
 		LabelCreateAccount.add(lblNewLabel_1_1);
 		
 		JLabel lblNewLabel_2_1_1 = new JLabel("PASSWORD");
 		lblNewLabel_2_1_1.setForeground(Color.WHITE);
 		lblNewLabel_2_1_1.setFont(new Font("Lato Medium", Font.BOLD, 25));
-		lblNewLabel_2_1_1.setBounds(398, 553 - 140, 170, 34);
+		lblNewLabel_2_1_1.setBounds(398, 553, 170, 34);
 		LabelCreateAccount.add(lblNewLabel_2_1_1);
 		
 		JFormattedTextField formattedTextField_1 = new JFormattedTextField();
 		formattedTextField_1.setFont(new Font("Lato Medium", Font.BOLD, 20));
-		formattedTextField_1.setBounds(586, 455 - 140, 166, 34);
+		formattedTextField_1.setBounds(586, 455, 166, 34);
 		LabelCreateAccount.add(formattedTextField_1);
 		
-		JDateChooser dateChooser = new JDateChooser();
-		dateChooser.setDateFormatString("dd/MM/yyyy");
-		dateChooser.setBounds(586, 663 - 140, 166, 34);
-		LabelCreateAccount.add(dateChooser);
-		
-		
-		Button button_1 = new Button("REGISTER");
-		button_1.setForeground(Color.BLACK);
-		button_1.setFont(new Font("Lato Medium", Font.BOLD, 25));
-		button_1.setBounds(398, 764 - 140, 189, 50);
-		LabelCreateAccount.add(button_1);
-		
-		button_1.addActionListener(new ActionListener() {
-
+		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("");
+		rdbtnNewRadioButton_1.setFont(new Font("Lato Medium", Font.BOLD, 20));
+		rdbtnNewRadioButton_1.setBounds(750, 553, 26, 34);
+		LabelCreateAccount.add(rdbtnNewRadioButton_1);
+		rdbtnNewRadioButton_1.addActionListener(new ActionListener() {
+			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
-				ConnectionBBDD.insertarNuevoUsuario(formattedTextField_1.getText(), formattedTextField_2.getText());
-				System.out.println("INSERTAR");
+				// TODO Auto-generated method stub
+				if (rdbtnNewRadioButton_1.isSelected()) {
+					passwordField_1.setEchoChar((char)0);
+				}else{
+					passwordField_1.setEchoChar('\u25cf');
+				}
 			}
-			
-			
 		});
 		
 		
+		Button button_1 = new Button("LOGIN");
+		button_1.setForeground(Color.BLACK);
+		button_1.setFont(new Font("Lato Medium", Font.BOLD, 25));
+		button_1.setBounds(398, 764, 189, 50);
+		LabelCreateAccount.add(button_1);
 		
 		JLabel lblNewLabel_2_1_1_1 = new JLabel("BIRTH DATE");
 		lblNewLabel_2_1_1_1.setForeground(Color.WHITE);
 		lblNewLabel_2_1_1_1.setFont(new Font("Lato Medium", Font.BOLD, 25));
-		lblNewLabel_2_1_1_1.setBounds(398, 663 - 140, 170, 34);
+		lblNewLabel_2_1_1_1.setBounds(398, 663, 170, 34);
 		LabelCreateAccount.add(lblNewLabel_2_1_1_1);
 		
-		
+		JDateChooser dateChooser = new JDateChooser();
+		dateChooser.setDateFormatString("dd/MM/yyyy");
+		dateChooser.setBounds(586, 663, 166, 34);
+		LabelCreateAccount.add(dateChooser);
 
 		//-----------------COMPONENTS LABELCHOOSEPLANET-----------------//
 		JLabel Planet1Name = new JLabel("PLANET_NAME");
@@ -582,27 +568,6 @@ public class IG extends JFrame {
 		
         
 	}
-		
-	
-	public void startWindow() {
-		
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					IG frame = new IG();
-					frame.setVisible(true);
-					
-					
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-	
-	public void cerrar() {
-		this.dispose();
-	}
 }
 
 class LogoPanel extends JPanel {
@@ -621,4 +586,5 @@ class LogoPanel extends JPanel {
 	      setOpaque(false);
 	    }
 	  }
+
 }
