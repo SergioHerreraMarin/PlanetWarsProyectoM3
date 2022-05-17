@@ -4,19 +4,40 @@ import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import gui.IG;
+import gui.Main_window;
+
 public class Main {
 	
 	static ArrayList<MilitaryUnit>[] enemyArmy = new ArrayList[4];
+	static ArrayList<Battle> battles = new ArrayList<Battle>();
+	static int enemyMetal = Variables.METAL_BASE_ENEMY_ARMY, enemyDeuterium = Variables.DEUTERIUM_BASE_ENEMY_ARMY;	
+	static boolean startGame = false;
 	
-	
-	static int enemyMetal = Variables.METAL_BASE_ENEMY_ARMY, enemyDeuterium = Variables.DEUTERIUM_BASE_ENEMY_ARMY;
-	
+
 	public static void main(String[] args) {
+		
+		//LO PRIMERO
+		ConnectionBBDD connection = new ConnectionBBDD("alumnoAMS20", "alumnoAMS20");
+		
+		//Main_window mainWindow = new Main_window();
+		
 		
 		enemyArmy[0] = new ArrayList<MilitaryUnit>();
 		enemyArmy[1] = new ArrayList<MilitaryUnit>();
 		enemyArmy[2] = new ArrayList<MilitaryUnit>();
 		enemyArmy[3] = new ArrayList<MilitaryUnit>();
+		
+		//VENTANA REGISTRAR/LOGIN
+		IG ig = new IG();
+		ig.startWindow();
+		//Main_window ps = new Main_window();
+
+		
+		Planet planet = new Planet();
+		
+		
+		//Llamar ventana principal 
 		
 		//Planet planet = new Planet();
 		//createEnemyArmy(enemyArmy);
@@ -34,7 +55,7 @@ public class Main {
 //		}
 		
 		
-		//Timer timer = new Timer();
+
 		//viewThread();
 		
 		//Battle battle = new Battle(planet.getArmy(), enemyArmy);
@@ -44,34 +65,30 @@ public class Main {
 		//System.out.println(battle.getBattleReportGeneral());
 		
 		
-		ConnectionBBDD connection = new ConnectionBBDD("alumnoAMS20", "alumnoAMS20");
-
-		//TIMERTASK
-		/*
-	    TimerTask task = new TimerTask() {
-
-			@Override
-			public void run() {
-				
-				//crear flota enemiga
-				
-				
-				//crear batalla
-				
-			}
-	    	
-	    };
 		
-	    //3 minutos son 180000 milisegundos
-	    timer.schedule(task, 180000);
-	    
-	    */
+//		Timer timer = new Timer();
+//	    TimerTask task = new TimerTask() {
+//
+//			@Override
+//			public void run() {
+//				
+//				if(startGame) {
+//				
+//					createEnemyArmy(enemyArmy);
+//					Battle battle = new Battle(planet.getArmy(), enemyArmy, planet);
+//					battles.add(battle);
+//					
+//				}		
+//			}    	
+//	    };
+//		
+//	    timer.schedule(task, 180000);
+
 		
 	}//main
 		
 
-	//METODOS
-	
+		
 	/**GENERA UNA FLOTA ENEMIGA*/
 	public static void createEnemyArmy(ArrayList<MilitaryUnit>[] enemyArmy) {
 			
@@ -156,6 +173,7 @@ public class Main {
 				"\nArmored Ship: " + numArmoredShip);		
 	}
 		
+
 }
 		
 

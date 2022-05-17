@@ -8,22 +8,22 @@ public class HeavyHunter extends Ship {
 		//Establecer el blindaje
 		if(planeta.getTechnologyDefense() == 0) {
 			
-			this.setInitialArmor(this.ARMOR_HEAVYHUNTER);
+			this.setInitialArmor(ConnectionBBDD.ARMOR_HEAVYHUNTER);
 		
 		}else {
 			
-			this.setInitialArmor(this.ARMOR_HEAVYHUNTER + (planeta.getTechnologyDefense() * this.PLUS_ARMOR_HEAVYHUNTER_BY_TECHNOLOGY) * 10);		
+			this.setInitialArmor(ConnectionBBDD.ARMOR_HEAVYHUNTER + (planeta.getTechnologyDefense() * this.PLUS_ARMOR_HEAVYHUNTER_BY_TECHNOLOGY) * 10);		
 		}
 		
 		
 		//Establecer al poder de ataque
 		if(planeta.getTechnologyAtack() == 0) {
 			
-			this.setBaseDamage(this.BASE_DAMAGE_HEAVYHUNTER);
+			this.setBaseDamage(ConnectionBBDD.BASE_DAMAGE_HEAVYHUNTER);
 			
 		}else {
 					
-			this.setBaseDamage(this.BASE_DAMAGE_HEAVYHUNTER + (planeta.getTechnologyAtack() * this.PLUS_ATTACK_HEAVYHUNTER_BY_TECHNOLOGY) * 10);		
+			this.setBaseDamage(ConnectionBBDD.BASE_DAMAGE_HEAVYHUNTER + (planeta.getTechnologyAtack() * this.PLUS_ATTACK_HEAVYHUNTER_BY_TECHNOLOGY) * 10);		
 		}			
     }
 	
@@ -52,12 +52,12 @@ public class HeavyHunter extends Ship {
 
 	@Override
 	public int getMetalCost() {	
-		return this.METAL_COST_HEAVYHUNTER;
+		return ConnectionBBDD.METAL_COST_HEAVYHUNTER;
 	}
 
 	@Override
 	public int getDeuteriumCost() {
-		return this.DEUTERIUM_COST_HEAVYHUNTER;
+		return ConnectionBBDD.DEUTERIUM_COST_HEAVYHUNTER;
 	}
 
 	@Override

@@ -45,8 +45,7 @@ public interface Variables {
     public final int BASE_DAMAGE_BATTLESHIP = 1000;
     public final int BASE_DAMAGE_ARMOREDSHIP = 700;
     
-    // BASE DAMAGE DEFENSES
-    
+    // BASE DAMAGE DEFENSES   
     public final int BASE_DAMAGE_MISSILELAUNCHER = 80;
     public final int BASE_DAMAGE_IONCANNON = 250;
     public final int BASE_DAMAGE_PLASMACANNON = 2000;

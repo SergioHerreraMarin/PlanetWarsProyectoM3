@@ -8,22 +8,22 @@ public class BattleShip extends Ship {
 		//Establecer el blindaje
 		if(planeta.getTechnologyDefense() == 0) {
 			
-			this.setInitialArmor(this.ARMOR_BATTLESHIP);
+			this.setInitialArmor(ConnectionBBDD.ARMOR_BATTLESHIP);
 		
 		}else {
 			
-			this.setInitialArmor(this.ARMOR_BATTLESHIP + (planeta.getTechnologyDefense() * this.PLUS_ARMOR_BATTLESHIP_BY_TECHNOLOGY) * 10);		
+			this.setInitialArmor(ConnectionBBDD.ARMOR_BATTLESHIP + (planeta.getTechnologyDefense() * this.PLUS_ARMOR_BATTLESHIP_BY_TECHNOLOGY) * 10);		
 		}
 		
 		
 		//Establecer al poder de ataque
 		if(planeta.getTechnologyAtack() == 0) {
 			
-			this.setBaseDamage(this.BASE_DAMAGE_BATTLESHIP);
+			this.setBaseDamage(ConnectionBBDD.BASE_DAMAGE_BATTLESHIP);
 			
 		}else {
 					
-			this.setBaseDamage(this.BASE_DAMAGE_BATTLESHIP + (planeta.getTechnologyAtack() * this.PLUS_ATTACK_BATTLESHIP_BY_TECHNOLOGY) * 10);		
+			this.setBaseDamage(ConnectionBBDD.BASE_DAMAGE_BATTLESHIP + (planeta.getTechnologyAtack() * this.PLUS_ATTACK_BATTLESHIP_BY_TECHNOLOGY) * 10);		
 		}			
     }
 	
@@ -51,12 +51,12 @@ public class BattleShip extends Ship {
 	
 	@Override
 	public int getMetalCost() {
-		return this.METAL_COST_BATTLESHIP;
+		return ConnectionBBDD.METAL_COST_BATTLESHIP;
 	}
 
 	@Override
 	public int getDeuteriumCost() {
-		return this.DEUTERIUM_COST_BATTLESHIP;
+		return ConnectionBBDD.DEUTERIUM_COST_BATTLESHIP;
 	}
 
 	@Override

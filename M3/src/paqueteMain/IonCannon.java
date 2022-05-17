@@ -8,21 +8,21 @@ public class IonCannon extends Defense{
 		//Establecer el blindaje
 		if(planeta.getTechnologyDefense() == 0) {
 			
-			this.setInitialArmor(this.ARMOR_IONCANNON);
+			this.setInitialArmor(ConnectionBBDD.ARMOR_IONCANNON);
 		
 		}else {
 			
-			this.setInitialArmor(this.ARMOR_IONCANNON + (planeta.getTechnologyDefense() * this.PLUS_ARMOR_IONCANNON_BY_TECHNOLOGY) * 10);		
+			this.setInitialArmor(ConnectionBBDD.ARMOR_IONCANNON + (planeta.getTechnologyDefense() * this.PLUS_ARMOR_IONCANNON_BY_TECHNOLOGY) * 10);		
 		}
 						
 		//Establecer al poder de ataque
 		if(planeta.getTechnologyAtack() == 0) {
 			
-			this.setBaseDamage(this.BASE_DAMAGE_IONCANNON);
+			this.setBaseDamage(ConnectionBBDD.BASE_DAMAGE_IONCANNON);
 			
 		}else {
 					
-			this.setBaseDamage(this.BASE_DAMAGE_IONCANNON + (planeta.getTechnologyAtack() * this.PLUS_ATTACK_IONCANNON_BY_TECHNOLOGY) * 10);		
+			this.setBaseDamage(ConnectionBBDD.BASE_DAMAGE_IONCANNON + (planeta.getTechnologyAtack() * this.PLUS_ATTACK_IONCANNON_BY_TECHNOLOGY) * 10);		
 		}			
     }
 	
@@ -54,12 +54,12 @@ public class IonCannon extends Defense{
 	
 	@Override
 	public int getMetalCost() {
-		return this.METAL_COST_IONCANNON;
+		return ConnectionBBDD.METAL_COST_IONCANNON;
 	}
 
 	@Override
 	public int getDeuteriumCost() {
-		return this.DEUTERIUM_COST_IONCANNON;
+		return ConnectionBBDD.DEUTERIUM_COST_IONCANNON;
 	}
 
 	@Override

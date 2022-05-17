@@ -8,21 +8,21 @@ public class MissileLauncher extends Defense{
 		//Establecer el blindaje
 		if(planeta.getTechnologyDefense() == 0) {
 			
-			this.setInitialArmor(this.ARMOR_MISSILELAUNCHER);
+			this.setInitialArmor(ConnectionBBDD.ARMOR_MISSILELAUNCHER);
 		
 		}else {
 			
-			this.setInitialArmor(this.ARMOR_MISSILELAUNCHER + (planeta.getTechnologyDefense() * this.PLUS_ARMOR_MISSILELAUNCHER_BY_TECHNOLOGY) * 10);		
+			this.setInitialArmor(ConnectionBBDD.ARMOR_MISSILELAUNCHER + (planeta.getTechnologyDefense() * this.PLUS_ARMOR_MISSILELAUNCHER_BY_TECHNOLOGY) * 10);		
 		}
 			
 		//Establecer al poder de ataque
 		if(planeta.getTechnologyAtack() == 0) {
 			
-			this.setBaseDamage(this.BASE_DAMAGE_MISSILELAUNCHER);
+			this.setBaseDamage(ConnectionBBDD.BASE_DAMAGE_MISSILELAUNCHER);
 			
 		}else {
 					
-			this.setBaseDamage(this.BASE_DAMAGE_MISSILELAUNCHER + (planeta.getTechnologyAtack() * this.PLUS_ATTACK_MISSILELAUNCHER_BY_TECHNOLOGY) * 10);		
+			this.setBaseDamage(ConnectionBBDD.BASE_DAMAGE_MISSILELAUNCHER + (planeta.getTechnologyAtack() * this.PLUS_ATTACK_MISSILELAUNCHER_BY_TECHNOLOGY) * 10);		
 		}			
     }
 	
@@ -48,11 +48,11 @@ public class MissileLauncher extends Defense{
 	
 	
 	public int getMetalCost() {
-		return this.METAL_COST_MISSILELAUNCHER;
+		return ConnectionBBDD.METAL_COST_MISSILELAUNCHER;
 	}
 	
 	public int getDeuteriumCost() {
-		return this.DEUTERIUM_COST_MISSILELAUNCHER;
+		return ConnectionBBDD.DEUTERIUM_COST_MISSILELAUNCHER;
 	}
 	
 	public int getChanceGeneratinWaste() {
