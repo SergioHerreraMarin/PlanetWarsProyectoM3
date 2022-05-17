@@ -4,7 +4,7 @@ import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import gui.IG;
+//import gui.IG;
 import gui.Main_window;
 
 public class Main {
@@ -29,12 +29,12 @@ public class Main {
 		enemyArmy[3] = new ArrayList<MilitaryUnit>();
 		
 		//VENTANA REGISTRAR/LOGIN
-		IG ig = new IG();
-		ig.startWindow();
+		//IG ig = new IG();
+		//ig.startWindow();
 		//Main_window ps = new Main_window();
 
 		
-		Planet planet = new Planet();
+		//Planet planet = new Planet("TEST");
 		
 		
 		//Llamar ventana principal 
