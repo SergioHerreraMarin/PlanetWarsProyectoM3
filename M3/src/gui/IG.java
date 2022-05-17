@@ -31,11 +31,13 @@ import javax.swing.JRadioButton;
 import javax.swing.JMenuBar;
 import javax.swing.border.LineBorder;
 import java.awt.Rectangle;
-
+import java.util.ArrayList;
 import java.util.Calendar;
 import com.toedter.calendar.JDateChooser;
 
 import paqueteMain.ConnectionBBDD;
+import paqueteMain.Date;
+import paqueteMain.User;
 
 public class IG extends JFrame {
 
@@ -217,13 +219,38 @@ public class IG extends JFrame {
 				numUsers = ConnectionBBDD.comprobarLogin(formattedTextField.getText(), formattedTextField_2.getText());
 				
 				if(numUsers == 1) {	
+					
+					User user1 = new User(20, "Margie", "ofiaefja", new Date());
+
+			        int countPlanetas = user1.getPlanetasCount(connection.getCon());
+			        String[] listadoPlanetas = user1.getPlanetasListado(connection.getCon(), countPlanetas);
+			        ArrayList<JButton> botones = new ArrayList<JButton>();
+									
+					if (countPlanetas == 0) {
+			            System.out.println("Hay que crear un nuevo planeta para el usuario porque no tiene ninguno.");
+			            user1.crearPlaneta(connection.getCon(), 20);
+
+			            //user1.crearPlaneta(connection.getCon(), "" , 2, 8, 40, 80, 40, 10, 10);
+			            //GUI_CREAR_PLANETA
+			            GUI_Crear_Planeta pantallaCrearPlaneta = new GUI_Crear_Planeta();
+			        } else {
+			            //System.out.println("El usuario tiene " + countPlanetas + " planetas.");
+			            //System.out.println(Arrays.asList());
+			            //GUI_MOSTRAR_PLANETAS
+			            //GUI_Mostrar_Seleccionar_Planeta pantallaSeleccionPlaneta = new GUI_Mostrar_Seleccionar_Planeta(listadoPlanetas);
+
+
+			            //pantallaSeleccionPlaneta.setLayout(new BoxLayout(pantallaSeleccionPlaneta, BoxLayout.Y_AXIS));
+			            //
+			        }
+					
+					
 					new Main_window();
 					cerrar();
 					//LabelLogin.setVisible(false);
 					//LabelChoosePlanet.setVisible(true);
 					
-				}
-				
+				}				
 			}
 		});
 		
@@ -261,7 +288,7 @@ public class IG extends JFrame {
 		LabelCreateAccount.add(dateChooser);
 		
 		
-		Button button_1 = new Button("LOGIN");
+		Button button_1 = new Button("REGISTER");
 		button_1.setForeground(Color.BLACK);
 		button_1.setFont(new Font("Lato Medium", Font.BOLD, 25));
 		button_1.setBounds(398, 764 - 140, 189, 50);
