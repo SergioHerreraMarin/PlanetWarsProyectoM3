@@ -1,11 +1,11 @@
 # PlanetWarsProyectoM3
 ## Membres:
 ---
--Sergio Herrera
--Jordi Cañas
--Carles Aguilar
--Robert Sánchez
--Susana Figueroa
+- Sergio Herrera
+- Jordi Cañas
+- Carles Aguilar
+- Robert Sánchez
+- Susana Figueroa
 
 ## Descripció:
 ---
