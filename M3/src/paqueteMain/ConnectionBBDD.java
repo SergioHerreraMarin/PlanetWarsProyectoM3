@@ -60,32 +60,9 @@ public class ConnectionBBDD {
 	
     
     
-	public ConnectionBBDD(String user, String password) {
-		
-		BufferedReader entrada = new BufferedReader(new InputStreamReader(System.in));
-		
-        try {
-        	
-			con = DriverManager.getConnection("jdbc:oracle:thin:@192.168.40.2:1521:orcl", user, password);
-						
-        } catch (SQLException e) {
-				
-			e.printStackTrace();
-		}	
-        
-        updateData(con);//Se cargan todos los datos de la BBDD
-        
-	}
-	
-	public Connection getCon() {
-		return this.con;
-	}	
-	
-	private void updateData(Connection con) {
-		
-		
+	public ConnectionBBDD(Connection con) {
 		try {
-			
+			ConnectionBBDD.con = con;
 			Statement statement = con.createStatement();
 			ResultSet result = statement.executeQuery("select * from ships");
 			

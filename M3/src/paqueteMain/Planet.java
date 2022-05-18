@@ -19,8 +19,8 @@ public class Planet {
 		this.name = name;
 		technologyDefense = 0;
 		technologyAtack = 0;
-		metal = 0;
-		deuterium = 0;
+		metal = 10000;
+		deuterium = 10000;
 		
 		army[0] = new ArrayList<MilitaryUnit>();
 		army[1] = new ArrayList<MilitaryUnit>();

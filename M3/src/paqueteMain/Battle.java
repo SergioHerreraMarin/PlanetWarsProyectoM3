@@ -38,7 +38,10 @@ public class Battle {
 		
 		this.planetArmy = planetArmy;
 		this.enemyArmy = enemyArmy;
-
+		
+		for(int i = 0; i < planetArmy.length; i++) {
+			System.out.println(planetArmy[i].size());
+		}
 		//INICIALIZAR ARRAY ENEMIES 	
 		for(int i = 0; i < armies.length; i++) {
 			
@@ -48,7 +51,7 @@ public class Battle {
 			}	
 		}
 		
-		//ADD FLOTAS DEL PLANETAY ENEMIGO AL ARRAY ENEMIES
+		//ADD FLOTAS DEL PLANETA Y ENEMIGO AL ARRAY ENEMIES
 		for(int i = 0; i < armies.length; i++) {
 			
 			switch(i) {
@@ -77,15 +80,36 @@ public class Battle {
 		initialCostFleet[1][1] = fleetResourceCost(enemyArmy)[1];  //TOTAL DEUTERIUM ENEMIGO
 		
 		initialArmies(); //ACTUALIZA EL ARRAY DE INITIAL_ARMIES, PARA SABER LA CANTIDAD DE CADA TIPO DE UNIDAD DE LA FLOTA DEL PLANETA Y DEL ENEMIGO 
-	
-		startBattle(planet);
+		
+		//print armyes
+		//enemy
+		System.out.println("enemy");
+		for (int a = 0; a < enemyArmy.length; a++) {
+			for (int b = 0; b < enemyArmy[a].size(); b++) {
+				System.out.println(b);
+			}
+		}
+		//planet
+		System.out.println("planet");
+		for (int a = 0; a < planetArmy.length; a++) {
+			for (int b = 0; b < planetArmy[a].size(); b++) {
+				System.out.println(b);
+			}
+		}
+		
+		System.out.println("Started battle");
+		//startBattle(planet);
 	
 	}	
 		
 			
 	
 	/**EMPEZAR UNA BATALLA*/
-	private void startBattle(Planet planet) { //OBJETO PLANETA PARA RECOGER LOS RESTOS DE METAL Y DEUTERIO EN CASO DE GANAR  
+	protected void startBattle(Planet planet) { //OBJETO PLANETA PARA RECOGER LOS RESTOS DE METAL Y DEUTERIO EN CASO DE GANAR  
+		
+		for(int i = 0; i < planetArmy.length; i++) {
+			System.out.println(planetArmy[i].size());
+		}
 		
 		Atacante atacante = null; //PARA SABER QUIEN ATACA Y QUIEN DEFIENDE
 		boolean generaResiduos = false; //PARA SABER SI SE GENERAN RESIDUOS
@@ -121,14 +145,14 @@ public class Battle {
 			
 				//ELECCION "GRUPO" DEL ATACANTE: 
 				grupoAtacanteIndex = chooseAttackGroup(Variables.CHANCE_ATTACK_PLANET_UNITS,planetArmy); //ELECCION DEL GRUPO 
-				System.out.println("index grupo planeta atacante: " + grupoAtacanteIndex);
+				//System.out.println("index grupo planeta atacante: " + grupoAtacanteIndex);
 				//SELECCIONAR UNIDAD AL AZAR DEL "GRUPO" ELEGIDO DE ATAQUE:  	
-				System.out.println("Num unidades: " + actualNumberUnitsPlanet[grupoAtacanteIndex]);
+				//System.out.println("Num unidades: " + actualNumberUnitsPlanet[grupoAtacanteIndex]);
 				unidadAtacante = planetArmy[grupoAtacanteIndex].get(random.nextInt(0,actualNumberUnitsPlanet[grupoAtacanteIndex]));
 					
 				//ELECCION "GRUPO" DEL DEFENSA:
 				grupoDefensaIndex = chooseDefenseGroup(actualNumberUnitsEnemy,enemyArmy);
-				System.out.println("index grupo enemigo defensa: " + grupoDefensaIndex);
+				//System.out.println("index grupo enemigo defensa: " + grupoDefensaIndex);
 				//SELECCIONAR UNIDAD AL AZAR DEL "GRUPO" ELEGIDO DE DEFENSA:   
 				unidadDefensa = enemyArmy[grupoDefensaIndex].get(random.nextInt(0,actualNumberUnitsEnemy[grupoDefensaIndex]));
 				//REPORTE:
@@ -140,13 +164,13 @@ public class Battle {
 				
 				//ELECCION "GRUPO" DEL ATACANTE: 
 				grupoAtacanteIndex = chooseAttackGroup(Variables.CHANCE_ATTACK_ENEMY_UNITS, enemyArmy);
-				System.out.println("index grupo planeta enemigo: " + grupoAtacanteIndex);
+				//System.out.println("index grupo planeta enemigo: " + grupoAtacanteIndex);
 				//SELECCIONAR UNIDAD AL AZAR DEL "GRUPO" ELEGIDO DE ATAQUE:	
 				unidadAtacante = enemyArmy[grupoAtacanteIndex].get(random.nextInt(0,actualNumberUnitsEnemy[grupoAtacanteIndex]));
 					
 				//ELECCION "GRUPO" DEL DEFENSA:
 				grupoDefensaIndex = chooseDefenseGroup(actualNumberUnitsPlanet, planetArmy);
-				System.out.println("index grupo planeta defensa: " + grupoDefensaIndex);
+				//System.out.println("index grupo planeta defensa: " + grupoDefensaIndex);
 				//SELECCIONAR UNIDAD AL AZAR DEL "GRUPO" ELEGIDO DE DEFENSA:
 				unidadDefensa = planetArmy[grupoDefensaIndex].get(random.nextInt(0,actualNumberUnitsPlanet[grupoDefensaIndex]));	
 				//REPORTE:
@@ -154,13 +178,13 @@ public class Battle {
 				break;
 				
 			default:
-				System.out.println("ERROR: No deber�as de ver esto.");
+				System.out.println("ERROR: No deberias ver esto.");
 				break;
 			}
 			
 			//PRUEBA, BORRAR:
-			System.out.println("PRUEBA:" + unidadDefensa.getMetalCost() * Variables.PERCENTATGE_WASTE / 100); //???
-			System.out.println("PRUEBA2: " + unidadDefensa.getMetalCost());
+			//System.out.println("PRUEBA:" + unidadDefensa.getMetalCost() * Variables.PERCENTATGE_WASTE / 100); //???
+			//System.out.println("PRUEBA2: " + unidadDefensa.getMetalCost());
 			
 			
 			//ATAQUE: 
@@ -316,10 +340,9 @@ public class Battle {
 		for(int i = 0; i < numberUnits.length; i++) {
 			totalUnidades += numberUnits[i];
 		}
-					
-		for(int i = 0; i < numberUnits.length; i++) {
 			
-			probabilidades[i] = 100 * numberUnits[i] / totalUnidades;		
+		for(int i = 0; i < numberUnits.length; i++) {
+			probabilidades[i] = 100 * numberUnits[i] / totalUnidades;
 		}
 		
 		//A partir de aquí la formula es igual a la de este método. 
@@ -449,14 +472,14 @@ public class Battle {
 	
 	/**MOSTRAR REPORTE DE LA BATALLA PASO A PASO*/
 	public String getBattleReportStepByStep() {
-							
+		System.out.println("Step report");
 		return battleDevelopment;
 	}
 	
 	
 	/**MOSTRAR REPORTE GENERAL DE LA BATALLA*/
 	public String getBattleReportGeneral() {
-		
+		System.out.println("General report");
 		String megaReporte = "";
 		megaReporte += "\nBATTLE STATISTICS";		
 		
