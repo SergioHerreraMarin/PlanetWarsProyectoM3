@@ -2,12 +2,16 @@ package gui;
 
 import java.awt.*;
 import javax.swing.*;
+<<<<<<< HEAD
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+=======
+>>>>>>> parent of 4437178 (base de dades nueva versió)
 
 public class Planet_status extends JPanel {
 	private Image fondo;
 	
+<<<<<<< HEAD
 	public Planet_status (Main_window window, int planetId){
 		System.out.println(window.getWidth());
 		this.setSize(window.getWidth(),window.getHeight());
@@ -204,6 +208,21 @@ class ShipTable extends JPanel{
 		shipQuantity.setOpaque(true);
 		shipQuantity.setBorder(new LineBorder(Color.white));
 		rowTitles.add(shipQuantity);
+=======
+	public Planet_status (JFrame window){
+		this.setPreferredSize(new Dimension(window.getWidth()-10, window.getHeight()-10));
+		this.setLocation(window.getContentPane().getWidth()-50+this.getWidth()/2, window.getContentPane().getHeight()-50+this.getHeight()/2); //esto no va
+		this.setBackground(Color.green);
+		
+		JLabel top_margin = new JLabel();
+		top_margin.setBackground(Color.pink);
+		top_margin.setPreferredSize(new Dimension(this.getWidth(),50));
+		top_margin.setOpaque(true);
+		top_margin.setVisible(true);
+		this.add(top_margin);
+		
+		
+>>>>>>> parent of 4437178 (base de dades nueva versió)
 		
 		JLabel shipAdd = new JLabel("Add",SwingConstants.CENTER);
 		shipAdd.setSize(rowTitles.getWidth()/10*1-25,20);
