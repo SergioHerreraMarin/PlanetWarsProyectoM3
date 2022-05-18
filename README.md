@@ -17,8 +17,8 @@ invasións més difícils de superar.
 
 ## Requisits previs:
 ---
--IDE per a codi java OOP.
--Base de dades de oracle database
+- IDE per a codi java OOP.
+- Base de dades de oracle database
 
 ## Instruccións d'instal·lació i primer ús:
 ---
