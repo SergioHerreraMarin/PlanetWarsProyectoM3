@@ -1,23 +1,27 @@
 # PlanetWarsProyectoM3
-Membres:---------------------------------------------------------------------------------------------------------------------------------------------------------------
+## Membres:
+---
 -Sergio Herrera
 -Jordi Cañas
 -Carles Aguilar
 -Robert Sánchez
 -Susana Figueroa
 
-Descripció:------------------------------------------------------------------------------------------------------------------------------------------------------------
+## Descripció:
+---
 Projecte 2 del mòdul 15 de la clase AMS1 de programació d'aplicacións multiplataforma.
 Consta d'un joc similar a Ogame en el que l'usuari poseeix planetes propis amb recursos, que es regeneren cada cert temps, i una armada, composta per naus i defenses 
 estàtiques, que serveixen per protegir-nos d'atacs d'invasors que volen destruïr-nos. En resum, l'usuari ha d'invertir els recursos generats pel seu planeta en naus 
 i defenses per tal de derrotar als invasors en batalles espacials i així protegir-se i a més, si guanya, obtenir uns plusos de recursos, de gran ajuda davant futures
 invasións més difícils de superar.
 
-Requisits previs:------------------------------------------------------------------------------------------------------------------------------------------------------
+## Requisits previs:
+---
 -IDE per a codi java OOP.
 -Base de dades de oracle database
 
-Instruccións d'instal·lació i primer ús:-------------------------------------------------------------------------------------------------------------------------------
+## Instruccións d'instal·lació i primer ús:
+---
 Instal·la la base de dades oracle i crea un usuari 'PLANETWARS' identificat per 'PLANETWARS'.
 Dona-li estructura i inserta les dades necessaries fent ús dels scripts 1->4 (per ordre).
 
