@@ -100,7 +100,6 @@ public class Planet_status extends JPanel {
 		
 		this.setVisible(true);
 	}
-
 }//clase principal
 
 

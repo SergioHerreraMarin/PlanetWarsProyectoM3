@@ -19,8 +19,8 @@ public class Planet {
 		this.name = name;
 		technologyDefense = 0;
 		technologyAtack = 0;
-		metal = 10000;
-		deuterium = 10000;
+		metal = 100000;
+		deuterium = 100000;
 		
 		army[0] = new ArrayList<MilitaryUnit>();
 		army[1] = new ArrayList<MilitaryUnit>();
@@ -100,7 +100,7 @@ public class Planet {
 				
 		if(deuterium >= upgradeAttackTechnologyDeuteriumCost) {
 					
-			technologyDefense++;
+			technologyAtack++;
 			deuterium -= upgradeAttackTechnologyDeuteriumCost;	
 			upgradeAttackTechnologyDeuteriumCost += upgradeAttackTechnologyDeuteriumCost * (Variables.UPGRADE_PLUS_ATTACK_TECHNOLOGY_DEUTERIUM_COST/100);	
 			//INSERTAR 

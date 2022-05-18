@@ -223,38 +223,67 @@ public static void main(String[] args) throws SQLException, ResourceException {
 		//Planet status ###########################################################################################################
 		Main main = new Main();
 		//Temporitzador ===========================================================================================================
-//		rep = 0;
-//		TimerTask task = new TimerTask() {
-//			public void run(){
-//			System.out.println("Timer");
-//			rep ++;
-//			if (rep == 1) {//after 2 min
-//				System.out.println("!!!Our radar detects an enemy army aproaching!!!");
-//				System.out.println("Identifying...");
-//				main.createEnemyArmy(main.enemyArmy);
-//				System.out.println("\nEnemy army identified:");
-//				main.viewThread();
-//				System.out.println("\nYou've got 3 minutes");
-//			}
-//			if (rep == 2) {//after 5 min (3 min later)
-//				System.out.println("Enemys are here, battle ensues...");
-//				System.out.println("Pray for victory\n");
-//				Battle battle = new Battle(currentPlanet.getArmy(), main.getEnemyArmy(), currentPlanet);
-//				battle.startBattle(currentPlanet);
-//				System.out.println(battle.getBattleReportStepByStep()); 
-//				System.out.println("\nBATTLE FINISHED\n");
-//				System.out.println(battle.getBattleReportGeneral());
-//				rep = 0;
-//			}
-//			}
-//		};
-//		Timer timer = new Timer();
-//		timer.schedule(task, 0, 60000);//1 minut
+		rep = 0;
+		TimerTask task = new TimerTask() {
+			public void run(){
+			rep ++;
+			if (rep == 2) {//after 2 min
+				System.out.println(" ");
+				System.out.println("#########################################################################################################################");
+				System.out.println("!!!Our radar detects an enemy army aproaching!!!");
+				System.out.println("Identifying...");
+				main.createEnemyArmy(main.enemyArmy);
+				System.out.println("\nEnemy army identified:");
+				main.viewThread();
+				System.out.println("\nYou've got 3 minutes");
+				//Re-impressió menu
+				System.out.println(" ");
+				System.out.println("#########################################################################################################################");
+				System.out.println("PLANET STATUS MENU");
+				System.out.println("1)VIEW PLANET STATS");
+				System.out.println("2)BUILD ARMY");
+				System.out.println("3)UPGRADE TECHNOLOGIES");
+				System.out.println("4)EXIT");
+				System.out.println("");
+				System.out.println("Option:");
+			}
+			if (rep == 3) {//after 2 min
+				System.out.println(" ");
+				System.out.println("You extracted new materials from the planet");
+				currentPlanet.setDeuterium(currentPlanet.getDeuterium()+PLANET_DEUTERIUM_GENERATED);
+				currentPlanet.setMetal(currentPlanet.getMetal()+PLANET_METAL_GENERATED);
+			}
+			if (rep == 5) {//after 5 min (3 min later)
+				System.out.println(" ");
+				System.out.println("#########################################################################################################################");
+				System.out.println("Enemys are here, battle ensues...");
+				System.out.println("Pray for victory\n");
+				Battle battle = new Battle(currentPlanet.getArmy(), main.getEnemyArmy(), currentPlanet);
+				battle.startBattle(currentPlanet);
+				System.out.println(battle.getBattleReportStepByStep()); 
+				System.out.println("\nBATTLE FINISHED\n");
+				System.out.println(battle.getBattleReportGeneral());
+				//Re-impressió menu
+				System.out.println(" ");
+				System.out.println("#########################################################################################################################");
+				System.out.println("PLANET STATUS MENU");
+				System.out.println("1)VIEW PLANET STATS");
+				System.out.println("2)BUILD ARMY");
+				System.out.println("3)UPGRADE TECHNOLOGIES");
+				System.out.println("4)EXIT");
+				System.out.println("");
+				System.out.println("Option:");
+				rep = 0;
+			}
+			}
+		};
+		Timer timer = new Timer();
+		timer.schedule(task, 0, 60000);//cada 1 minut
 		//=========================================================================================================================
 		System.out.println("");
 		System.out.println("#########################################################################################################################");
-		System.out.println("Landed onto planet "+planetName);
-		System.out.println("Welcome to "+planetName);
+		System.out.println(" ");
+		System.out.println("Landed onto planet, welcome to "+planetName);
 		//abre planetstatus con planeta id option
 		valid = false;
 		while (valid == false) {
@@ -264,8 +293,7 @@ public static void main(String[] args) throws SQLException, ResourceException {
 		System.out.println("1)VIEW PLANET STATS");
 		System.out.println("2)BUILD ARMY");
 		System.out.println("3)UPGRADE TECHNOLOGIES");
-		System.out.println("4)VIEW BATTLE REPORTS");//60 pasar 80 practicas (M12:EIE)
-		System.out.println("5)EXIT");
+		System.out.println("4)EXIT");
 		System.out.println("");
 		System.out.println("Option:");
 		option = input.next();
@@ -283,31 +311,16 @@ public static void main(String[] args) throws SQLException, ResourceException {
 			System.out.println("");
 			Seleccionar_Opciones_techDefense_techAttack(currentPlanet);
 		}
-		else if (option.equals("4")) {//view reports
-			System.out.println("");
-			
-		}
-		else if (option.equals("5")) {//exit
-			main.createEnemyArmy(main.enemyArmy);
-			main.viewThread();
-			System.out.println("");
-			System.out.println("Enemys are here, battle ensues...");
-  			System.out.println("Pray for victory\n");
-  			Battle battle = new Battle(currentPlanet.getArmy(), main.getEnemyArmy(), currentPlanet);
- 			System.out.println("Battle starts");
-			battle.startBattle(currentPlanet);
-			System.out.println(battle.getBattleReportStepByStep()); 
-			System.out.println("\nBATTLE FINISHED\n");
-			System.out.println(battle.getBattleReportGeneral());
+		else if (option.equals("4")) {//exit
 			valid = true;
-			
 		}
 		else {
 			System.out.println("");
 			System.out.println("ERROR:_INVALID OPTION_");
 		}
 		}
-	
+		System.out.println(" ");
+		System.out.println("PROGRAMA FINALITZAT");
 	
 	
 	//###########################################################################################################################################
@@ -322,9 +335,9 @@ public static void Seleccionar_Opciones_techDefense_techAttack(Planet planet) th
     do {
     	System.out.println(" ");
     	System.out.println("#########################################################################################################################");
-        System.out.println("1. quiero updatear TechnologyDefense");
-        System.out.println("2. quiero updatear TechnologyAttack");
-        System.out.println("3. no quiero updatear nada.");
+        System.out.println("1) Upgrade Defense");
+        System.out.println("2) Upgrade Attack");
+        System.out.println("3) Return");
         option = scan.nextInt();
 
     switch (option) {
@@ -337,7 +350,7 @@ public static void Seleccionar_Opciones_techDefense_techAttack(Planet planet) th
         statement.executeUpdate(update1);
         statement.executeUpdate(update11);
         statement.executeUpdate(update111);
-
+        System.out.println("Defense has been upgraded");
         break;
     case 2:
         planet.upgradeTechnologyAttack();
@@ -347,11 +360,12 @@ public static void Seleccionar_Opciones_techDefense_techAttack(Planet planet) th
         statement.executeUpdate(update2);
         statement.executeUpdate(update22);
         statement.executeUpdate(update222);
+        System.out.println("Attack has been upgraded");
         break;
     case 3:
-
         break;
     default:
+        System.out.println("ERROR:_Invalid option_");
     }
 
 } while (option != 3 );

@@ -87,7 +87,7 @@ public class Upgrade_popup extends JFrame{
 		this.setVisible(true);
 	}
 	public static void main(String[] args) {
-		new Upgrade_popup("AAAAAA");
+		new Upgrade_popup("Attack");
 	}
 }
 

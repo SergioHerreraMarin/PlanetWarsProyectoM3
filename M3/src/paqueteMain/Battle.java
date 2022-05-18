@@ -39,9 +39,6 @@ public class Battle {
 		this.planetArmy = planetArmy;
 		this.enemyArmy = enemyArmy;
 		
-		for(int i = 0; i < planetArmy.length; i++) {
-			System.out.println(planetArmy[i].size());
-		}
 		//INICIALIZAR ARRAY ENEMIES 	
 		for(int i = 0; i < armies.length; i++) {
 			
@@ -80,36 +77,12 @@ public class Battle {
 		initialCostFleet[1][1] = fleetResourceCost(enemyArmy)[1];  //TOTAL DEUTERIUM ENEMIGO
 		
 		initialArmies(); //ACTUALIZA EL ARRAY DE INITIAL_ARMIES, PARA SABER LA CANTIDAD DE CADA TIPO DE UNIDAD DE LA FLOTA DEL PLANETA Y DEL ENEMIGO 
-		
-		//print armyes
-		//enemy
-		System.out.println("enemy");
-		for (int a = 0; a < enemyArmy.length; a++) {
-			for (int b = 0; b < enemyArmy[a].size(); b++) {
-				System.out.println(b);
-			}
-		}
-		//planet
-		System.out.println("planet");
-		for (int a = 0; a < planetArmy.length; a++) {
-			for (int b = 0; b < planetArmy[a].size(); b++) {
-				System.out.println(b);
-			}
-		}
-		
-		System.out.println("Started battle");
-		//startBattle(planet);
-	
 	}	
 		
 			
 	
 	/**EMPEZAR UNA BATALLA*/
 	protected void startBattle(Planet planet) { //OBJETO PLANETA PARA RECOGER LOS RESTOS DE METAL Y DEUTERIO EN CASO DE GANAR  
-		
-		for(int i = 0; i < planetArmy.length; i++) {
-			System.out.println(planetArmy[i].size());
-		}
 		
 		Atacante atacante = null; //PARA SABER QUIEN ATACA Y QUIEN DEFIENDE
 		boolean generaResiduos = false; //PARA SABER SI SE GENERAN RESIDUOS
@@ -208,7 +181,7 @@ public class Battle {
 				deleteUnit(atacante, unidadDefensa, grupoDefensaIndex);
 				 
 				if(atacante == Atacante.PLANET) {	
-					battleDevelopment += "\nWe eliminate " + typeInstanceName(unidadDefensa); 
+					battleDevelopment += "\nWe eliminate " + typeInstanceName(unidadDefensa);
 				
 				}else if(atacante == Atacante.ENEMY) {	
 					battleDevelopment += "\nEnemy eliminate " + typeInstanceName(unidadDefensa);

@@ -24,19 +24,6 @@ public class Main {
 		enemyArmy[1] = new ArrayList<MilitaryUnit>();
 		enemyArmy[2] = new ArrayList<MilitaryUnit>();
 		enemyArmy[3] = new ArrayList<MilitaryUnit>();
-		
-//		try {
-//			
-//			planet.newLigthHunter(17);
-//			planet.newHeavyHunter(8);
-//			planet.newBattleShip(1);
-//			planet.newArmoredShip(1);
-//			
-//		} catch (ResourceException e) {
-//
-//			e.printStackTrace();
-//		}
-		
 	}//main
 	
 	public ArrayList<MilitaryUnit>[] getEnemyArmy() {

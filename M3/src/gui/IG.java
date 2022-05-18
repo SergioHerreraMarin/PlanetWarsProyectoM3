@@ -47,7 +47,7 @@ public class IG extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		
+		new IG();
 	}
 
 	/**
@@ -553,7 +553,7 @@ public class IG extends JFrame {
 		ImageIcon icono3= new ImageIcon(CreateAccountBackGround.getImage().getScaledInstance(LabelCreateAccount.getWidth(),LabelCreateAccount.getHeight(),Image.SCALE_DEFAULT));
 		LabelCreateAccount. setIcon(icono3);
 		
-        
+        this.setVisible(true);
 	}
 		
 	
