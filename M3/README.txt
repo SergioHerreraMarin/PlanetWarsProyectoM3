@@ -1,0 +1,1 @@
+Per executar el joc, fer ús de la classe TerminalGame dins de src/paqueteMain
